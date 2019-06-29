@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\login.html";i:1561339166;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\login.html";i:1561682890;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,7 +50,7 @@
         </div>
         <div class="signup-footer">
             <div class="pull-left" style="color:#fff">
-                &copy; 2016 轮回后台管理系统 All Rights Reserved.
+                &copy; 2019 轮回后台管理系统 All Rights Reserved.
             </div>
         </div>
     </div>
@@ -96,12 +96,12 @@
                 return false;
             }
 
-// if ({ $verify_type } == 0) {
-// if (false == check_result) {
-// lunhui.error('请拖动滑块到最右边');
-// return false;
-// }
-// }
+            // if ({ $verify_type } == 0) {
+            // if (false == check_result) {
+            // lunhui.error('请拖动滑块到最右边');
+            // return false;
+            // }
+            // }
             $('button').addClass('disabled').text('登录中...');
         }
 

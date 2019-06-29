@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:88:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_extend\index.html";i:1561452216;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561340064;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:88:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_extend\index.html";i:1561704988;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561340064;}*/ ?>
 <!DOCTYPE html>
 <html class=" js csstransforms3d">
 
@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>费用支出</title>
+    <title>项目信息</title>
     <link rel="stylesheet" href="/xmglg/public/static/admin/css/base.css">
     <link rel="stylesheet" href="/xmglg/public/static/admin/css/page.css">
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
@@ -42,7 +42,7 @@
         <!-- Panel Other -->
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <h5>费用支出列表</h5>
+                <h5>项目列表</h5>
             </div>
             <div class="ibox-content">
                 <!--搜索框开始-->
@@ -50,7 +50,7 @@
                     <div class="col-sm-12">
                         <div class="col-sm-2" style="width: 100px">
                             <div class="input-group">
-                                <a href="<?php echo url('proadd'); ?>"><button class="btn btn-outline btn-primary" type="button">添加</button></a>
+                                <a href="<?php echo url('proadd'); ?>"><button class="btn btn-outline btn-primary" type="button">添加项目</button></a>
                             </div>
                         </div>
                         <div style="width:1100px; margin:20px;">
@@ -64,34 +64,18 @@
                                         <th class="t_5">操作菜单</th>
                                     </tr>
                                 </thead>
-                                <?php
-    $array = array();
-     $coon = mysqli_connect("localhost", "root");
-    mysqli_select_db($coon, "xmgl");
-    mysqli_set_charset($coon, "utf8");
-      $rs='select * from reimburse';
-        $r = mysqli_query($coon, $rs);
-       while ($obj = mysqli_fetch_object($r)) {
-        $array[] = $obj;
-    }
-   
-      
-        ?>
                                 <tbody>
-                                    <?php
-  foreach($array as $key=>$values){
-
-          ?>
+                                    <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                                     <tr>
-                                        <td class="t_1"><?php echo $values->repronumber; ?></td>
-                                        <td class="t_2"><?php echo $values->reproname; ?></td>
-                                        <td class="t_3"><?php echo $values->retime; ?></td>
-                                        <td class="t_4"><?php echo $values->reusername; ?></td>
+                                        <td class="t_1"><?php echo $vo['repronumber']; ?></td>
+                                        <td class="t_2"><?php echo $vo['reproname']; ?></td>
+                                        <td class="t_3"><?php echo $vo['retime']; ?></td>
+                                        <td class="t_4"><?php echo $vo['reusername']; ?></td>
                                         <td class="t_5">
-                                            <div class="btn"><a href="pro_expend_sel.php?id=<?php echo $values->reid; ?>" class="Top">查看</a><a href="pro_expend_alter.php?id=<?php echo $values->reid; ?>" class="modify">编辑</a><a href="../admin/reimbursedelete.php?id=<?php echo $values->reid; ?>" onclick="return confirm('是否确认删除?')" class="delete">删除</a></div>
+                                            <div class="btn"><a href="<?php echo url('proUpdate'); ?>?id=<?php echo $vo['reid']; ?>" class="modify">编辑</a><a href="<?php echo url('proDelete'); ?>?id=<?php echo $vo['reid']; ?>" onclick="return confirm('是否确认删除?')" class="delete">删除</a></div>
                                         </td>
                                     </tr>
-                                    <?php }?>
+                                    <?php endforeach; endif; else: echo "" ;endif; ?>
                                 </tbody>
                             </table>
                         </div>

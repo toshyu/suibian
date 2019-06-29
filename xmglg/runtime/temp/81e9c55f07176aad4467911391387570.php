@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\project\index.html";i:1561451355;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561340064;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\project\index.html";i:1561790487;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\footer.html";i:1561790369;}*/ ?>
 <!DOCTYPE html>
 <html class=" js csstransforms3d">
 
@@ -26,6 +26,7 @@
     <link href="/xmglg/public/static/admin/css/plugins/switchery/switchery.css" rel="stylesheet">
     <link href="/xmglg/public/static/admin/css/style.min.css?v=4.1.0" rel="stylesheet">
     <link href="/xmglg/public/static/admin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <style type="text/css">
     .long-tr th {
         text-align: center
@@ -63,46 +64,66 @@
                                         <th class="t_4">操作菜单</th>
                                     </tr>
                                 </thead>
-                                <?php
-    $array = array();
-     $coon = mysqli_connect("localhost", "root");
-    mysqli_select_db($coon, "xmgl");
-    mysqli_set_charset($coon, "utf8");
-      $rs='select * from project';
-        $r = mysqli_query($coon, $rs);
-       while ($obj = mysqli_fetch_object($r)) {
-        $array[] = $obj;
-    }
-   
-        ?>
                                 <tbody>
-                                    <?php
-  foreach($array as $key=>$values){
-  
-?>
+                                    <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                                     <tr>
                                         <td>
-                                            <?php echo $values->pro_number; ?>
+                                            <?php echo $vo['pro_number']; ?>
                                         </td>
                                         <td>
-                                            <?php echo $values->pro_name; ?>
+                                            <?php echo $vo['pro_name']; ?>
                                         </td>
                                         <td>
-                                            <?php echo $values->time; ?>
+                                            <?php echo $vo['time']; ?>
                                         </td>
                                         <td class="t_4">
-                                            <div class="btn"><a href="prosel.php?id=<?php echo " <?php echo $values->projectid; ?>";?>"class="Top">查看</a><a href="proalter.php?id=<?php echo" <?php echo $values->projectid; ?>"; ?>" class="modify">编辑</a><a href="../admin/prodelete.php?id=<?php echo" <?php echo $values->projectid; ?>" ; ?>"
-                                                    onclick="return confirm('是否确认删除?')" class="delete">删除</a></div>
+                                            <div class="btn">
+                                                <!-- <a href="prosel.php?id=" class="Top">查看</a> --><a href="<?php echo url('proupdate'); ?>?id=<?php echo $vo['projectid']; ?>" class="modify">编辑</a><a href="<?php echo url('prodelete'); ?>?id=<?php echo $vo['projectid']; ?>" onclick="return confirm('是否确认删除?')" class="delete">删除</a></div>
                                         </td>
                                     </tr>
-                                    <?php }?>
+                                    <?php endforeach; endif; else: echo "" ;endif; ?>
                                 </tbody>
                             </table>
                         </div>
 </body>
-<script src="/xmglg/public/static/admin/js/jquery.js"></script>
+<script src="/xmglg/public/static/admin/js/jquery.min.js?v=2.1.4"></script>
+<script src="/xmglg/public/static/admin/js/bootstrap.min.js?v=3.3.6"></script>
+<script src="/xmglg/public/static/admin/js/content.min.js?v=1.0.0"></script>
+<script src="/xmglg/public/static/admin/js/plugins/chosen/chosen.jquery.js"></script>
+<script src="/xmglg/public/static/admin/js/plugins/iCheck/icheck.min.js"></script>
+<script src="/xmglg/public/static/admin/js/plugins/layer/laydate/laydate.js"></script>
+<script src="/xmglg/public/static/admin/js/plugins/switchery/switchery.js"></script>
+<!--IOS开关样式-->
+<script src="/xmglg/public/static/admin/js/jquery.form.js"></script>
+<script src="/xmglg/public/static/admin/js/layer/layer.js"></script>
+<script src="/xmglg/public/static/admin/js/laypage/laypage.js"></script>
+<script src="/xmglg/public/static/admin/js/laytpl/laytpl.js"></script>
+<script src="/xmglg/public/static/admin/js/lunhui.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 <script type="text/javascript" src="/xmglg/public/static/admin/js/dataTables.bootstrap.js"></script>
+<script>
+$(document).ready(function() { $(".i-checks").iCheck({ checkboxClass: "icheckbox_square-green", radioClass: "iradio_square-green", }) });
+</script>
+<script>
+$(document).ready(function() {
+    $('#example').dataTable({
+        "lengthMenu": [5, 10, 20, 50, 100],
+        "language": {
+            "zeroRecords": "没有检索到数据",
+            "lengthMenu": "每页 _MENU_ 条记录",
+            "search": "搜索 ",
+            "info": "共 _PAGES_ 页，_TOTAL_ 条记录，当前显示 _START_ 到 _END_ 条",
+            "paginate": {
+                "previous": "上一页",
+                "next": "下一页",
+                "decimal": ",",
+                "thousands": "."
+            }
+
+        },
+    });
+});
+</script>
 <script>
 $(document).ready(function() {
     $('#example').dataTable({

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:83:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\index\index.html";i:1561430991;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561340064;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\footer.html";i:1561340164;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:83:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\index\index.html";i:1561791520;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\footer.html";i:1561790369;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -14,6 +14,7 @@
     <link href="/xmglg/public/static/admin/css/plugins/switchery/switchery.css" rel="stylesheet">
     <link href="/xmglg/public/static/admin/css/style.min.css?v=4.1.0" rel="stylesheet">
     <link href="/xmglg/public/static/admin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <style type="text/css">
     .long-tr th {
         text-align: center
@@ -31,99 +32,54 @@
             <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
             <div>尊敬的会员<span id="weather"></span></div>
         </div>
-        <!-- 上方tab -->
-<!-- <div class="row">
-    <div class="col-sm-3">
         <div class="ibox float-e-margins">
             <div class="ibox-title">
-                <span class="label pull-right">日</span>
-                <span class="label pull-right">周</span>
-                <span class="label label-success pull-right">月</span>
-                <h5>会员</h5>
+                <h5>项目列表</h5>
             </div>
             <div class="ibox-content">
-                <h1 class="no-margins"><?php echo $member; ?></h1>
-                <small>今日新增</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <span class="label pull-right">日</span>
-                <span class="label pull-right">周</span>
-                <span class="label label-success pull-right">月</span>
-                <h5>订单</h5>
-            </div>
-            <div class="ibox-content">
-                <h1 class="no-margins">275,800</h1>
-                <small>总订单</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <span class="label pull-right">日</span>
-                <span class="label pull-right">周</span>
-                <span class="label label-success pull-right">月</span>
-                <h5>注册</h5>
-            </div>
-            <div class="ibox-content">
-                <h1 class="no-margins">106,120</h1>
-                <small>新增</small>
-            </div>
-        </div>
-    </div>
-    <div class="col-sm-3">
-        <div class="ibox float-e-margins">
-            <div class="ibox-title">
-                <a href="#question">
-                    <i class="fa fa-question" style="color:red;margin-left:10px" data-container="body" data-toggle="popover" data-placement="bottom" data-content="日活跃用户 = 当日登录游戏的用户 - 当日新增用户数(去重)@@@@@@@@月活跃用户 = 最近30天登录游戏的用户 - 最近30天新增用户(去重)"></i>
-                </a>
-                <span class="label pull-right">日</span>
-                <span class="label pull-right">周</span>
-                <span class="label label-success pull-right">月</span>
-                <h5>活跃用户</h5>
-            </div>
-            <div class="ibox-content">
-                <h1 class="no-margins">80,600</h1>
-                <small>7月</small>
-            </div>
-        </div>
-    </div>
-</div> -->
-        <!-- 中间折线 -->
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="col-sm-6">
-                    <div class="panel panel-info">
-                        <div class="panel-heading">
-                            <i class="fa fa-cogs"></i> 系统信息
-                        </div>
-                        <div class="panel-body">
-                            <p><i class="fa fa-sitemap"></i> 框架版本：ThinkPHP<?php echo $info['think_v']; ?>
-                            </p>
-                            <p><i class="fa fa-windows"></i> 服务环境：<?php echo $info['web_server']; ?>
-                            </p>
-                            <p><i class="fa fa-warning"></i> 上传附件限制：<?php echo $info['onload']; ?>
-                            </p>
-                            <p><i class="fa fa-credit-card"></i> PHP 版本：<?php echo $info['phpversion']; ?>
-                            </p>
+                <!--搜索框开始-->
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="col-sm-2" style="width: 100px">
+                            <div class="input-group">
+                                <a href="<?php echo url('proAdd'); ?>"><button class="btn btn-outline btn-primary" type="button">添加项目</button></a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <i class="fa fa-cogs"></i> 开发者信息
-                        </div>
-                        <div class="panel-body">
-                            <p><i class="fa fa-send-o"></i> 博客：<a href="http://www.wazyb.com" target="_blank">资源邦</a>
-                            </p>
-                            <p><i class="fa fa-qq"></i> QQ：<a href="http://wpa.qq.com/msgrd?v=3&amp;uin=993424780&amp;site=qq&amp;menu=yes" target="_blank">993424780</a>
-                            </p>
-                        </div>
+                <!--搜索框结束-->
+                <div class="hr-line-dashed"></div>
+                <div class="example-wrap">
+                    <div class="example">
+                        <table class="table table-bordered table-hover">
+                            <thead>
+                                <tr class="long-tr">
+                                    <th>项目编号</th>
+                                    <th>项目名称</th>
+                                    <th width="15%">添加时间</th>
+                                    <th width="15%">更新时间</th>
+                                    <th width="20%">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody id="article_list">
+                                <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): if( count($list)==0 ) : echo "" ;else: foreach($list as $key=>$vo): ?>
+                                <tr class="long-td">
+                                    <td><?php echo $vo['pro_number']; ?></td>
+                                    <td><?php echo $vo['pro_name']; ?></td>
+                                    <td><?php echo $vo['pro_create_time']; ?></td>
+                                    <td><?php echo $vo['pro_update_time']; ?></td>
+                                    <td>
+                                        <a href="javascript:;" onclick="giveQx({{d[i].id}})" class="btn btn-info btn-outline btn-xs">
+                                            <i class="fa fa-paste"></i> 权限分配</a>&nbsp;&nbsp;
+                                        <a href="<?php echo url('edit_cate',['id'=>$vo['id']]); ?>" class="btn btn-primary btn-outline btn-xs">
+                                            <i class="fa fa-paste"></i> 编辑</a>&nbsp;&nbsp;
+                                        <a href="javascript:;" onclick="del_cate(<?php echo $vo['id']; ?>)" class="btn btn-danger btn-outline btn-xs">
+                                            <i class="fa fa-trash-o"></i> 删除</a>
+                                    </td>
+                                </tr>
+                                <?php endforeach; endif; else: echo "" ;endif; ?>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -142,8 +98,30 @@
 <script src="/xmglg/public/static/admin/js/laypage/laypage.js"></script>
 <script src="/xmglg/public/static/admin/js/laytpl/laytpl.js"></script>
 <script src="/xmglg/public/static/admin/js/lunhui.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="/xmglg/public/static/admin/js/dataTables.bootstrap.js"></script>
 <script>
 $(document).ready(function() { $(".i-checks").iCheck({ checkboxClass: "icheckbox_square-green", radioClass: "iradio_square-green", }) });
+</script>
+<script>
+$(document).ready(function() {
+    $('#example').dataTable({
+        "lengthMenu": [5, 10, 20, 50, 100],
+        "language": {
+            "zeroRecords": "没有检索到数据",
+            "lengthMenu": "每页 _MENU_ 条记录",
+            "search": "搜索 ",
+            "info": "共 _PAGES_ 页，_TOTAL_ 条记录，当前显示 _START_ 到 _END_ 条",
+            "paginate": {
+                "previous": "上一页",
+                "next": "下一页",
+                "decimal": ",",
+                "thousands": "."
+            }
+
+        },
+    });
+});
 </script>
     <script src="/xmglg/public/static/admin/js/jquery.leoweather.min.js"></script>
     <script type="text/javascript">

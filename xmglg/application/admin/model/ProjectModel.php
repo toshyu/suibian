@@ -6,11 +6,15 @@ use think\Db;
 
 class ProjectModel extends Model
 {
-	protected $connection='db_config_cards';
+       protected $autoWriteTimestamp=true;
+    protected $createTime="created";
+ 
+    protected $updateTime="updated";
 
-	public function getList()
+ public function getList()
     {
-        return $this->field();
-      } 
-    
+        return $this->field(',projectid,pro_number,pro_name,time')
+            ->order('projectid DESC')->paginate();
+
+    }
 }

@@ -38,46 +38,29 @@
                                         <th class="t_4">操作菜单</th>
                                     </tr>
                                 </thead>
-                                <?php
-    $array = array();
-     $coon = mysqli_connect("localhost", "root");
-    mysqli_select_db($coon, "xmgl");
-    mysqli_set_charset($coon, "utf8");
-      $rs='select * from project';
-        $r = mysqli_query($coon, $rs);
-       while ($obj = mysqli_fetch_object($r)) {
-        $array[] = $obj;
-    }
-   
-        ?>
-                             <tbody>
-                                    <?php
-  foreach($array as $key=>$values){
-  
-?>
+                                <tbody>
+                                    {volist name='list' id='vo'}
                                     <tr>
                                         <td>
-                                            {$values->pro_number}
+                                            {$vo.pro_number}
                                         </td>
                                         <td>
-                                            {$values->pro_name}
+                                            {$vo.pro_name}
                                         </td>
                                         <td>
-                                            {$values->time}
+                                            {$vo.time}
                                         </td>
                                         <td class="t_4">
-                                            <div class="btn"><a href="prosel.php?id=<?php echo " {$values->projectid}";?>"class="Top">查看</a><a href="proalter.php?id=<?php echo" {$values->projectid}"; ?>" class="modify">编辑</a><a href="../admin/prodelete.php?id=<?php echo" {$values->projectid}" ; ?>"
-                                                    onclick="return confirm('是否确认删除?')" class="delete">删除</a></div>
+                                            <div class="btn">
+                                                <!-- <a href="prosel.php?id=" class="Top">查看</a> --><a href="{:url('proupdate')}?id={$vo.projectid}" class="modify">编辑</a><a href="{:url('prodelete')}?id={$vo.projectid}" onclick="return confirm('是否确认删除?')" class="delete">删除</a></div>
                                         </td>
                                     </tr>
-                                    <?php }?>
+                                    {/volist}
                                 </tbody>
                             </table>
                         </div>
 </body>
-<script src="/xmglg/public/static/admin/js/jquery.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-<script type="text/javascript" src="/xmglg/public/static/admin/js/dataTables.bootstrap.js"></script>
+{include file="public/footer" /}
 <script>
 $(document).ready(function() {
     $('#example').dataTable({

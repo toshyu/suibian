@@ -1,5 +1,5 @@
 <?php
-$db_config_cards=require_once('database2.php');
+
 return [
 
 
@@ -108,6 +108,6 @@ return [
     'pages'    => '10',//分页数 
     'salt'     => 'wZPb~yxvA!ir38&Z',//加密串 
 
-
-'db_config_cards'=>$db_config_cards,
+$db_con2 = require_once ('database2.php'),
+'db_con2' => $db_con2,
 ];

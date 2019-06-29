@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:86:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\project\proadd.html";i:1561447075;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561340064;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:86:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\project\proadd.html";i:1561530068;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561340064;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -51,7 +51,7 @@
                             </a>
                         </div>
                     </div>
-                    <form method="post" class="form-x" id="submit" action="../admin/proadd.php" enctype="multipart/form-data" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
+                    <form method="post" class="form-x" id="submit" action="<?php echo url('prodoAdd'); ?>" enctype="multipart/form-data" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
                         <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 项目基本信息</strong></div>
                         <div class="body-content">
                             <div class="form-group">

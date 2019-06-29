@@ -33,8 +33,11 @@ class Index extends Base
             'think_v'    => THINK_VERSION,
             'phpversion' => phpversion(),
         );
-
         $this->assign('info',$info);
+        //查询项目根信息
+        $list = db('pro_x')->select();
+        $this->assign('list',$list);
+        
         return $this->fetch('index');
     }
 

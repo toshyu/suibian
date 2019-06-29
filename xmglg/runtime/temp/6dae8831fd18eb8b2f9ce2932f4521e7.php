@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:86:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_task\index.html";i:1561518758;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561340064;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:86:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_task\index.html";i:1561700055;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561340064;}*/ ?>
 <!DOCTYPE html>
 <html class=" js csstransforms3d">
 
@@ -50,7 +50,7 @@
                     <div class="col-sm-12">
                         <div class="col-sm-2" style="width: 100px">
                             <div class="input-group">
-                                <a href="<?php echo url('proTaskAdd'); ?>"><button class="btn btn-outline btn-primary" type="button">添加任务</button></a>
+                                <a href="<?php echo url('proAdd'); ?>"><button class="btn btn-outline btn-primary" type="button">添加任务</button></a>
                             </div>
                         </div>
                         <div style="width:1100px; margin:20px;">
@@ -66,45 +66,32 @@
                                         <th class="t_6">相关操作</th>
                                     </tr>
                                 </thead>
-                                <?php
-    $array = array();
-     $coon = mysqli_connect("localhost", "root");
-    mysqli_select_db($coon, "xmgl");
-    mysqli_set_charset($coon, "utf8");
-      $rs='select * from task';
-        $r = mysqli_query($coon, $rs);
-       while ($obj = mysqli_fetch_object($r)) {
-        $array[] = $obj;
-    }
-   
-        
-  foreach($array as $key=>$values){
-?>
                                 <tbody>
+                                    <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                                     <tr>
                                         <td class="t_7">
-                                            <?php echo $values->task_table; ?>
+                                            <?php echo $vo['task_table']; ?>
                                         </td>
                                         <td class="t_7">
-                                            <?php echo $values->task_book; ?>
+                                            <?php echo $vo['task_book']; ?>
                                         </td>
                                         <td class="t_7">
-                                            <?php echo $values->task_group; ?>
+                                            <?php echo $vo['task_group']; ?>
                                         </td>
                                         <td class="t_7">
-                                            <?php echo $values->task_gr_leader; ?>
+                                            <?php echo $vo['task_gr_leader']; ?>
                                         </td>
                                         <td class="t_7">
-                                            <?php echo $values->task_gr_pm; ?>
+                                            <?php echo $vo['task_gr_pm']; ?>
                                         </td>
                                         <td class="t_7">
-                                            <?php echo $values->task_plan; ?>
+                                            <?php echo $vo['task_plan']; ?>
                                         </td>
                                         <td class="t_7">
-                                            <div class="btn"><a href="taskalter.php?id=<?php echo $values->task_id; ?>" class="modify">编辑</a><a href="../admin/taskdelete.php?id=<?php echo $values->task_id; ?>" onclick="return confirm('是否确认删除?')" class="delete">删除</a></div>
+                                            <div class="btn"><a href="<?php echo url('proUpdate'); ?>?id=<?php echo $vo['task_id']; ?>" class="modify">编辑</a><a href="<?php echo url('proDelete'); ?>?id=<?php echo $vo['task_id']; ?>" onclick="return confirm('是否确认删除?')" class="delete">删除</a></div>
                                         </td>
                                     </tr>
-                                    <?php }?>
+                                    <?php endforeach; endif; else: echo "" ;endif; ?>
                                 </tbody>
                             </table>
                         </div>

@@ -1,0 +1,157 @@
+{include file="public/header" /}
+<link rel="stylesheet" type="text/css" href="/xmglg/public/static/admin/webupload/webuploader.css">
+<link rel="stylesheet" type="text/css" href="/xmglg/public/static/admin/webupload/style.css">
+<style>
+    .file-item {
+    float: left;
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin: 0 20px 20px 0;
+    padding: 4px;
+}
+
+.file-item .info {
+    overflow: hidden;
+}
+
+.uploader-list {
+    width: 100%;
+    overflow: hidden;
+}
+</style>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>修改外协</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    {volist name='list' id='vo'}
+                    <form method="post" class="form-x" id="submit" action="{:url('proDoAdd')}" enctype="multipart/form-data" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
+                        <div>
+                        </div><br>
+                        <div class="panel admin-panel" style="border: 1px solid #000000;">
+                            <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 外协基本信息</strong></div>
+                            <div class="body-content">
+                                <div class="form-group">
+                                    <div class="label">
+                                        <label>外协单位名称：</label>
+                                    </div>
+                                    <div class="field">
+                                        <input type="text" class="input" style="width: 500px;" name="outpro_unit" value="{$vo.outpro_unit}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="label">
+                                        <label>外协合同编号：</label>
+                                    </div>
+                                    <div class="field">
+                                        <input type="text" class="input" style="width: 300px;" name="outpro_number" value="{$vo.outpro_number}" />
+                                        <div class="tips"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="label">
+                                        <label>外协项目名称：</label>
+                                    </div>
+                                    <div class="field">
+                                        <input type="text" class="input" style="width: 500px;" name="outpro_name" value="{$vo.outpro_name}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="label">
+                                        <label>外协签订时间：</label>
+                                    </div>
+                                    <div class="field">
+                                        <input type="date" class="input" name="outpro_time" value="{$vo.outpro_time}" style="width: 300px;" />
+                                        <div class="tips"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>外协工期：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="date" class="" name="outpro_start_time" value="{$vo.outpro_start_time}" style="width: 300px; height: 45px;border-radius: 4px;" />
+                                    &nbsp;&nbsp;&nbsp;——&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="date" class="" name="outpro_end_time" value="{$vo.outpro_end_time}" style="width: 300px;height: 45px;border-radius: 4px;" />
+                                    <div class="tips"></div>
+                                </div>
+                            </div>
+                            <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 项目经济信息</strong></div>
+                            <div class="body-content">
+                                <div class="form-group">
+                                    <div class="label">
+                                        <label>外协合同额：</label>
+                                    </div>
+                                    <div class="field">
+                                        <input type="text" style="width: 300px;" class="input" name="outpro_amount" value="{$vo.outpro_amount}" />
+                                        <div class="tips"></div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="label">
+                                        <label>外协决算额：</label>
+                                    </div>
+                                    <div class="field">
+                                        <input type="text" style="width: 300px;" class="input" name="outpro_account" value="{$vo.outpro_account}" />
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="label">
+                                        <label>决算日期：</label>
+                                    </div>
+                                    <div class="field">
+                                        <input type="date" class="input" name="outpro_acc_time" value="{$vo.outpro_acc_time}" style="width: 300px;" />
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="form-group">
+                                        <div class="label">
+                                            <label>付款方式：</label>
+                                        </div>
+                                        <p><label>第一笔款: </label><input type="date" name="outpro_paydate1" value="{$vo.outpro_paydate1}" />--<input type="date" name="outpro_paydate2" value="{$vo.outpro_paydate2}" />
+                                            金额: <input type="input" name="outpro_paymoney1" value="{$vo.outpro_paymoney1}" /></p>
+                                        <div class="label"><label> </label></div>
+                                        <p><label>第二笔款: </label><input type="date" name="outpro_paydate3" value="{$vo.outpro_paydate3}" />--<input type="date" name="outpro_paydate4" value="{$vo.outpro_paydate4}" />
+                                            金额:、<input type="input" name="outpro_paymoney2" value="{$vo.outpro_paymoney2}" /></p>
+                                        <div class="label"><label> </label></div>
+                                        <p><label>第三笔款: </label><input type="date" name="outpro_paydate5" value="{$vo.outpro_paydate5}" />--<input type="date" name="outpro_paydate6" value="{$vo.outpro_paydate6}" />
+                                            金额:<input type="input" name="outpro_paymoney3" value="{$vo.outpro_paymoney}" /></p>
+                                        <div class="label"><label> </label></div>
+                                        <p><label>第四笔款: </label><input type="date" name="outpro_paydate7" value="{$vo.outpro_paydate7}" />--<input type="date" name="outpro_paydate8" value="{$vo.outpro_paydate8}" />
+                                            金额:<input type="input" name="outpro_paymoney4" value="{$vo.outpro_paymoney4}" /></p>
+                                        <div class="label"><label> </label></div>
+                                        <p><label>预留质量保证金: </label><input type="date" name="outpro_paydate9" value="{$vo.outpro_paydate9}" />--<input type="date" name="outpro_paydate10" value="{$vo.outpro_paydate10}" />
+                                            金额: <input type="input" name="outpro_paymoney5" value="{$vo.outpro_paymoeny5}" /></p>
+                                        <div class="label"><label> </label></div>
+                                        <p><label>退保证金: </label><input type="date" name="outpro_paydate11" value="{$vo.outpro_paydate11}" />--<input type="date" name="outpro_paydate12" value="{$vo.outpro_paydate12}" />
+                                            金额: <input type="input" name="outpro_paymoney6" value="{$vo.outpro_paymoney6}" /></p>
+                                    </div>
+                                </div>
+                                <input type="hidden" name="id" value="{$vo.id}">
+
+                            </div>
+                    </form>
+                    <div class="field">
+                        <input class="button bg-main icon-check-square-o" type="submit" value="确认修改" name="add">
+                        <a class="button bg-main icon-check-square-o" href="#" onclick="javascript:history.back(-1);">返回</a>
+                    </div>
+</body>
+
+</html>
