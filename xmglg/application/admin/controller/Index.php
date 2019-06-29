@@ -77,5 +77,21 @@ class Index extends Base
             return json(['code' => 0, 'msg' => '清除缓存失败']);
         }
     }
+    public function pro_add()
+    {
+        return $this->fetch();
+    }
 
+    public function pro_doAdd()
+    {
+         $data = $request->post();
+        // print_r($data);
+        // exit;
+        $res = db('pro_x')->insert($data);
+        if ($res) {
+            $this->success("添加成功");
+        } else {
+            $this->error('添加失败');
+        }
+    }
 }

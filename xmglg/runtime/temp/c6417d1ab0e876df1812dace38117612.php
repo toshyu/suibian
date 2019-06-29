@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\article\index.html";i:1561342293;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561340064;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\footer.html";i:1561340164;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\article\index.html";i:1561342293;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\footer.html";i:1561790369;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -14,6 +14,7 @@
     <link href="/xmglg/public/static/admin/css/plugins/switchery/switchery.css" rel="stylesheet">
     <link href="/xmglg/public/static/admin/css/style.min.css?v=4.1.0" rel="stylesheet">
     <link href="/xmglg/public/static/admin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <style type="text/css">
     .long-tr th {
         text-align: center
@@ -142,8 +143,30 @@
 <script src="/xmglg/public/static/admin/js/laypage/laypage.js"></script>
 <script src="/xmglg/public/static/admin/js/laytpl/laytpl.js"></script>
 <script src="/xmglg/public/static/admin/js/lunhui.js"></script>
+<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+<script type="text/javascript" src="/xmglg/public/static/admin/js/dataTables.bootstrap.js"></script>
 <script>
 $(document).ready(function() { $(".i-checks").iCheck({ checkboxClass: "icheckbox_square-green", radioClass: "iradio_square-green", }) });
+</script>
+<script>
+$(document).ready(function() {
+    $('#example').dataTable({
+        "lengthMenu": [5, 10, 20, 50, 100],
+        "language": {
+            "zeroRecords": "没有检索到数据",
+            "lengthMenu": "每页 _MENU_ 条记录",
+            "search": "搜索 ",
+            "info": "共 _PAGES_ 页，_TOTAL_ 条记录，当前显示 _START_ 到 _END_ 条",
+            "paginate": {
+                "previous": "上一页",
+                "next": "下一页",
+                "decimal": ",",
+                "thousands": "."
+            }
+
+        },
+    });
+});
 </script>
     <script type="text/javascript">
     /**

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:83:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\index\index.html";i:1561791520;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\footer.html";i:1561790369;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:83:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\index\index.html";i:1561793238;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\footer.html";i:1561790369;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -42,7 +42,7 @@
                     <div class="col-sm-12">
                         <div class="col-sm-2" style="width: 100px">
                             <div class="input-group">
-                                <a href="<?php echo url('proAdd'); ?>"><button class="btn btn-outline btn-primary" type="button">添加项目</button></a>
+                                <a href="<?php echo url('pro_Add'); ?>"><button class="btn btn-outline btn-primary" type="button">添加项目</button></a>
                             </div>
                         </div>
                     </div>
@@ -70,7 +70,7 @@
                                     <td><?php echo $vo['pro_update_time']; ?></td>
                                     <td>
                                         <a href="javascript:;" onclick="giveQx({{d[i].id}})" class="btn btn-info btn-outline btn-xs">
-                                            <i class="fa fa-paste"></i> 权限分配</a>&nbsp;&nbsp;
+                                            <i class="fa fa-paste"></i> 进入</a>&nbsp;&nbsp;
                                         <a href="<?php echo url('edit_cate',['id'=>$vo['id']]); ?>" class="btn btn-primary btn-outline btn-xs">
                                             <i class="fa fa-paste"></i> 编辑</a>&nbsp;&nbsp;
                                         <a href="javascript:;" onclick="del_cate(<?php echo $vo['id']; ?>)" class="btn btn-danger btn-outline btn-xs">
