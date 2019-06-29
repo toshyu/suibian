@@ -117,7 +117,10 @@ class File extends Driver
                 //启用数据压缩
                 $content = gzuncompress($content);
             }
-            $content = unserialize($content);
+            function mb_unserialize($content) {
+                $content = preg_replace('!s:(\d+):"(.*?)";!se', "'s:'.strlen('$2').':\"$2\";'", $content );
+                return unserialize($content);
+            }
             return $content;
         } else {
             return $default;
