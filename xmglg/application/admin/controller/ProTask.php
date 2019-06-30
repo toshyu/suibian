@@ -23,7 +23,15 @@ use think\Request;
 use think\Db;
 class ProTask extends Base {
     public function index() {
-        $result = db('task_x')->select();
+        $id = trim(input("id"));
+        $where = [];
+        if($id){
+            $where['px.id'] = $id;
+        }
+        $result = db('task_x') -> alias("tx")
+            -> join("pro_x px", "px.id = tx.task_id", "left")
+            -> where($where)
+            -> select();
         // $result=Db::table('think_task_x')->select();
         // var_dump($result);
         // print_r($list);
