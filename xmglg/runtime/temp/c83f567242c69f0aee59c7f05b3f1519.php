@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:89:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\project\proupdate.html";i:1561625464;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561340064;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:89:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\project\proupdate.html";i:1561625464;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -14,6 +14,7 @@
     <link href="/xmglg/public/static/admin/css/plugins/switchery/switchery.css" rel="stylesheet">
     <link href="/xmglg/public/static/admin/css/style.min.css?v=4.1.0" rel="stylesheet">
     <link href="/xmglg/public/static/admin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <style type="text/css">
     .long-tr th {
         text-align: center

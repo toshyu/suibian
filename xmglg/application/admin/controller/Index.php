@@ -94,4 +94,9 @@ class Index extends Base
             $this->error('添加失败');
         }
     }
+    public function pro_in()
+    {
+        $id=input('id');
+        echo $id;
+    }
 }
