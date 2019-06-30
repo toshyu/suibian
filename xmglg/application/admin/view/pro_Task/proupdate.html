@@ -3,22 +3,22 @@
 <link rel="stylesheet" type="text/css" href="/xmglg/public/static/admin/webupload/style.css">
 <style>
     .file-item {
-    float: left;
-    position: relative;
-    width: 110px;
-    height: 110px;
-    margin: 0 20px 20px 0;
-    padding: 4px;
-}
+        float: left;
+        position: relative;
+        width: 110px;
+        height: 110px;
+        margin: 0 20px 20px 0;
+        padding: 4px;
+    }
 
-.file-item .info {
-    overflow: hidden;
-}
+    .file-item .info {
+        overflow: hidden;
+    }
 
-.uploader-list {
-    width: 100%;
-    overflow: hidden;
-}
+    .uploader-list {
+        width: 100%;
+        overflow: hidden;
+    }
 </style>
 
 <body class="gray-bg">
@@ -40,9 +40,9 @@
                             </a>
                         </div>
                     </div>
-                    {volist name='list' id='vo'}
-                    <form method="post" class="form-x" id="submit" action="../admin/taskalter.php" enctype="multipart/form-data" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
-                        <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 中心下达任务情况</strong></div>
+                    <form class="form-x">
+                        <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 中心下达任务情况</strong>
+                        </div>
                         <div class="body-content">
                             <div class="form-group">
                                 <div class="label">
@@ -59,8 +59,10 @@
                                     <label>中心下达任务书：</label>
                                 </div>
                                 <div class="field">
-                                    已下达<input type="radio" style="width:30px;" name="task_book" value="<?php echo $row['task_book']; ?>" />
-                                    未下达<input type="radio" style="width:30px;" name="task_book" value="<?php echo $row['task_book'];?>" />
+                                    已下达<input type="radio" style="width:30px;" name="task_book" {$list['task_book']==1
+                                        ? 'checked' : '' } value="1" />
+                                    未下达<input type="radio" style="width:30px;" name="task_book" {$list['task_book']==2
+                                        ? 'checked' : '' } value="2" />
                                     <div class="tips"></div>
                                 </div>
                             </div>
@@ -69,7 +71,8 @@
                                     <label>兴趣小组：</label>
                                 </div>
                                 <div class="field">
-                                    <input type="text" class="input" name="task_group" style="width:300px;" value="<?php echo $row['task_group']; ?>" />
+                                    <input type="text" class="input" name="task_group" style="width:300px;"
+                                        value="{$list['task_group']}" />
                                     <div class="tips"></div>
                                 </div>
                             </div>
@@ -78,7 +81,8 @@
                                     <label>小组组长：</label>
                                 </div>
                                 <div class="field">
-                                    <input type="text" class="input" name="task_gr_leader" value="<?php echo $row['task_gr_leader']; ?>" style="width: 300px;" />
+                                    <input type="text" class="input" name="task_gr_leader"
+                                        value="{$list['task_gr_leader']}" style="width: 300px;" />
                                     <div class="tips"></div>
                                 </div>
                             </div>
@@ -87,7 +91,8 @@
                                     <label>项目经理：</label>
                                 </div>
                                 <div class="field">
-                                    <input type="text" class="input" name="task_gr_pm" value="<?php echo $row['task_gr_pm']; ?>" style="width: 300px;" />
+                                    <input type="text" class="input" name="task_gr_pm" value="{$list['task_gr_pm']}"
+                                        style="width: 300px;" />
                                     <div class="tips"></div>
                                 </div>
                             </div>
@@ -96,19 +101,31 @@
                                     <label>项目部实施计划：</label>
                                 </div>
                                 <div class="field">
-                                    提交<input type="radio" style="width:30px;" name="task_plan" value="<?php echo $row['task_plan'] ?>" />
-                                    未提交<input type="radio" style="width:30px;" name="task_plan" value="<?php echo $row['task_plan'] ?>" />
+                                    提交<input type="radio" style="width:30px;" name="task_plan" {$list['task_plan']==1
+                                        ? 'checked' : '' } value="1" />
+                                    未提交<input type="radio" style="width:30px;" name="task_plan" {$list['task_plan']==2
+                                        ? 'checked' : '' } value="2" />
                                     <div class="tips"></div>
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" name="id" value="<?php echo $row['task_id']; ?>">
-                        <?php } ?>
+                        <input type="hidden" name="id" value="{$list['id']}">
                         <div class="field">
-                            <input class="button bg-main icon-check-square-o" type="submit" value="确认修改" name="add">
-                            <a class="button bg-main icon-check-square-o" href="#" onclick="javascript:history.back(-1);">返回</a>
+                            <a class="btn btn-primary" id="submit">确认修改</a>
+                            <a class="btn btn-default" onclick="javascript:history.back(-1);">返回</a>
                         </div>
                     </form>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 
 </html>
+{include file="public/footer" /}
+<script>
+$("#submit").on("click", function(){
+    console.log(this);
+    
+})
+</script>

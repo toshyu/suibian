@@ -95,9 +95,9 @@ class ProTask extends Base {
         }
     }
     public function proUpdate() {
-        $id = input('param.id');
+        $id = input('id');
         if (is_numeric($id) && $id > 0) {
-            $list = db('task_x')->where('taskid', 'eq', $id)->select();
+            $list = db('task_x')->where('id', 'eq', $id)->find();
             $this->assign('list', $list);
             return $this->fetch();
         } else {
