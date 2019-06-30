@@ -29,8 +29,9 @@ class ProTask extends Base {
             $where['px.id'] = $id;
         }
         $result = db('task_x') -> alias("tx")
-            -> join("pro_x px", "px.id = tx.task_id", "left")
+            -> join("pro_x px", "px.id = tx.task_id and tx.status = 1", "left")
             -> where($where)
+            -> field("tx.id as id, tx.task_table, tx.task_book, tx.task_group, tx.task_gr_leader, tx.task_gr_pm, tx.task_plan")
             -> select();
         // $result=Db::table('think_task_x')->select();
         // var_dump($result);
@@ -52,6 +53,28 @@ class ProTask extends Base {
         } else {
             $this->error('添加失败');
         }
+    }
+
+    /**
+     * 删除
+     */
+    public function del(){
+        $task_id = trim(input("task_id"));
+        $msg = [];
+        if(empty($task_id)){
+            $msg['code'] = 0;
+            $msg['msg'] = "参数错误";
+            return json($msg);
+        }
+        $result = db("task_x") -> where(['id' => $task_id]) -> update(['status' => 2]);
+        if($result){
+            $msg['code'] = 1;
+            $msg['msg'] = "修改成功";
+            return json($msg);
+        }
+        $msg['code'] = 0;
+        $msg['msg'] = "修改失败";
+        return json($msg);
     }
     public function proDelete() {
         $id = input('param.id');
