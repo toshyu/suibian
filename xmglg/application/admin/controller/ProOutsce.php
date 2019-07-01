@@ -23,7 +23,14 @@ use think\Request;
 use think\Db;
 class ProOutsce extends Base {
     public function index() {
-        $result = db('prooutsce_x')->select();
+         if (session('id')) {
+          $id=session('id');
+          $result=db('prooutsce_x')->where('pro_id','eq',$id)->select();
+          }else{
+       $result = db('prooutsce_x')->select();
+            }
+
+        // $result = db('prooutsce_x')->select();
         // $result=Db::table('think_project_x')->select();
         // var_dump($result);
         // print_r($list);

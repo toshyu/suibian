@@ -23,16 +23,22 @@ use think\Request;
 use think\Db;
 class ProTask extends Base {
     public function index() {
-        $id = trim(input("id"));
-        $where = [];
-        if($id){
-            $where['px.id'] = $id;
-        }
-        $result = db('task_x') -> alias("tx")
-            -> join("pro_x px", "px.id = tx.task_id and tx.status = 1", "left")
-            -> where($where)
-            -> field("tx.id as id, tx.task_table, tx.task_book, tx.task_group, tx.task_gr_leader, tx.task_gr_pm, tx.task_plan")
-            -> select();
+        // $id = trim(input("id"));
+        // $where = [];
+        // if($id){
+        //     $where['px.id'] = $id;
+        // }
+        // $result = db('task_x') -> alias("tx")
+        //     -> join("pro_x px", "px.id = tx.task_id and tx.status = 1", "left")
+        //     -> where($where)
+        //     -> field("tx.id as id, tx.task_table, tx.task_book, tx.task_group, tx.task_gr_leader, tx.task_gr_pm, tx.task_plan")
+        //     -> select();
+         if (session('id')) {
+          $id=session('id');
+          $result=db('task_x')->where('pro_id','eq',$id)->select();
+          }else{
+        $result = db('task_x')->select();
+            }
         // $result=Db::table('think_task_x')->select();
         // var_dump($result);
         // print_r($list);
@@ -81,8 +87,8 @@ class ProTask extends Base {
         // var_dump($id);
         // exit;
         if (is_numeric($id) && $id > 0) {
-            // $suc=Db::table('think_task_x')->where('taskid','eq',28)->delete();
-            $suc = db('task_x')->where('taskid', 'eq', $id)->delete();
+            // $suc=Db::table('think_task_x')->where('id','eq',28)->delete();
+            $suc = db('task_x')->where('id', 'eq', $id)->delete();
             if ($suc) {
                 $this->success("删除成功");
             } else {
@@ -109,7 +115,7 @@ class ProTask extends Base {
         // var_dump($data['id']);
         // exit;
         $id = $data['id'];
-        $res = db('task_x')->where('taskid', 'eq', $id)->update($data);
+        $res = db('task_x')->where('id', 'eq', $id)->update($data);
         if ($res) {
             $this->success("更新成功");
         } else {

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:88:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_extend\index.html";i:1561704988;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:88:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_extend\index.html";i:1561970274;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;}*/ ?>
 <!DOCTYPE html>
 <html class=" js csstransforms3d">
 
@@ -73,7 +73,7 @@
                                         <td class="t_3"><?php echo $vo['retime']; ?></td>
                                         <td class="t_4"><?php echo $vo['reusername']; ?></td>
                                         <td class="t_5">
-                                            <div class="btn"><a href="<?php echo url('proUpdate'); ?>?id=<?php echo $vo['reid']; ?>" class="modify">编辑</a><a href="<?php echo url('proDelete'); ?>?id=<?php echo $vo['reid']; ?>" onclick="return confirm('是否确认删除?')" class="delete">删除</a></div>
+                                            <div class="btn"><a href="<?php echo url('proUpdate'); ?>?id=<?php echo $vo['id']; ?>" class="modify">编辑</a><a href="<?php echo url('proDelete'); ?>?id=<?php echo $vo['id']; ?>" onclick="return confirm('是否确认删除?')" class="delete">删除</a></div>
                                         </td>
                                     </tr>
                                     <?php endforeach; endif; else: echo "" ;endif; ?>

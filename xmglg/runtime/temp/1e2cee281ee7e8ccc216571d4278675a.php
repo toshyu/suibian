@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:83:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\index\index.html";i:1561864976;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\footer.html";i:1561790369;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:83:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\index\index.html";i:1561967072;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\footer.html";i:1561790369;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -32,6 +32,7 @@
             <button aria-hidden="true" data-dismiss="alert" class="close" type="button">×</button>
             <div>尊敬的会员<span id="weather"></span></div>
         </div>
+        <?php if(\think\Request::instance()->session('id') == null): ?>
         <div class="ibox float-e-margins">
             <div class="ibox-title">
                 <h5>项目列表</h5>
@@ -69,7 +70,7 @@
                                     <td><?php echo $vo['pro_create_time']; ?></td>
                                     <td><?php echo $vo['pro_update_time']; ?></td>
                                     <td>
-                                        <a href="<?php echo url('pro_in',['id'=>$vo['id']]); ?>" class="btn btn-info btn-outline btn-xs">
+                                        <a href="<?php echo url('pro_in',['id'=>$vo['id'],'name'=>$vo['pro_name']]); ?>" class="btn btn-info btn-outline btn-xs">
                                             <i class="fa fa-paste"></i> 进入</a>&nbsp;&nbsp;
                                         <a href="<?php echo url('edit_cate',['id'=>$vo['id']]); ?>" class="btn btn-primary btn-outline btn-xs">
                                             <i class="fa fa-paste"></i> 编辑</a>&nbsp;&nbsp;
@@ -84,6 +85,10 @@
                 </div>
             </div>
         </div>
+        <?php else: ?>
+        <span>您好 欢迎进入<?php echo \think\Request::instance()->session('name'); ?>项目</span>
+        <a href="<?php echo url('pro_out'); ?>"><button class="btn btn-outline  btn-info" type="button">退出</button></a>
+        <?php endif; ?>
     </div>
     <script src="/xmglg/public/static/admin/js/jquery.min.js?v=2.1.4"></script>
 <script src="/xmglg/public/static/admin/js/bootstrap.min.js?v=3.3.6"></script>

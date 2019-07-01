@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\index\pro_add.html";i:1561793481;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\footer.html";i:1561790369;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\index\pro_add.html";i:1561794177;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\footer.html";i:1561790369;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -46,7 +46,7 @@
                         </div>
                     </div>
                     <div class="ibox-content">
-                        <form class="form-horizontal" name="add_cate" id="add_cate" method="post" action="<?php echo url('add_cate'); ?>">
+                        <form class="form-horizontal" name="add_cate" id="add_cate" method="post" action="<?php echo url('pro_doAdd'); ?>">
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">项目名称：</label>
                                 <div class="input-group col-sm-4">
@@ -56,19 +56,12 @@
                             <div class="hr-line-dashed"></div>
                             <div class="form-group">
                                 <label class="col-sm-3 control-label">项目编号：</label>
-                                <div class="input-group col-sm-4">
+                                <div class="<i></i>nput-group col-sm-4">
                                     <input id="name" type="text" class="form-control" name="pro_number">
                                 </div>
                             </div>
                             <div class="hr-line-dashed"></div>
-                            <div class="form-group">
-                                <label class="col-sm-3 control-label">排&nbsp;&nbsp;序：</label>
-                                <div class="input-group col-sm-4">
-                                    <input id="orderby" type="text" class="form-control" name="orderby" value="50">
-                                </div>
-                            </div>
-                            <div class="hr-line-dashed"></div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label class="col-sm-3 control-label">状&nbsp;态：</label>
                                 <div class="col-sm-6">
                                     <div class="radio i-checks">
@@ -77,7 +70,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="hr-line-dashed"></div>
+                            <div class="hr-line-dashed"></div> -->
                             <div class="form-group">
                                 <div class="col-sm-4 col-sm-offset-3">
                                     <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> 保存</button>&nbsp;&nbsp;&nbsp;
@@ -137,8 +130,8 @@ $(document).ready(function() {
         });
 
         function checkForm() {
-            if ('' == $.trim($('#name').val())) {
-                layer.msg('请输入分类名称', { icon: 2, time: 1500, shade: 0.1 }, function(index) {
+            if ('' == $.trim($('#pro_name').val())) {
+                layer.msg('请输入项目名称', { icon: 2, time: 1500, shade: 0.1 }, function(index) {
                     layer.close(index);
                 });
                 return false;
@@ -148,7 +141,7 @@ $(document).ready(function() {
         function complete(data) {
             if (data.code == 1) {
                 layer.msg(data.msg, { icon: 6, time: 1500, shade: 0.1 }, function(index) {
-                    window.location.href = "<?php echo url('article/index_cate'); ?>";
+                    window.location.href = "<?php echo url('index/index'); ?>";
                 });
             } else {
                 layer.msg(data.msg, { icon: 5, time: 1500, shade: 0.1 });

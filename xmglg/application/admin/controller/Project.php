@@ -23,7 +23,14 @@ use think\Request;
 use think\Db;
 class Project extends Base {
     public function index() {
+         // print_r(session('id'));
+         
+          if (session('id')) {
+          $id=session('id');
+          $result=db('project_x')->where('pro_id','eq',$id)->select();
+          }else{
         $result = db('project_x')->select();
+            }
         // $result=Db::table('think_project_x')->select();
         // var_dump($result);
         // print_r($list);
@@ -50,8 +57,8 @@ class Project extends Base {
         // var_dump($id);
         // exit;
         if (is_numeric($id) && $id > 0) {
-            // $suc=Db::table('think_project_x')->where('projectid','eq',28)->delete();
-            $suc = db('project_x')->where('projectid', 'eq', $id)->delete();
+            // $suc=Db::table('think_project_x')->where('id','eq',28)->delete();
+            $suc = db('project_x')->where('id', 'eq', $id)->delete();
             if ($suc) {
                 $this->success("删除成功");
             } else {
@@ -66,7 +73,7 @@ class Project extends Base {
     public function proupdate() {
         $id = input('param.id');
         if (is_numeric($id) && $id > 0) {
-            $list = db('project_x')->where('projectid', 'eq', $id)->select();
+            $list = db('project_x')->where('id', 'eq', $id)->select();
             $this->assign('list', $list);
             return $this->fetch();
         } else {
@@ -78,7 +85,7 @@ class Project extends Base {
         // var_dump($data['id']);
         // exit;
         $id = $data['id'];
-        $res = db('project_x')->where('projectid', 'eq', $id)->update($data);
+        $res = db('project_x')->where('id', 'eq', $id)->update($data);
         if ($res) {
             $this->success("更新成功");
         } else {

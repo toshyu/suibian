@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:89:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_recycle\index.html";i:1561452047;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561340064;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:89:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_recycle\index.html";i:1561972136;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;}*/ ?>
 <!DOCTYPE html>
 <html class=" js csstransforms3d">
 
@@ -26,6 +26,7 @@
     <link href="/xmglg/public/static/admin/css/plugins/switchery/switchery.css" rel="stylesheet">
     <link href="/xmglg/public/static/admin/css/style.min.css?v=4.1.0" rel="stylesheet">
     <link href="/xmglg/public/static/admin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <style type="text/css">
     .long-tr th {
         text-align: center
@@ -65,41 +66,29 @@
                                         <th class="t_6">相关操作</th>
                                     </tr>
                                 </thead>
-                                <?php
-    $array = array();
-     $coon = mysqli_connect("localhost", "root");
-    mysqli_select_db($coon, "xmgl");
-    mysqli_set_charset($coon, "utf8");
-      $rs='select * from make';
-        $r = mysqli_query($coon, $rs);
-       while ($obj = mysqli_fetch_object($r)) {
-        $array[] = $obj;
-    }
-   
-        ?>
                                 <tbody>
-                                    <?php
-  foreach($array as $key=>$values){ ?>
-                                    <td class="t_6">
-                                        <?php echo $values->makepronumber; ?>
-                                    </td>
-                                    <td class="t_6">
-                                        <?php echo $values->maketime; ?>
-                                    </td>
-                                    <td class="t_6">
-                                        <?php echo $values->makeperson; ?>
-                                    </td>
-                                    <td class="t_6">
-                                        <?php echo $values->maketype; ?>
-                                    </td>
-                                    <td class="t_6">
-                                        <?php echo $values->makemoney; ?>
-                                    </td>
-                                    <td class="t_6">
-                                        <div class="btn"><a href="recyclealter.php?id=<?php echo $values->makeid; ?>" class="modify">编辑</a><a href="../admin/recycledelete.php?id=<?php echo $values->makeid; ?>" onclick="return confirm('是否确认删除?')" class="delete">删除</a></div>
-                                    </td>
+                                    <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                                    <tr>
+                                        <td class="t_6">
+                                            <?php echo $vo['makepronumber']; ?>
+                                        </td>
+                                        <td class="t_6">
+                                            <?php echo $vo['maketime']; ?>
+                                        </td>
+                                        <td class="t_6">
+                                            <?php echo $vo['makeperson']; ?>
+                                        </td>
+                                        <td class="t_6">
+                                            <?php echo $vo['maketype']; ?>
+                                        </td>
+                                        <td class="t_6">
+                                            <?php echo $vo['makemoney']; ?>
+                                        </td>
+                                        <td class="t_6">
+                                            <div class="btn"><a href="<?php echo url('proUpdate'); ?>?id=<?php echo $vo['id']; ?>" class="modify">编辑</a><a href="<?php echo url('proDelete'); ?>?id=<?php echo $vo['id']; ?>" onclick="return confirm('是否确认删除?')" class="delete">删除</a></div>
+                                        </td>
                                     </tr>
-                                    <?php }?>
+                                    <?php endforeach; endif; else: echo "" ;endif; ?>
                                 </tbody>
                             </table>
                         </div>

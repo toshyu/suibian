@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\login.html";i:1561682890;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\login.html";i:1561950691;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 

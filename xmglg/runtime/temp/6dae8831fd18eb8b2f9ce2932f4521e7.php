@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:86:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_task\index.html";i:1561700055;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:86:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_task\index.html";i:1561942066;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;}*/ ?>
 <!DOCTYPE html>
 <html class=" js csstransforms3d">
 
@@ -49,12 +49,13 @@
                 <!--搜索框开始-->
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="col-sm-2" style="width: 100px">
+                        <div class="col-sm-2">
                             <div class="input-group">
-                                <a href="<?php echo url('proAdd'); ?>"><button class="btn btn-outline btn-primary" type="button">添加任务</button></a>
+                                <a href="<?php echo url('proAdd'); ?>"><button class="btn btn-outline btn-primary"
+                                        type="button">添加任务</button></a>
                             </div>
                         </div>
-                        <div style="width:1100px; margin:20px;">
+                        <div style="margin:20px;">
                             <table id="example" class="display defaultTable" style="width:100%; margin:20px; ">
                                 <thead>
                                     <tr>
@@ -74,7 +75,7 @@
                                             <?php echo $vo['task_table']; ?>
                                         </td>
                                         <td class="t_7">
-                                            <?php echo $vo['task_book']; ?>
+                                            <?php echo $vo['task_book']==1?'已下达' : '未下达'; ?>
                                         </td>
                                         <td class="t_7">
                                             <?php echo $vo['task_group']; ?>
@@ -86,39 +87,74 @@
                                             <?php echo $vo['task_gr_pm']; ?>
                                         </td>
                                         <td class="t_7">
-                                            <?php echo $vo['task_plan']; ?>
+                                            <?php echo $vo['task_plan']==1?'已提交' : '未提交'; ?>
                                         </td>
                                         <td class="t_7">
-                                            <div class="btn"><a href="<?php echo url('proUpdate'); ?>?id=<?php echo $vo['task_id']; ?>" class="modify">编辑</a><a href="<?php echo url('proDelete'); ?>?id=<?php echo $vo['task_id']; ?>" onclick="return confirm('是否确认删除?')" class="delete">删除</a></div>
+                                            <div class="btn"><a href="<?php echo url('proUpdate'); ?>?id=<?php echo $vo['id']; ?>"
+                                                    class="modify">编辑</a><a href="javascript:;" onclick="del(<?php echo $vo['id']; ?>)"
+                                                    class="delete">删除</a></div>
                                         </td>
                                     </tr>
                                     <?php endforeach; endif; else: echo "" ;endif; ?>
                                 </tbody>
                             </table>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="/xmglg/public/static/admin/js/jquery.js"></script>
+<script src="/xmglg/public/static/admin/js/layer/layer.js"></script>
 <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
 <script type="text/javascript" src="/xmglg/public/static/admin/js/dataTables.bootstrap.js"></script>
 <script>
-$(document).ready(function() {
-    $('#example').dataTable({
-        "lengthMenu": [5, 10, 20, 50, 100],
-        "language": {
-            "zeroRecords": "没有检索到数据",
-            "lengthMenu": "每页 _MENU_ 条记录",
-            "search": "搜索 ",
-            "info": "共 _PAGES_ 页，_TOTAL_ 条记录，当前显示 _START_ 到 _END_ 条",
-            "paginate": {
-                "previous": "上一页",
-                "next": "下一页",
-                "decimal": ",",
-                "thousands": "."
-            }
+    $(document).ready(function () {
+        $('#example').dataTable({
+            "lengthMenu": [5, 10, 20, 50, 100],
+            "language": {
+                "zeroRecords": "没有检索到数据",
+                "lengthMenu": "每页 _MENU_ 条记录",
+                "search": "搜索 ",
+                "info": "共 _PAGES_ 页，_TOTAL_ 条记录，当前显示 _START_ 到 _END_ 条",
+                "paginate": {
+                    "previous": "上一页",
+                    "next": "下一页",
+                    "decimal": ",",
+                    "thousands": "."
+                }
 
-        },
+            },
+        });
+
     });
-});
+    function del(task_id) {
+        layer.open({
+            type: 0,
+            btn: ['确定', '删除'],
+            btnAlign: 'c',
+            title: '提示',
+            content: '确定删除此信息？',
+            yes: function (index) {
+                layer.closeAll();
+                if (index) {
+                    var load = layer.load(1, { shade: [0.1, "#fff"] });
+                    $.post("<?php echo url('del'); ?>", { task_id: task_id }, function (res) {
+                        layer.close(load);
+                        if (res.code == 1) {
+                            layer.msg(res.msg, { time: 1500 }, function () {
+                                window.location.reload();
+                            })
+                        } else {
+                            layer.msg(res.msg);
+                        }
+                    })
+                }
+            }
+        })
+        return false;
+    }
 </script>
 
 </html>

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_task\proadd.html";i:1561698544;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:87:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_task\proadd.html";i:1561884830;}*/ ?>
 <!DOCTYPE html>
 <html lang="zh-cn">
 
@@ -46,8 +46,8 @@
                             <label>中心内部切块表：</label>
                         </div>
                         <div class="field">
-                            有<input type="radio" style="width:30px;" name="task_table" value="有" />
-                            否<input type="radio" style="width:30px;" name="task_table" value="否" />
+                            有<input type="radio" style="width:30px;" name="task_table" value="1" />
+                            否<input type="radio" style="width:30px;" name="task_table" value="2" />
                             <div class="tips"></div>
                         </div>
                     </div>
@@ -56,8 +56,8 @@
                             <label>中心下达任务书：</label>
                         </div>
                         <div class="field">
-                            已下达<input type="radio" style="width:30px;" name="task_book" value="已下达" />
-                            未下达<input type="radio" style="width:30px;" name="task_book" value="未下达" />
+                            已下达<input type="radio" style="width:30px;" name="task_book" value="1" />
+                            未下达<input type="radio" style="width:30px;" name="task_book" value="2" />
                             <div class="tips"></div>
                         </div>
                     </div>
@@ -93,8 +93,8 @@
                             <label>项目部实施计划：</label>
                         </div>
                         <div class="field">
-                            提交<input type="radio" style="width:30px;" name="task_plan" value="提交" />
-                            未提交<input type="radio" style="width:30px;" name="task_plan" value="未提交" />
+                            提交<input type="radio" style="width:30px;" name="task_plan" value="1" />
+                            未提交<input type="radio" style="width:30px;" name="task_plan" value="2" />
                             <div class="tips"></div>
                         </div>
                     </div>

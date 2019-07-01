@@ -23,7 +23,14 @@ use think\Request;
 use think\Db;
 class ProExtend extends Base {
     public function index() {
+          if (session('id')) {
+          $id=session('id');
+          $result=db('reimburse_x')->where('pro_id','eq',$id)->select();
+          }else{
         $result = db('reimburse_x')->select();
+            }
+
+        // $result = db('reimburse_x')->select();
         // $result=Db::table('think_reimburse_x')->select();
         // var_dump($result);
         // print_r($list);
@@ -50,8 +57,8 @@ class ProExtend extends Base {
         // var_dump($id);
         // exit;
         if (is_numeric($id) && $id > 0) {
-            // $suc=Db::table('think_reimburse_x')->where('reid','eq',28)->delete();
-            $suc = db('reimburse_x')->where('reid', 'eq', $id)->delete();
+            // $suc=Db::table('think_reimburse_x')->where('id','eq',28)->delete();
+            $suc = db('reimburse_x')->where('id', 'eq', $id)->delete();
             if ($suc) {
                 $this->success("删除成功");
             } else {
@@ -66,7 +73,7 @@ class ProExtend extends Base {
     public function proupdate() {
         $id = input('param.id');
         if (is_numeric($id) && $id > 0) {
-            $list = db('reimburse_x')->where('reid', 'eq', $id)->select();
+            $list = db('reimburse_x')->where('id', 'eq', $id)->select();
             $this->assign('list', $list);   
             return $this->fetch();
         } else {
@@ -77,9 +84,9 @@ class ProExtend extends Base {
         $data = $request->post();
         // var_dump($data['id']);
         // exit;
-        $id = $data['reid'];
+        $id = $data['id'];
 
-        $res = db('reimburse_x')->where('reid', 'eq', $id)->update($data);
+        $res = db('reimburse_x')->where('id', 'eq', $id)->update($data);
         if ($res) {
             $this->success("更新成功");
         } else {

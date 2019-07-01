@@ -4,11 +4,16 @@ namespace app\admin\controller;
 use think\Config;
 use think\Loader;
 use think\Db;
-
+use think\Session;
 class Index extends Base
 {
     public function index()
-    {
+    {   
+        if (session('name')) {
+            // echo session('name');
+           // print_r(session('name'));
+
+        }
         return $this->fetch('/index');
      
     }
@@ -97,6 +102,19 @@ class Index extends Base
     public function pro_in()
     {
         $id=input('id');
-        echo $id;
+        $name=input('name');
+        if ($name && $id) {
+        session('id',$id);
+        session('name',$name);
+        $this->success("正在进入$name");
+        }
+        
+    }
+    public function pro_out()
+    {
+         session::set('name',null);
+         session::set('id',null);
+        
+         $this->success("正在退出");
     }
 }
