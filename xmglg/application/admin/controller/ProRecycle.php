@@ -27,12 +27,12 @@ class ProRecycle extends Base {
          
           if (session('id')) {
           $id=session('id');
-          $result=db('make_x')->where('pro_id','eq',$id)->select();
+          $result=db('recycle_x')->where('pro_id','eq',$id)->select();
           }else{
-        $result = db('make_x')->select();
+        $result = db('recycle_x')->select();
          
             }
-        // $result=Db::table('think_make_x')->select();
+        // $result=Db::table('think_recycle_x')->select();
         // var_dump($result);
         // print_r($list);
         //  exit;
@@ -46,7 +46,7 @@ class ProRecycle extends Base {
         $data = $request->post();
         // print_r($data);
         // exit;
-        $res = db('make_x')->insert($data);
+        $res = db('recycle_x')->insert($data);
         if ($res) {
             $this->success("添加成功");
         } else {
@@ -58,8 +58,8 @@ class ProRecycle extends Base {
         // var_dump($id);
         // exit;
         if (is_numeric($id) && $id > 0) {
-            // $suc=Db::table('think_make_x')->where('makeid','eq',28)->delete();
-            $suc = db('make_x')->where('id', 'eq', $id)->delete();
+            // $suc=Db::table('think_recycle_x')->where('recycleid','eq',28)->delete();
+            $suc = db('recycle_x')->where('id', 'eq', $id)->delete();
             if ($suc) {
                 $this->success("删除成功");
             } else {
@@ -74,7 +74,7 @@ class ProRecycle extends Base {
     public function proupdate() {
         $id = input('param.id');
         if (is_numeric($id) && $id > 0) {
-            $list = db('make_x')->where('id', 'eq', $id)->select();
+            $list = db('recycle_x')->where('id', 'eq', $id)->select();
             $this->assign('list', $list);
             return $this->fetch();
         } else {
@@ -86,7 +86,7 @@ class ProRecycle extends Base {
         // var_dump($data['id']);
         // exit;
         $id = $data['id'];
-        $res = db('make_x')->where('id', 'eq', $id)->update($data);
+        $res = db('recycle_x')->where('id', 'eq', $id)->update($data);
         if ($res) {
             $this->success("更新成功");
         } else {

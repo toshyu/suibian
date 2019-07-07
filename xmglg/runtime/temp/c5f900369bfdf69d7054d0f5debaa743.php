@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:88:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_outsce\index.html";i:1561623031;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:88:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_outsce\index.html";i:1562117161;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;}*/ ?>
 <!DOCTYPE html>
 <html class=" js csstransforms3d">
 
@@ -9,7 +9,7 @@
     <title>外协信息</title>
     <link rel="stylesheet" href="/xmglg/public/static/admin/css/base.css">
     <link rel="stylesheet" href="/xmglg/public/static/admin/css/page.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="/xmglg/public/static/admin/css/plugins/dataTables/dataTables.bootstrap.css">
 </head>
 <!DOCTYPE html>
 <html>
@@ -88,8 +88,8 @@
                         </div>
 </body>
 <script src="/xmglg/public/static/admin/js/jquery.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-<script type="text/javascript" src="/xmglg/public/static/admin/js/dataTables.bootstrap.js"></script>
+<script type="text/javascript" charset="utf8" src="/xmglg/public/static/admin/js/plugins/dataTables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="/xmglg/public/static/admin/js/plugins/dataTables/dataTables.bootstrap.js"></script>
 <script>
 $(document).ready(function() {
     $('#example').dataTable({

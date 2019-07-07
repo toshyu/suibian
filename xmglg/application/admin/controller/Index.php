@@ -103,9 +103,11 @@ class Index extends Base
     {
         $id=input('id');
         $name=input('name');
-        if ($name && $id) {
+        $number=input('number');
+        if ($name && $id && $number) {
         session('id',$id);
         session('name',$name);
+        session('number',$number);
         $this->success("正在进入$name");
         }
         
@@ -114,6 +116,7 @@ class Index extends Base
     {
          session::set('name',null);
          session::set('id',null);
+         session::set('number',null);
         
          $this->success("正在退出");
     }

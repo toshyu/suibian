@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:86:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_cut\proadd.html";i:1561624394;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561340064;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:86:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_cut\proadd.html";i:1562305558;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -14,6 +14,7 @@
     <link href="/xmglg/public/static/admin/css/plugins/switchery/switchery.css" rel="stylesheet">
     <link href="/xmglg/public/static/admin/css/style.min.css?v=4.1.0" rel="stylesheet">
     <link href="/xmglg/public/static/admin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <style type="text/css">
     .long-tr th {
         text-align: center
@@ -51,24 +52,24 @@
                             </a>
                         </div>
                     </div>
-                    <form method="post" class="form-x" id="submit" action="<?php echo url('proadd'); ?>" enctype="multipart/form-data" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
+                    <form method="post" class="form-x" id="submit" action="<?php echo url('proDoAdd'); ?>" enctype="multipart/form-data" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
                         <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 成本切块</strong></div>
                         <div class="body-content">
-                            <div class="form-group">
-                                <div class="label">
-                                    <label>合同编号：</label>
-                                </div>
-                                <div class="field">
-                                    <input type="text" class="input" style="width: 300px;" name="cutpronumber" />
-                                    <div class="tips"></div>
-                                </div>
-                            </div>
+                            <!-- <div class="form-group">
+    <div class="label">
+        <label>合同编号：</label>
+    </div>
+    <div class="field">
+        <input type="text" class="input" style="width: 300px;" name="cutpronumber" />
+        <div class="tips"></div>
+    </div>
+</div> --> <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                             <div class="form-group">
                                 <div class="label">
                                     <label>切块额：</label>
                                 </div>
                                 <div class="field">
-                                    <input type="text" class="input" style="width: 300px;" name="cutmoney" value="" />
+                                    <input type="text" class="input" style="width: 300px;" name="cutmoney" value="<?php echo $vo['account']; ?>" />
                                     <div class="tips"></div>
                                 </div>
                             </div>
@@ -77,10 +78,11 @@
                                     <label>合同额：</label>
                                 </div>
                                 <div class="field">
-                                    <input type="text" class="input" style="width: 300px;" name="promoney" value="" />
+                                    <input type="text" class="input" style="width: 300px;" name="promoney" value="<?php echo $vo['amount']; ?>" />
                                     <div class="tips"></div>
                                 </div>
                             </div>
+                            <?php endforeach; endif; else: echo "" ;endif; ?>
                             <div class="form-group">
                                 <div class="label">
                                     <label>写入时间：</label>
@@ -147,11 +149,12 @@
                             </div>
                         </div>
                 </div>
-                </form>
                 <div class="field">
-                    <input class="button bg-main icon-check-square-o" type="submit" id="submit1" value="确认添加" name="add"></input>
+                    <input class="button bg-main icon-check-square-o" type="submit" id="submit1" value="确认添加" name=""></input>
                     <a class="button bg-main icon-check-square-o" href="#" onclick="javascript:history.back(-1);">返回</a>
                 </div>
+                </form>
+                <script type="text/javascript" src="/xmglg/public/static/admin/js/jquery.js"></script>
                 <script>
                 $(document).ready(function() {
                     var time = new Date();

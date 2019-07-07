@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:89:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\project\proupdate.html";i:1561625464;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:89:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\project\proupdate.html";i:1562305089;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -28,7 +28,7 @@
 <link rel="stylesheet" type="text/css" href="/xmglg/public/static/admin/webupload/webuploader.css">
 <link rel="stylesheet" type="text/css" href="/xmglg/public/static/admin/webupload/style.css">
 <style>
-.file-item {
+    .file-item {
     float: left;
     position: relative;
     width: 110px;
@@ -67,6 +67,7 @@
                         </div>
                     </div>
                     <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                    <!--startprint1-->
                     <form method="post" class="form-x" id="submit" action="<?php echo url('proUpdateDo'); ?>" enctype="multipart/form-data" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
                         <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 项目基本信息</strong>&nbsp</div>
                         <div class="body-content">
@@ -338,13 +339,31 @@
                                     </select></p>
                             </div>
                         </div>
-                        <input type="hidden" name="id" value="<?php echo $vo['projectid']; ?>">
+                        <!--endprint1-->
+                        <input type="hidden" name="id" value="<?php echo $vo['id']; ?>">
                         <?php endforeach; endif; else: echo "" ;endif; ?>
                         <div class="field">
-                            <input class="button bg-main icon-check-square-o" type="submit" id="submit1" value="确认修改" name="add">
+                            <input class="button bg-main icon-check-square-o" type="submit" id="submit1" value="确认修改" name=" ">
                             <a class="button bg-main icon-check-square-o" href="#" onclick="javascript:history.back(-1);">返回</a>
+                            <input type=button class="btn btn-info" name='button_export' title='打印' onclick=preview(1) value=打印>
                         </div>
                     </form>
+                    <script language="javascript">
+                    function preview(oper) {
+                        if (oper < 10) {
+                            bdhtml = window.document.body.innerHTML; //获取当前页的html代码
+                            sprnstr = "<!--startprint" + oper + "-->"; //设置打印开始区域
+                            eprnstr = "<!--endprint" + oper + "-->"; //设置打印结束区域
+                            prnhtml = bdhtml.substring(bdhtml.indexOf(sprnstr) + 18); //从开始代码向后取html
+                            prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr)); //从结束代码向前取html
+                            window.document.body.innerHTML = prnhtml;
+                            window.print();
+                            window.document.body.innerHTML = bdhtml;
+                        } else {
+                            window.print();
+                        }
+                    }
+                    </script>
 </body>
 
 </html>

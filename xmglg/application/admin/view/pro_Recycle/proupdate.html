@@ -42,77 +42,77 @@
                     </div>
                     {volist name='list' id='vo'}
                     <form method="post" class="form-x" id="submit" action="{:url('proDoUpdate')}" enctype="multipart/form-data" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
-                        <div class="panel admin-panel" style="border: 1px solid #000000;">
-                            <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 修改发票信息</strong></div>
-                            <div class="body-content">
-                                <div class="form-group">
-                                    <div class="label">
-                                        <label>开票日期：</label>
-                                    </div>
-                                    <div class="field">
-                                        <input type="date" class="input" style="width: 500px;" name="maketime" value="{$vo.maketime}" />
-                                    </div>
-                                </div>
-                                <input type="hidden" name="number" value={$vo.makepronumber}>
-                                <div class="form-group">
-                                    <div class="label">
-                                        <label>开票部门：</label>
-                                    </div>
-                                    <div class="field">
-                                        <input type="text" class="input" style="width: 500px;" name="makedepart" value="{$vo.makedepart}" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="label">
-                                        <label>开票人：</label>
-                                    </div>
-                                    <div class="field">
-                                        <input type="text" class="input" style="width: 500px;" name="makeperson" value="{$vo.makeperson}" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="label">
-                                        <label>开票类型：</label>
-                                    </div>
-                                    <div class="field">
-                                        <select name="maketype" class="input" style="width: 300px;height: 45px;font-size: 15px;border: 1px solid #D0D0D0;">
-                                            <option value="开票收款">开票收款</option>
-                                            <option value="开票挂账">开票挂账</option>
-                                            <option value="收部分款开部分票">收部分款开部分票</option>
-                                            <option value="收部分款开全票">收部分款开全票</option>
-                                            <option value="{$vo.maketype}">{$vo.maketype}</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="label">
-                                        <label>开票额：</label>
-                                    </div>
-                                    <div class="field">
-                                        <input type="text" class="input" style="width: 500px;" name="makemoney" value="{$vo.makemoeny}" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="label">
-                                        <label>到账额：</label>
-                                    </div>
-                                    <div class="field">
-                                        <input type="text" class="input" style="width: 500px;" name="tomoney" value="{$vo.tomoney}" />
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="label">
-                                        <label>到账时间：</label>
-                                    </div>
-                                    <div class="field">
-                                        <input type="date" class="input" style="width: 500px;" name="totime" value="{$vo.totime}" />
-                                    </div>
+                        <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 修改发票信息</strong></div>
+                        <div class="body-content">
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>开票日期：</label>
                                 </div>
                                 <div class="field">
-                                    <input class="button bg-main icon-check-square-o" type="submit" id="submit1" value="确认修改" name="add"></input>
-                                    <a class="button bg-main icon-check-square-o" href="#" onclick="javascript:history.back(-1);">返回</a>
+                                    <input type="date" class="input" style="width: 500px;" name="maketime" value="{$vo.maketime}" />
                                 </div>
+                            </div>
+                            <input type="hidden" name="number" value={$vo.makepronumber}>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>开票部门：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="makedepart" value="{$vo.makedepart}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>开票人：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="makeperson" value="{$vo.makeperson}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>开票类型：</label>
+                                </div>
+                                <div class="field">
+                                    <select name="maketype" class="input" style="width: 300px;height: 45px;font-size: 15px;border: 1px solid #D0D0D0;">
+                                        <option value="开票收款">开票收款</option>
+                                        <option value="开票挂账">开票挂账</option>
+                                        <option value="收部分款开部分票">收部分款开部分票</option>
+                                        <option value="收部分款开全票">收部分款开全票</option>
+                                        <option value="{$vo.maketype}">{$vo.maketype}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>开票额：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="makemoney" value="{$vo.makemoney}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>到账额：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="tomoney" value="{$vo.tomoney}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>到账时间：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="date" class="input" style="width: 500px;" name="totime" value="{$vo.totime}" />
+                                </div>
+                            </div>
+                            <div class="field">
+                                <input class="button bg-main icon-check-square-o" type="submit" id="submit1" value="确认修改" name="add"></input>
+                                <a class="button bg-main icon-check-square-o" href="#" onclick="javascript:history.back(-1);">返回</a>
+                            </div>
                     </form>
+                    {/volist}
                     <script>
                     $(document).ready(function() {
                         var time = new Date();

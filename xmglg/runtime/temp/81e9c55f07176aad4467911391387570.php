@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\project\index.html";i:1561971330;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\project\index.html";i:1562117142;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;}*/ ?>
 <!DOCTYPE html>
 <html class=" js csstransforms3d">
 
@@ -9,7 +9,7 @@
     <title>项目信息</title>
     <link rel="stylesheet" href="/xmglg/public/static/admin/css/base.css">
     <link rel="stylesheet" href="/xmglg/public/static/admin/css/page.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="/xmglg/public/static/admin/css/plugins/dataTables/dataTables.bootstrap.css">
 </head>
 <!DOCTYPE html>
 <html>

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_cut\index.html";i:1561624462;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_cut\index.html";i:1562226432;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;}*/ ?>
 <!DOCTYPE html>
 <html class=" js csstransforms3d">
 
@@ -9,7 +9,8 @@
     <title>切块信息</title>
     <link rel="stylesheet" href="/xmglg/public/static/admin/css/base.css">
     <link rel="stylesheet" href="/xmglg/public/static/admin/css/page.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css"> -->
+    <link rel="stylesheet" type="text/css" href="/xmglg/public/static/admin/css/plugins/dataTables/dataTables.bootstrap.css">
 </head>
 <!DOCTYPE html>
 <html>
@@ -77,7 +78,7 @@
                                             <?php echo $vo['cuttime']; ?>
                                         </td>
                                         <td class="t_6">
-                                            <div class="btn"><a href="<?php echo url('proupdate'); ?>?id=<?php echo $vo['cutid']; ?>" class="modify">编辑</a><a href="<?php echo url('prodelete'); ?>?id=<?php echo $vo['cutid']; ?>" onclick="return confirm('是否确认删除?')" class="delete">删除</a></div>
+                                            <div class="btn"><a href="<?php echo url('proupdate'); ?>?id=<?php echo $vo['id']; ?>" class="modify">编辑</a><a href="<?php echo url('prodelete'); ?>?id=<?php echo $vo['id']; ?>" onclick="return confirm('是否确认删除?')" class="delete">删除</a></div>
                                         </td>
                                     </tr>
                                     <?php endforeach; endif; else: echo "" ;endif; ?>
@@ -86,8 +87,8 @@
                         </div>
 </body>
 <script src="/xmglg/public/static/admin/js/jquery.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-<script type="text/javascript" src="/xmglg/public/static/admin/js/dataTables.bootstrap.js"></script>
+<script type="text/javascript" charset="utf8" src="/xmglg/public/static/admin/js/plugins/dataTables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="/xmglg/public/static/admin/js/plugins/dataTables/dataTables.bootstrap.js"></script>
 <script>
 $(document).ready(function() {
     $('#example').dataTable({

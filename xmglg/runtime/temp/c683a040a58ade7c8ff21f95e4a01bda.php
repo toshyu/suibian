@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:77:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\index.html";i:1561967186;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\footer.html";i:1561790369;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:3:{s:77:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\index.html";i:1561967186;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\footer.html";i:1562117063;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -221,8 +221,8 @@
 <script src="/xmglg/public/static/admin/js/laypage/laypage.js"></script>
 <script src="/xmglg/public/static/admin/js/laytpl/laytpl.js"></script>
 <script src="/xmglg/public/static/admin/js/lunhui.js"></script>
-<script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
-<script type="text/javascript" src="/xmglg/public/static/admin/js/dataTables.bootstrap.js"></script>
+<script type="text/javascript" charset="utf8" src="/xmglg/public/static/admin/js/plugins/dataTables/jquery.dataTables.js"></script>
+<script type="text/javascript" src="/xmglg/public/static/admin/js/plugins/dataTables/dataTables.bootstrap.js"></script>
 <script>
 $(document).ready(function() { $(".i-checks").iCheck({ checkboxClass: "icheckbox_square-green", radioClass: "iradio_square-green", }) });
 </script>

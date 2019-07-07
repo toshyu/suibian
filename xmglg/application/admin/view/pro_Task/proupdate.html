@@ -40,6 +40,7 @@
                             </a>
                         </div>
                     </div>
+                    <!--startprint1-->
                     <form class="form-x">
                         <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 中心下达任务情况</strong>
                         </div>
@@ -59,10 +60,8 @@
                                     <label>中心下达任务书：</label>
                                 </div>
                                 <div class="field">
-                                    已下达<input type="radio" style="width:30px;" name="task_book" {$list['task_book']==1
-                                        ? 'checked' : '' } value="1" />
-                                    未下达<input type="radio" style="width:30px;" name="task_book" {$list['task_book']==2
-                                        ? 'checked' : '' } value="2" />
+                                    已下达<input type="radio" style="width:30px;" name="task_book" {$list['task_book']==1 ? 'checked' : '' } value="1" />
+                                    未下达<input type="radio" style="width:30px;" name="task_book" {$list['task_book']==2 ? 'checked' : '' } value="2" />
                                     <div class="tips"></div>
                                 </div>
                             </div>
@@ -71,8 +70,7 @@
                                     <label>兴趣小组：</label>
                                 </div>
                                 <div class="field">
-                                    <input type="text" class="input" name="task_group" style="width:300px;"
-                                        value="{$list['task_group']}" />
+                                    <input type="text" class="input" name="task_group" style="width:300px;" value="{$list['task_group']}" />
                                     <div class="tips"></div>
                                 </div>
                             </div>
@@ -81,8 +79,7 @@
                                     <label>小组组长：</label>
                                 </div>
                                 <div class="field">
-                                    <input type="text" class="input" name="task_gr_leader"
-                                        value="{$list['task_gr_leader']}" style="width: 300px;" />
+                                    <input type="text" class="input" name="task_gr_leader" value="{$list['task_gr_leader']}" style="width: 300px;" />
                                     <div class="tips"></div>
                                 </div>
                             </div>
@@ -91,8 +88,7 @@
                                     <label>项目经理：</label>
                                 </div>
                                 <div class="field">
-                                    <input type="text" class="input" name="task_gr_pm" value="{$list['task_gr_pm']}"
-                                        style="width: 300px;" />
+                                    <input type="text" class="input" name="task_gr_pm" value="{$list['task_gr_pm']}" style="width: 300px;" />
                                     <div class="tips"></div>
                                 </div>
                             </div>
@@ -101,18 +97,18 @@
                                     <label>项目部实施计划：</label>
                                 </div>
                                 <div class="field">
-                                    提交<input type="radio" style="width:30px;" name="task_plan" {$list['task_plan']==1
-                                        ? 'checked' : '' } value="1" />
-                                    未提交<input type="radio" style="width:30px;" name="task_plan" {$list['task_plan']==2
-                                        ? 'checked' : '' } value="2" />
+                                    提交<input type="radio" style="width:30px;" name="task_plan" {$list['task_plan']==1 ? 'checked' : '' } value="1" />
+                                    未提交<input type="radio" style="width:30px;" name="task_plan" {$list['task_plan']==2 ? 'checked' : '' } value="2" />
                                     <div class="tips"></div>
                                 </div>
                             </div>
                         </div>
+                        <!--endprint1-->
                         <input type="hidden" name="id" value="{$list['id']}">
                         <div class="field">
                             <a class="btn btn-primary" id="submit">确认修改</a>
-                            <a class="btn btn-default" onclick="javascript:history.back(-1);">返回</a>
+                            <a class="btn btn-danger" onclick="javascript:history.back(-1);">返回</a>
+                            <input type=button class="btn btn-info" name='button_export' title='打印' onclick=preview(1) value=打印>
                         </div>
                     </form>
                 </div>
@@ -124,8 +120,24 @@
 </html>
 {include file="public/footer" /}
 <script>
-$("#submit").on("click", function(){
+$("#submit").on("click", function() {
     console.log(this);
-    
+
 })
+</script>
+<script language="javascript">
+function preview(oper) {
+    if (oper < 10) {
+        bdhtml = window.document.body.innerHTML; //获取当前页的html代码
+        sprnstr = "<!--startprint" + oper + "-->"; //设置打印开始区域
+        eprnstr = "<!--endprint" + oper + "-->"; //设置打印结束区域
+        prnhtml = bdhtml.substring(bdhtml.indexOf(sprnstr) + 18); //从开始代码向后取html
+        prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr)); //从结束代码向前取html
+        window.document.body.innerHTML = prnhtml;
+        window.print();
+        window.document.body.innerHTML = bdhtml;
+    } else {
+        window.print();
+    }
+}
 </script>

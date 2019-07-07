@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:89:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_cut\proupdate.html";i:1561625623;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561340064;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:2:{s:89:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\pro_cut\proupdate.html";i:1562304983;s:85:"D:\phpstudy\PHPTutorial\WWW\xmglg\public/../application/admin\view\public\header.html";i:1561790290;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -14,6 +14,7 @@
     <link href="/xmglg/public/static/admin/css/plugins/switchery/switchery.css" rel="stylesheet">
     <link href="/xmglg/public/static/admin/css/style.min.css?v=4.1.0" rel="stylesheet">
     <link href="/xmglg/public/static/admin/css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.css">
     <style type="text/css">
     .long-tr th {
         text-align: center
@@ -52,7 +53,7 @@
                         </div>
                     </div>
                     <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                    <form method="post" class="form-x" id="submit" action="../admin/procutalter.php" enctype="multipart/form-data" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
+                    <form method="post" class="form-x" id="submit" action="<?php echo url('proUpdateDo'); ?>" enctype="multipart/form-data" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
                         <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 成本切块</strong></div>
                         <div class="body-content">
                             <div class="form-group">
@@ -164,11 +165,11 @@
                                     </select></p>
                             </div>
                         </div>
-                        <input type="hidden" name="id" value="<?php echo $vo['cutid']; ?>">
+                        <input type="hidden" name="id" value="<?php echo $vo['id']; ?>">
                         <?php endforeach; endif; else: echo "" ;endif; ?>
                 </div>
                 <div class="field">
-                    <input class="button bg-main icon-check-square-o" type="submit" id="submit1" value="确认修改" name="add"></input>
+                    <input class="button bg-main icon-check-square-o" type="submit" id="submit1" value="确认修改" name=""></input>
                     <a class="button bg-main icon-check-square-o" href="#" onclick="javascript:history.back(-1);">返回</a>
                 </div>
                 </form>
