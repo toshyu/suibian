@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:72:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\index\home.html";i:1562987154;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:72:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\index\home.html";i:1562997858;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,9 +8,9 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link rel="stylesheet" href="/public/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="/public/layui/css/admin.css" media="all">
-    <link rel="stylesheet" href="/public/layui/css/template.css" media="all">
+    <link rel="stylesheet" href="/num06/public/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/num06/public/layui/css/admin.css" media="all">
+    <link rel="stylesheet" href="/num06/public/layui/css/template.css" media="all">
 </head>
 
 <body>
@@ -32,10 +32,10 @@
             </div>
         </div> -->
     </div>
-    <script src="/public/layui/layui.js"></script>
+    <script src="/num06/public/layui/layui.js"></script>
     <script>
     layui.config({
-        base: '/public/layui/src/' //静态资源所在路径
+        base: '/num06/public/layui/src/' //静态资源所在路径
     }).extend({
         index: 'index' //主入口模块
     }).use(['index', 'element', 'table', 'form'], function() {

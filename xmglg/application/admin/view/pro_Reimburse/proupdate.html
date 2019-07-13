@@ -1,0 +1,385 @@
+{include file="public/header" /}
+<link rel="stylesheet" type="text/css" href="/xmglg/public/static/admin/webupload/webuploader.css">
+<link rel="stylesheet" type="text/css" href="/xmglg/public/static/admin/webupload/style.css">
+<style>
+    .file-item {
+    float: left;
+    position: relative;
+    width: 110px;
+    height: 110px;
+    margin: 0 20px 20px 0;
+    padding: 4px;
+}
+
+.file-item .info {
+    overflow: hidden;
+}
+
+.uploader-list {
+    width: 100%;
+    overflow: hidden;
+}
+</style>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>修改文章</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    {volist name='list' id='vo'}
+                    <form method="post" class="form-x" id="submit" action="{:url('proUpdateDo')}" enctype="multipart/form-data" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
+                        <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 项目费用录入</strong></div>
+                        <!--startprint1-->
+                        <div class="body-content">
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>报销合同编号：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 300px;" name="repronumber" value="{$vo.repronumber}" />
+                                    <div class="tips"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>报销项目名称：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 300px;" name="reproname" value="{$vo.reproname}" />
+                                    <div class="tips"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>所属部门：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 300px;" name="redepart" value="{$vo.redepart}" />
+                                    <div class="tips"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>报账人：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="reusername" value="{$vo.reusername}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>报账时间：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="date" class="input" name="retime" value="{$vo.retime}" style="width: 300px;" />
+                                    <div class="tips"></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>报销分类：</label>
+                                </div>
+                                <div class="field">
+                                    <select class="input" name="respecies" style="width: 500px;height: 45px;font-size: 15px;border: 1px solid #D0D0D0;">
+                                        <option value="">部门经营</option>
+                                        <option value="">部门生产</option>
+                                        <option value="">部门管理</option>
+                                        <option value="">公共经费</option>
+                                        <option value="">中心管理费</option>
+                                        <option value="" selected="selected">
+                                            {$vo.respecies}
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label><strong>上交院有关费用：</strong></label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="upper" value="{$vo.upper}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>管理费：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="management" value="{$vo.management}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>房屋使用、水电、空调：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="life" value="{$vo.life}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>设备占用费：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="occu" value="{$vo.occu}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>设备折旧费：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="deprec" value="{$vo.deprec}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>其它：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="upother" value="{$vo.upother}" />
+                                </div>
+                            </div>
+                            <!--  <div class="form-group">
+                <div class="label">
+                    <label><strong>职工有关费用：</strong></label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input" style="width: 500px;" name="pro_name" value="" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label>职工工资：</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input" style="width: 500px;" name="pro_name" value="" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label>养老保险费：</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input" style="width: 500px;" name="pro_name" value="" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label>住房公积金：</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input" style="width: 500px;" name="pro_name" value="" />
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="label">
+                    <label>其它福利：</label>
+                </div>
+                <div class="field">
+                    <input type="text" class="input" style="width: 500px;" name="pro_name" value="" />
+                </div>
+            </div> -->
+                            <div class="form-group">
+                                <div class="label">
+                                    <label><strong>外协付款：</strong></label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="outfee" value="{$vo.outfee}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label><strong>办公费：</strong></label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="office" value="{$vo.office}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label><strong>邮电费：</strong></label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="post" value="{$vo.post}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label><strong>差旅费：</strong></label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="costs" value="{$vo.costs}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>交通费:</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="traffic" value="{$vo.traffic}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>住宿费:</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="house" value="{$vo.house}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label><strong>培训费：</strong></label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="train" value="{$vo.train}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label><strong>会议费：</strong></label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="meeting" value="{$vo.meeting}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>会议场地租赁费：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="meetsite" value="{$vo.meetsite}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>住宿费：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="meethouse" value="{$vo.meethouse}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label><strong>印刷打印费：</strong></label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="meetprint" value="{$vo.meetprint}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label><strong>车辆维护费：</strong></label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="vehide" value="{$vo.vehide}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label><strong>专能通讯网费：</strong></label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="called" value="{$vo.called}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label><strong>专用燃料费：</strong></label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="fuel" value="{$vo.fuel}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label><strong>专用材料费：</strong></label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="material" value="{$vo.material}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label><strong>出差布置费用：</strong></label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="subsidy" value="{$vo.subsidy}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label><strong>租赁费：</strong></label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="lease" value="{$vo.lease}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label><strong>中标服务费：</strong></label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="rebid" value="{$vo.rebid}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label><strong>税费：</strong></label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="tax" value="{$vo.tax}" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label><strong>其它：</strong></label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 100px;float:right;
+                        " name="othername" value="{$vo.othername}" />
+                                </div>
+                            </div>
+                            <!--endprint1-->
+                            <input type="hidden" name="id" value="{$vo.id}">
+                            {/volist}
+                            <div class="field">
+                                <input class="button bg-main icon-check-square-o" type="submit" value="确认修改" name="">
+                                <a class="button bg-main icon-check-square-o" href="#" onclick="javascript:history.back(-1);">返回</a>
+                                <input type=button class="btn btn-info" name='button_export' title='打印' onclick=preview(1) value=打印>
+                            </div>
+                    </form>
+                    <script language="javascript">
+                    function preview(oper) {
+                        if (oper < 10) {
+                            bdhtml = window.document.body.innerHTML; //获取当前页的html代码
+                            sprnstr = "<!--startprint" + oper + "-->"; //设置打印开始区域
+                            eprnstr = "<!--endprint" + oper + "-->"; //设置打印结束区域
+                            prnhtml = bdhtml.substring(bdhtml.indexOf(sprnstr) + 18); //从开始代码向后取html
+                            prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr)); //从结束代码向前取html
+                            window.document.body.innerHTML = prnhtml;
+                            window.print();
+                            window.document.body.innerHTML = bdhtml;
+                        } else {
+                            window.print();
+                        }
+                    }
+                    </script>
+</body>
+
+</html>
