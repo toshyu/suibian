@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\index\index.html";i:1561195180;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\header.html";i:1562986307;s:73:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\left.html";i:1563001833;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\footer.html";i:1562997799;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\index\index.html";i:1561195180;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\header.html";i:1562986307;s:73:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\left.html";i:1563007381;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\footer.html";i:1562997799;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -114,10 +114,15 @@
                     <i class="layui-icon layui-icon-auz"></i>
                     <cite>主页</cite>
                 </a>
-                <a lay-href="<?php echo url('index/project/projectadd'); ?>" lay-href="home" lay-tips="项目列表" lay-direction="2" class="layui-this">
-                    <i class="layui-icon layui-icon-auz"></i>
-                    <cite>项目添加</cite>
-                </a>
+            </li>
+            <li class="layui-nav-item">
+                <a class="javascript:;" href="javascript:;">项目<span class="layui-nav-more"></span></a>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                        <a lay-href="<?php echo url('project/index'); ?>">项目列表</a>
+                        <a lay-href="<?php echo url('project/projectadd'); ?>">添加项目</a>
+                    </dd>
+                </dl>
             </li>
         </ul>
     </div>

@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 <?php 
 namespace app\index\Controller;
 use think\Db;
@@ -10,11 +9,7 @@ class Project extends Base
 	 
 		return $this->fetch();
 	}
-=======
-<?php
-namespace app\index\controller;
-
-class Project extends Base{
+ 
     public function index(){
         return $this -> fetch();
     }
@@ -41,5 +36,5 @@ class Project extends Base{
         $result['msg'] = "查询成功";
         return json($result);
     }
->>>>>>> 29ec17bfa356bebd20ce1883d9869ace8f29bae3
+ 
 }

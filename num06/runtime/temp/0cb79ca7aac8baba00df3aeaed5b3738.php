@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:81:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\project_add.html";i:1563003082;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:81:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\project_add.html";i:1563003438;}*/ ?>
 <!DOCTYPE html>
 <html>
 
@@ -94,7 +94,7 @@
                 <div class="layui-input-block">
                     <select name="unit_instudy" lay-filter="aihao">
                         <option value=" ">请选择</option>
-                        <option value="1">政府部门</option>
+                        <option value="1">{政府部门}</option>
                         <option value="2">国土</option>
                         <option value="3">规划</option>
                         <option value="4">水利</option>

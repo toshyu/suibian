@@ -4,16 +4,11 @@
         <div class="layui-logo">
             <span>畅想谷</span>
         </div>
-        <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu"
-            lay-filter="layadmin-system-side-menu">
+        <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
             <li class="layui-nav-item">
                 <a href="javascript:;" lay-href="home" lay-tips="主页" lay-direction="2" class="layui-this">
                     <i class="layui-icon layui-icon-auz"></i>
                     <cite>主页</cite>
-                </a>
-                <a lay-href="{:url('index/project/projectadd')}" lay-href="home" lay-tips="项目列表" lay-direction="2" class="layui-this">
-                    <i class="layui-icon layui-icon-auz"></i>
-                    <cite>项目添加</cite>
                 </a>
             </li>
             <li class="layui-nav-item">
@@ -21,6 +16,7 @@
                 <dl class="layui-nav-child">
                     <dd class="">
                         <a lay-href="{:url('project/index')}">项目列表</a>
+                        <a lay-href="{:url('project/projectadd')}">添加项目asdsd</a>
                     </dd>
                 </dl>
             </li>
