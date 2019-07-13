@@ -1,0 +1,334 @@
+{include file="public/header" /}
+<link rel="stylesheet" type="text/css" href="/xmglg/public/static/admin/webupload/webuploader.css">
+<link rel="stylesheet" type="text/css" href="/xmglg/public/static/admin/webupload/style.css">
+<style>
+    .file-item{float: left; position: relative; width: 110px;height: 110px; margin: 0 20px 20px 0; padding: 4px;}
+.file-item .info{overflow: hidden;}
+.uploader-list{width: 100%; overflow: hidden;}
+</style>
+
+<body class="gray-bg">
+    <div class="wrapper wrapper-content animated fadeInRight">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>添加文章</h5>
+                        <div class="ibox-tools">
+                            <a class="collapse-link">
+                                <i class="fa fa-chevron-up"></i>
+                            </a>
+                            <a class="dropdown-toggle" data-toggle="dropdown" href="form_basic.html#">
+                                <i class="fa fa-wrench"></i>
+                            </a>
+                            <a class="close-link">
+                                <i class="fa fa-times"></i>
+                            </a>
+                        </div>
+                    </div>
+                    <form method="post" class="form-x" id="submit" action="{:url('prodoAdd')}" enctype="multipart/form-data" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
+                        <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 项目基本信息</strong></div>
+                        <div class="body-content">
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>合同编号：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" name="order" required lay-verify="required" placeholder="请输入合同编号" autocomplete="off" class="layui-input">
+                                    <div class="tips"></div>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>项目名称：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" class="input" style="width: 500px;" name="pro_name" value="{$Request.session.name}" />
+                                    <input type="text" name="project_name" required lay-verify="required" placeholder="请输入项目名称" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>来源：</label>
+                                </div>
+                                <div class="field">
+                                    <select name="source" lay-verify="">
+                                        <option value="">请选择</option>
+                                        <option value="1">合同</option>
+                                        <option value="2">备案</option>
+                                        <option value="3">上级下达</option>
+                                        <option value="4">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>性质：</label>
+                                </div>
+                                <div class="field">
+                                    <select name="nature" lay-verify="">
+                                        <option value="">请选择</option>
+                                        <option value="1">市场招标</option>
+                                        <option value="2">财政招标</option>
+                                        <option value="3">合作挂靠</option>
+                                        <option value="4">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>类型：</label>
+                                </div>
+                                <div class="field">
+                                    <select name="type_id" lay-verify="">
+                                        <option value="1">地质灾害评估</option>
+                                        <option value="2">地质灾害勘察</option>
+                                        <option value="3">地质灾害设计</option>
+                                        <option value="4">地质勘察（地质找矿）</option>
+                                        <option value="5">压覆矿产资源调查</option>
+                                        <option value="6">地下水评价</option>
+                                        <option value="7">济南泉水环境评价</option>
+                                        <option value="8">水文地质勘察</option>
+                                        <option value="9">环境地质调查</option>
+                                        <option value="9">土地开发利用和矿山恢复治理方案编制（两案编制）</option>
+                                        <option value="10">遥感地质</option>
+                                        <option value="11">测量</option>
+                                        <option value="12">储量核实</option>
+                                        <option value="13">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>委托单位：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" name="unit_name" required lay-verify="required" placeholder="请输入委托单位" autocomplete="off" class="layui-input">
+                                    <div class="tips"></div>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>委托单位行业：</label>
+                                </div>
+                                <div class="field">
+                                    <select name="unit_instudy" lay-verify="">
+                                        <option value="1">政府部门</option>
+                                        <option value="2">国土</option>
+                                        <option value="3">规划</option>
+                                        <option value="4">水利</option>
+                                        <option value="5">建筑</option>
+                                        <option value="6">交通</option>
+                                        <option value="7">环保</option>
+                                        <option value="8">电力</option>
+                                        <option value="9">能源</option>
+                                        <option value="10">控股投资</option>
+                                        <option value="11">其他</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>签订时间：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="date" name="sign_time" required lay-verify="required" placeholder="请输入签订时间" autocomplete="off" class="layui-input">
+                                    <div class="tips"></div>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>工期：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="date" name="start_time" required lay-verify="required" placeholder="请输入开始时间" autocomplete="off" class="layui-input">
+                                    &nbsp;&nbsp;&nbsp;——&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <input type="date" name="end_time" required lay-verify="required" placeholder="请输入结束时间" autocomplete="off" class="layui-input">
+                                    <div class="tips"></div>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>签订部门：</label>
+                                </div>
+                                <div class="field">
+                                    <select name="sign_department" lay-verify="">
+                                        <option value="1">中心办公室</option>
+                                        <option value="2">地质环境所</option>
+                                        <option value="3">地质遥感所</option>
+                                        <option value="4">水文地质所</option>
+                                        <option value="5">胶东事业部</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>签订人：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" name="sign_agent" required lay-verify="required" placeholder="请输入签订人" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>合同额：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" name="contract_amont" required lay-verify="required" placeholder="请输入合同额" autocomplete="off" class="layui-input">
+                                    <div class="tips"></div>
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>决算额：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="text" name="final_amount" required lay-verify="required" placeholder="请输入决算额" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="label">
+                                    <label>决算日期：</label>
+                                </div>
+                                <div class="field">
+                                    <input type="date" name="final_time" required lay-verify="required" placeholder="请输入决算日期" autocomplete="off" class="layui-input">
+                                </div>
+                            </div>
+                            <!--  -->
+                            <div>
+                                <div class="form-group">
+                                    <div class="label">
+                                        <label>付款方式：</label>
+                                    </div>
+                                    <p><label>第一笔款: </label><input type="date" name="paydate1" class="input1" />--<input type="date" name="paydate2" class="input1" />
+                                        金额: </label><input type="input" name="paymoney1" class="input1" /></p>
+                                    <div class="label"><label></label></div>
+                                    <p><label>第二笔款: </label><input type="date" name="paydate3" class="input1" />--<input type="date" name="paydate4" class="input1" />
+                                        金额: </label><input type="input" name="paymoney2" class="input1" /></p>
+                                    <div class="label"><label> </label></div>
+                                    <p><label>第三笔款: </label><input type="date" name="paydate5" class="input1" />--<input type="date" name="paydate6" class="input1" />
+                                        金额: </label><input type="input" name="paymoney3" class="input1" /></p>
+                                    <div class="label"><label> </label></div>
+                                    <p><label>第四笔款: </label><input type="date" name="paydate7" class="input1" />--<input type="date" name="paydate8" class="input1" />
+                                        金额: </label><input type="input" name="paymoney4" class="input1" /></p>
+                                    <div class="label"><label> </label></div>
+                                    <p><label>退保证金: </label><input type="date" name="paydate9" class="input1" />--<input type="date" name="paydate10" class="input1" />
+                                        金额: </label><input type="input" name="paymoney5" class="input1" /></p>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 三金一费信息</strong></div>
+                                <div class="body-content">
+                                    <div class="form-group">
+                                        <div class="label">
+                                            <label>投标保证金：</label>
+                                        </div>
+                                        <p><label>时间: </label><input type="date" name="remitdate1" class="input1" />汇款金额: </label><input type="input" name="remit1" class="input1" />
+                                            汇入单位：<input type="input" name="remiter1" class="input1" /></p>
+                                        <div class="label"><label> </label></div>
+                                        <p><label>时间: </label><input type="date" name="returndate1" class="input1" />回款金额: </label><input type="input" name="return1" class="input1" />
+                                            付款单位：<input type="input" name="returner1" class="input1" /></p>
+                                        <div class="label"><label> </label></div>
+                                        <p><label>时间: </label><input type="date" name="rollindate1" class="input1" />转入金额: </label><input type="input" name="rollin1" class="input1" />
+                                            转入类型： <select style="width: 135px;" name="totype1" class="">
+                                                <option>投标保证金</option>
+                                                <option>合同履约金</option>
+                                                <option>质量保证金</option>
+                                                <option>中标服务费</option>
+                                            </select></p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <div class="label">
+                                        <label>合同履约金：</label>
+                                    </div>
+                                    <p><label>时间: </label><input type="date" name="remitdate2" class="input1" />汇款金额: </label><input type="input" name="remit2" class="input1" />
+                                        汇入单位：<input type="input" name="remiter2" class="input1" /></p>
+                                    <div class="label"><label> </label></div>
+                                    <p><label>时间: </label><input type="date" name="returndate2" class="input1" />回款金额: </label><input type="input" name="return2" class="input1" />
+                                        付款单位：<input type="input" name="returner2" class="input1" /></p>
+                                    <div class="label"><label> </label></div>
+                                    <p><label>时间: </label><input type="date" name="rollindate2" class="input1" />转入金额: </label><input type="input" name="rollin2" class="input1" />
+                                        转入类型： <select style="width: 135px;" name="totype2" class="">
+                                            <option>投标保证金</option>
+                                            <option>合同履约金</option>
+                                            <option>质量保证金</option>
+                                            <option>中标服务费</option>
+                                        </select></p>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <div class="label">
+                                        <label>质量保证金：</label>
+                                    </div>
+                                    <p><label>时间: </label><input type="date" name="remitdate3" class="input1" />汇款金额: </label><input type="input" name="remit3" class="input1" />
+                                        汇入单位：<input type="input" name="remiter3" class="input1" /></p>
+                                    <div class="label"><label> </label></div>
+                                    <p><label>时间: </label><input type="date" name="returndate3" class="input1" />回款金额: </label><input type="input" name="return3" class="input1" />
+                                        付款单位：<input type="input" name="returner3" class="input1" /></p>
+                                    <div class="label"><label> </label></div>
+                                    <p><label>时间: </label><input type="date" name="rollindate3" class="input1" />转入金额: </label><input type="input" name="rollin3" class="input1" />
+                                        转入类型： <select style="width: 135px;" name="totype3" class="">
+                                            <option>投标保证金</option>
+                                            <option>合同履约金</option>
+                                            <option>质量保证金</option>
+                                            <option>中标服务费</option>
+                                        </select></p>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="form-group">
+                                    <div class="label">
+                                        <label>中标服务费：</label>
+                                    </div>
+                                    <p><label>时间: </label><input type="date" name="remitdate4" class="input1" />汇款金额: </label><input type="input" name="remit4" class="input1" />
+                                        汇入单位：<input type="input" name="remiter4" class="input1" /></p>
+                                    <div class="label"><label> </label></div>
+                                    <p><label>时间: </label><input type="date" name="returndate4" class="input1" />回款金额: </label><input type="input" name="return4" class="input1" />
+                                        付款单位：<input type="input" name="returner4" class="input1" /></p>
+                                    <div class="label"><label> </label></div>
+                                    <p><label>时间: </label><input type="date" name="rollindate4" class="input1" />转入金额: </label><input type="input" name="rollin4" class="input1" />
+                                        转入类型： <select style="width: 135px;" name="totype4" class="">
+                                            <option>投标保证金</option>
+                                            <option>合同履约金</option>
+                                            <option>质量保证金</option>
+                                            <option>中标服务费</option>
+                                        </select></p>
+                                </div>
+                            </div>
+                    </form>
+                    <div class="form-group">
+                        <div class="col-sm-4 col-sm-offset-3">
+                            <button class="btn btn-primary" type="submit"><i class="fa fa-save"></i> 保存</button>&nbsp;&nbsp;&nbsp;
+                            <a class="btn btn-danger" href="javascript:history.go(-1);"><i class="fa fa-close"></i> 返回</a>
+                        </div>
+                    </div>
+                </div>
+                <script type="text/javascript" src="/xmglg/public/static/admin/js/jquery.js"></script>
+                <script>
+                $(document).ready(function() {
+                    var time = new Date();
+                    var day = ("0" + time.getDate()).slice(-2);
+                    var month = ("0" + (time.getMonth() + 1)).slice(-2);
+                    var today = time.getFullYear() + "-" + (month) + "-" + (day);
+                    $('input[type="date"]').val(today);
+                });
+                </script>
+</body>
+
+</html>
