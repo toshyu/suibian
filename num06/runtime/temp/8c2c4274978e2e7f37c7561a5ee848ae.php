@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"E:\PhpStudy\PHPTutorial\WWW\num06/application/index\view\project\index.html";i:1563008161;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -55,9 +56,9 @@
                         <div class="layui-form-item">
                             <select name="type_id" id="">
                                 <option value="">项目类型</option>
-                                {volist name="type_list" id="vo"}
-                                <option value="{$vo.id}">{$vo.title}</option>
-                                {/volist}
+                                <?php if(is_array($type_list) || $type_list instanceof \think\Collection || $type_list instanceof \think\Paginator): $i = 0; $__LIST__ = $type_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                                <option value="<?php echo $vo['id']; ?>"><?php echo $vo['title']; ?></option>
+                                <?php endforeach; endif; else: echo "" ;endif; ?>
                             </select>
                         </div>
                     </div>
@@ -65,9 +66,9 @@
                         <div class="layui-form-item">
                             <select name="unit_id" id="">
                                 <option value="">委托单位行业</option>
-                                {volist name="unit_industy_list" id="vo"}
-                                <option value="{$vo.id}">{$vo.title}</option>
-                                {/volist}
+                                <?php if(is_array($unit_industy_list) || $unit_industy_list instanceof \think\Collection || $unit_industy_list instanceof \think\Paginator): $i = 0; $__LIST__ = $unit_industy_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                                <option value="<?php echo $vo['id']; ?>"><?php echo $vo['title']; ?></option>
+                                <?php endforeach; endif; else: echo "" ;endif; ?>
                             </select>
                         </div>
                     </div>
@@ -87,9 +88,9 @@
                         <div class="layui-form-item">
                             <select name="sign_id" id="">
                                 <option value="">签订部门</option>
-                                {volist name="sign_id" id="vo"}
-                                <option value="{$vo.id}">{$vo.title}</option>
-                                {/volist}
+                                <?php if(is_array($sign_id) || $sign_id instanceof \think\Collection || $sign_id instanceof \think\Paginator): $i = 0; $__LIST__ = $sign_id;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                                <option value="<?php echo $vo['id']; ?>"><?php echo $vo['title']; ?></option>
+                                <?php endforeach; endif; else: echo "" ;endif; ?>
                             </select>
                         </div>
                     </div>
@@ -171,7 +172,7 @@
                 elem: "#project_list",
                 page: true,
                 loding: true,
-                url: "{:url('project/getProjectList')}",
+                url: "<?php echo url('project/getProjectList'); ?>",
                 cols: [[
                     { field: 'order', title: '合同编号', minWidth: 100 },
                     { field: 'project_name', title: '项目名称', minWidth: 150 },
@@ -199,7 +200,7 @@
             })
         
             form.on("submit(search)", function(obj){
-                obj.field.page = 1
+                console.log(obj.field);
                 table.reload("project_list", {
                     where: obj.field
                 })

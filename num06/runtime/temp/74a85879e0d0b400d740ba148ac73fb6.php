@@ -1,21 +1,23 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\add.html";i:1563068658;}*/ ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8">
-    <title>layui</title>
+    <meta charset="UTF-8">
+    <title>消息中心首页</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <link rel="stylesheet" href="/num06/public/layui/css/layui.css" media="all">
-    <!-- 注意：如果你直接复制所有代码到本地，上述css路径需要改成你本地的 -->
+    <link rel="stylesheet" href="/num06/public/layui/css/admin.css" media="all">
+    <link rel="stylesheet" href="/num06/public/layui/css/template.css" media="all">
 </head>
 
 <body>
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
         <legend>项目内容添加</legend>
     </fieldset>
-    <form class="layui-form" action="{:url('index/project/projectAddDo')}" enctype="multipart/form-data" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
+    <form class="layui-form" action="<?php echo url('index/project/AddDo'); ?>" method="post" enctype="multipart/form-data" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
         <div class="layui-form-item layui-col-md6">
             <label class="layui-form-label">合同编号</label>
             <div class="layui-input-block">
@@ -89,9 +91,9 @@
                 </div>
             </div>
             <div class=" layui-col-md3">
-                <label class="layui-form-label">类型</label>
+                <label class="layui-form-label">委托单位类型</label>
                 <div class="layui-input-block">
-                    <select name="unit_instudy" lay-filter="aihao">
+                    <select name="unit_id" lay-filter="aihao">
                         <option value=" ">请选择</option>
                         <option value="1">{政府部门}</option>
                         <option value="2">国土</option>
@@ -132,7 +134,7 @@
         <div class="layui-form-item layui-col-md6">
             <label class="layui-form-label">签订部门</label>
             <div class="layui-input-block">
-                <select name="sign_department" lay-filter="aihao">
+                <select name="sign_id" lay-filter="aihao">
                     <option value=" ">请选择</option>
                     <option value="1">中心办公室</option>
                     <option value="2">地质环境所</option>

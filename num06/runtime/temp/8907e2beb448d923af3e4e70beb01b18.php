@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"E:\PhpStudy\PHPTutorial\WWW\num06/application/index\view\login\index.html";i:1562995944;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,9 +8,9 @@
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
-    <link rel="stylesheet" href="/num06/public/layui/css/layui.css" media="all">
-    <link rel="stylesheet" href="/num06/public/layui/src/style/admin.css" media="all">
-    <link rel="stylesheet" href="/num06/public/layui/src/style/login.css" media="all">
+    <link rel="stylesheet" href="/public/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/public/layui/src/style/admin.css" media="all">
+    <link rel="stylesheet" href="/public/layui/src/style/login.css" media="all">
 </head>
 
 <body>
@@ -42,7 +43,7 @@
                         <div class="layui-col-xs5">
                             <div style="margin-left: 10px;">
                                 <!-- LAY-user-get-vercode -->
-                                <img class="layadmin-user-login-codeimg" id="my-LAY-user-get-vercode" src="{:captcha_src()}" onclick="changeCode()">
+                                <img class="layadmin-user-login-codeimg" id="my-LAY-user-get-vercode" src="<?php echo captcha_src(); ?>" onclick="changeCode()">
                             </div>
                         </div>
                     </div>
@@ -65,9 +66,9 @@
     </div>
     </div>
 </body>
-<!-- <script src="/num06/public/static/js/jquery.min.js"></script> -->
-<!-- <script src="/num06/public/static/js/ulock/unlock.js"></script> -->
-<script src="/num06/public/layui/layui.js"></script>
+<!-- <script src="/public/static/js/jquery.min.js"></script> -->
+<!-- <script src="/public/static/js/ulock/unlock.js"></script> -->
+<script src="/public/layui/layui.js"></script>
 <script>
 // $(function() {
 //     /*滑动验证*/
@@ -100,7 +101,7 @@
 
 
 layui.config({
-    base: '/num06/public/layui/src/' //静态资源所在路径
+    base: '/public/layui/src/' //静态资源所在路径
 }).extend({
     index: 'index' //主入口模块
 }).use(['index', 'user', 'myutil'], function() {
@@ -124,10 +125,10 @@ layui.config({
     form.on('submit(LAY-user-login-submit)', function(obj) {
         // obj.field.vercode = $('#button_login').attr('data-status');
         // 请求登入接口
-        myutil.ajax_post("{:URL('login/login')}", obj.field, function(res) {
+        myutil.ajax_post("<?php echo URL('login/login'); ?>", obj.field, function(res) {
             if (res.code == 0) {
                 layer.msg(res.msg, { time: 1500, icon: 6 }, function() {
-                    location.href = "{:url('index/index')}"; // 后台主页
+                    location.href = "<?php echo url('index/index'); ?>"; // 后台主页
                 })
             } else {
                 layer.msg(res.msg, { icon: 5 });
@@ -137,7 +138,7 @@ layui.config({
 });
 
 function changeCode() {
-    $("#my-LAY-user-get-vercode").attr('src', "{:captcha_src()}?" + Math.random());
+    $("#my-LAY-user-get-vercode").attr('src', "<?php echo captcha_src(); ?>?" + Math.random());
 }
 </script>
 

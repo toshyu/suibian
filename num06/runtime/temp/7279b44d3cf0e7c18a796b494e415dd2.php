@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\login\index.html";i:1562985866;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\login\index.html";i:1563027502;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,23 +11,6 @@
     <link rel="stylesheet" href="/num06/public/layui/css/layui.css" media="all">
     <link rel="stylesheet" href="/num06/public/layui/src/style/admin.css" media="all">
     <link rel="stylesheet" href="/num06/public/layui/src/style/login.css" media="all">
-    <link rel="stylesheet" href="/num06/public/static/js/ulock/unlock.css">
-    <style type="text/css">
-    input:-webkit-autofill {
-        background: #fff;
-        -webkit-box-shadow: 0 0 0 1000px white inset
-    }
-
-    .check_box {
-        moz-user-select: -moz-none;
-        -moz-user-select: none;
-        -o-user-select: none;
-        -khtml-user-select: none;
-        -webkit-user-select: none;
-        -ms-user-select: none;
-        user-select: none
-    }
-    </style>
 </head>
 
 <body>
@@ -83,37 +66,37 @@
     </div>
     </div>
 </body>
-<script src="/num06/public/static/js/jquery.min.js"></script>
-<script src="/num06/public/static/js/ulock/unlock.js"></script>
+<!-- <script src="/num06/public/static/js/jquery.min.js"></script> -->
+<!-- <script src="/num06/public/static/js/ulock/unlock.js"></script> -->
 <script src="/num06/public/layui/layui.js"></script>
 <script>
-$(function() {
-    /*滑动验证*/
-    var check = $('.J_check');
-    var _options = {
-        'bgColor': '#E8E8E8',
-        /*滑块的背景颜色*/
-        'progressColor': '#FFE97F',
-        /*progress的颜色*/
-        'handleColor': '#fff',
-        /*滑块手柄的颜色*/
-        'succColor': '#78D02E',
-        /*成功解锁后的颜色*/
-        'text': '滑动解锁',
-        /*滑块上的默认文字*/
-        'textColor': '#000',
-        /*文字的颜色*/
-        'succText': '解锁成功',
-        /*成功解锁后显示的文字*/
-        'succTextColor': '#fff',
-        /*成功解锁后显示的文字颜色*/
-        'successFunc': function() {
-            $('#button_login').attr('data-status', 1);
-        }
-    };
-    check.slideToUnlock(_options);
-    /*END*/
-});
+// $(function() {
+//     /*滑动验证*/
+//     var check = $('.J_check');
+//     var _options = {
+//         'bgColor': '#E8E8E8',
+//         /*滑块的背景颜色*/
+//         'progressColor': '#FFE97F',
+//         /*progress的颜色*/
+//         'handleColor': '#fff',
+//         /*滑块手柄的颜色*/
+//         'succColor': '#78D02E',
+//         /*成功解锁后的颜色*/
+//         'text': '滑动解锁',
+//         /*滑块上的默认文字*/
+//         'textColor': '#000',
+//         /*文字的颜色*/
+//         'succText': '解锁成功',
+//         /*成功解锁后显示的文字*/
+//         'succTextColor': '#fff',
+//         /*成功解锁后显示的文字颜色*/
+//         'successFunc': function() {
+//             $('#button_login').attr('data-status', 1);
+//         }
+//     };
+//     check.slideToUnlock(_options);
+//     /*END*/
+// });
 
 
 

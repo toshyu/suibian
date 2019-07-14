@@ -65,12 +65,13 @@ class Project extends Base{
     }
         public function AddDo(Request $request) {
         $data = $request->post();
-
+         var_dump($data);
+         exit;
         $res = db('project')->insert($data);
         if ($res) {
             $this->success("添加成功");
         } else {
-            $this->error('添加失asdas败');
+            // $this->error('添加失asdas败');
             die(mysql_error());
                 exit;        
         }
