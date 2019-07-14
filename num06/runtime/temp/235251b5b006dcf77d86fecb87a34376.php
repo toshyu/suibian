@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_cut\add.html";i:1563068996;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_cut\add.html";i:1563084864;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,52 +41,45 @@
                 </div>
             </div>
             <!--  -->
-            <div>
-                <div class="form-group">
-                    <div class="label">
-                        <label>生产费用：</label>
-                    </div>
-                    <p><label>生产金额1: </label><input type="text" name="produce1" class="input1" />
-                        部门： <select style="width: 100px;" name="depart1" class="">
-                            <option value="中心办公室">中心办公室</option>
-                            <option value="地质环境所">地质环境所</option>
-                            <option value="地质遥感所">地质遥感所</option>
-                            <option value="水文地质所">水文地质所</option>
-                            <option value="胶东事业部">胶东事业部</option>
-                        </select></p>
-                    <div class="label"><label> </label></div>
-                    <p><label>生产金额2: </label><input type="text" name="produce2" class="input1" />
-                        部门： <select style="width: 100px;" name="depart2" class="">
-                            <option value="中心办公室">中心办公室</option>
-                            <option value="地质环境所">地质环境所</option>
-                            <option value="地质遥感所">地质遥感所</option>
-                            <option value="水文地质所">水文地质所</option>
-                            <option value="胶东事业部">胶东事业部</option>
-                        </select></p>
+            <div class="layui-form-item layui-col-md3">
+                <label class="layui-form-label">签订人：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="sign_agent" lay-verify="title" autocomplete="off" placeholder="请输入签订人" class="layui-input">
                 </div>
             </div>
-            <!-- <input type="hidden" name="produceAll" id="p1" class="input1"> -->
-            <div class="form-group">
-                <div class="label">
-                    <label>经营费用：</label>
+            <div class="layui-row layui-form-item">
+                <div class="layui-form-item layui-col-md3">
+                    <label class="layui-form-label">生产费用1</label>
+                    <div class="layui-input-block">
+                        <input type="text" name="cutmoney" lay-verify="title" autocomplete="off" placeholder="请输入费用1数额" class="layui-input">
+                    </div>
                 </div>
-                <p><label>经营金额1: </label><input type="text" name="run1" class="input1" />
-                    部门： <select style="width: 100px;" name="depart3" class="">
+                <div class=" layui-col-md3">
+                    <label class="layui-form-label">部门</label>
+                    <div class="layui-input-block">
+                        <select name="depart1" lay-filter="aihao">
+                            <option value="">请输入</option>
+                            <option value="1">中心办公室</option>
+                            <option value="2">地质环境所</option>
+                            <option value="3">地质遥感所</option>
+                            <option value="4">水文地质所</option>
+                            <option value="5">胶东事业部</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <!--  -->
+            <div class=" layui-col-md2">
+                <label class="layui-form-label">部门</label>
+                <div class="layui-input-block">
+                    <select name="depart2" lay-filter="aihao">
                         <option value="中心办公室">中心办公室</option>
                         <option value="地质环境所">地质环境所</option>
                         <option value="地质遥感所">地质遥感所</option>
                         <option value="水文地质所">水文地质所</option>
                         <option value="胶东事业部">胶东事业部</option>
-                    </select></p>
-                <div class="label"><label> </label></div>
-                <p><label>经营金额2: </label><input type="text" name="run2" class="input1" />
-                    部门： <select style="width: 100px;" name="depart4" class="">
-                        <option value="中心办公室">中心办公室</option>
-                        <option value="地质环境所">地质环境所</option>
-                        <option value="地质遥感所">地质遥感所</option>
-                        <option value="水文地质所">水文地质所</option>
-                        <option value="胶东事业部">胶东事业部</option>
-                    </select></p>
+                    </select>
+                </div>
             </div>
             <!-- <input type="hidden" name="runAll" id="r1" class="input1"> -->
             <div class="form-group">

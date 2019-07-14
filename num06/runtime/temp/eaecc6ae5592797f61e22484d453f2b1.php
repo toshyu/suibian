@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\index.html";i:1563070973;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\index.html";i:1563075901;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -120,8 +120,9 @@
                         </div>
                     </div>
                 </div>
+                <hr>
+                <table class="layui-hide" id="project_list" lay-filter="project_list"></table>
             </div>
-            <table class="layui-hide" id="project_list" lay-filter="project_list"></table>
         </div>
     </div>
     </div>

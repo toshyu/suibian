@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\add.html";i:1563073272;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\add.html";i:1563085979;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,22 +18,24 @@
         <legend>项目内容添加</legend>
     </fieldset>
     <form class="layui-form" action="<?php echo url('index/project/AddDo'); ?>" method="post" enctype="multipart/form-data" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
-        <div class="layui-form-item layui-col-md6">
-            <label class="layui-form-label">合同编号</label>
-            <div class="layui-input-block">
-                <input type="text" name="order" lay-verify="title" autocomplete="off" placeholder="请输入合同编号" class="layui-input">
+        <div class="layui-row layui-form-item">
+            <div class="  layui-col-md5">
+                <label class="layui-form-label">合同编号</label>
+                <div class="layui-input-block">
+                    <input type="text" name="order" lay-verify="title" autocomplete="off" placeholder="请输入合同编号" class="layui-input">
+                </div>
             </div>
-        </div>
-        <!--  -->
-        <div class="layui-form-item layui-col-md6">
-            <label class="layui-form-label">项目名称</label>
-            <div class="layui-input-block">
-                <input type="text" name="project_name" lay-verify="title" autocomplete="off" placeholder="请输入项目名称" class="layui-input">
+            <!--  -->
+            <div class=" layui-col-md5">
+                <label class="layui-form-label">项目名称</label>
+                <div class="layui-input-block">
+                    <input type="text" name="project_name" lay-verify="title" autocomplete="off" placeholder="请输入项目名称" class="layui-input">
+                </div>
             </div>
         </div>
         <!--  -->
         <div class="layui-row layui-form-item ">
-            <div class=" layui-col-md2">
+            <div class=" layui-col-md3">
                 <label class="layui-form-label">来源</label>
                 <div class="layui-input-block">
                     <select name="source" lay-filter="aihao">
@@ -46,7 +48,7 @@
                 </div>
             </div>
             <!--  -->
-            <div class=" layui-col-md2">
+            <div class=" layui-col-md3">
                 <label class="layui-form-label">性质</label>
                 <div class="layui-input-block">
                     <select name="nature" lay-filter="aihao">
@@ -58,7 +60,7 @@
                     </select>
                 </div>
             </div>
-            <div class=" layui-col-md2">
+            <div class=" layui-col-md3">
                 <label class="layui-form-label">类型</label>
                 <div class="layui-input-block">
                     <select name="type_id" lay-filter="aihao">
@@ -84,14 +86,14 @@
         <p></p>
         <!--  -->
         <div class="layui-row">
-            <div class="layui-form-item layui-col-md3">
+            <div class="layui-form-item layui-col-md5">
                 <label class="layui-form-label">委托单位：</label>
                 <div class="layui-input-block">
                     <input type="text" name="unit_name" lay-verify="title" autocomplete="off" placeholder="请输入委托单位名称" class="layui-input">
                 </div>
             </div>
-            <div class=" layui-col-md3">
-                <label class="layui-form-label">委托单位类型</label>
+            <div class=" layui-col-md5">
+                <label class="layui-form-label">单位类型</label>
                 <div class="layui-input-block">
                     <select name="unit_id" lay-filter="aihao">
                         <option value=" ">请选择</option>
@@ -111,48 +113,44 @@
             </div>
         </div>
         <!--  -->
-        <div class="layui-form-item layui-col-md6">
-            <label class="layui-form-label">签订时间：</label>
-            <div class="layui-input-inline">
-                <input type="text" class="layui-input" id="test1" name="sign_time" placeholder="yyyy-MM-dd">
-            </div>
-        </div>
-        <!--  -->
-        <div class="layui-form-item layui-col-md6">
-            <label class="layui-form-label">工期：</label>
-            <div class="layui-inline">
-                <!--                 <div class="layui-input-inline" style="width: 100px;">
-                    <input type="date" name="start_time" placeholder="请输入开始时间" autocomplete="off" class="layui-input">
+        <div class="layui-row layui-form-item ">
+            <div class="  layui-col-md5">
+                <label class="layui-form-label">签订时间：</label>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" id="test1" name="sign_time" placeholder="yyyy-MM-dd">
                 </div>
-                <div class="layui-form-mid">-</div>
-                <div class="layui-input-inline" style="width: 100px;">
-                    <input type="date" name="end_time" placeholder="请输入结束时间" autocomplete="off" class="layui-input">
+            </div>
+            <!--  -->
+            <div class="  layui-col-md5">
+                <label class="layui-form-label">工期：</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" placeholder="工期" name="construction_period" id="construction_period">
+                    <input type="hidden" name="start_time">
+                    <input type="hidden" name="end_time">
                 </div>
- -->
-                <input type="text" class="layui-input" placeholder="工期" name="construction_period" id="construction_period">
-                <input type="hidden" name="start_time">
-                <input type="hidden" name="end_time">
             </div>
         </div>
         <!--  -->
-        <div class="layui-form-item layui-col-md6">
-            <label class="layui-form-label">签订部门</label>
-            <div class="layui-input-block">
-                <select name="sign_id" lay-filter="aihao">
-                    <option value=" ">请选择</option>
-                    <option value="1">中心办公室</option>
-                    <option value="2">地质环境所</option>
-                    <option value="3">地质遥感所</option>
-                    <option value="4">水文地质所</option>
-                    <option value="5">胶东事业部</option>
-                </select>
+        <div class="layui-row layui-form-item ">
+            <div class=" layui-col-md5">
+                <label class="layui-form-label">签订部门</label>
+                <div class="layui-input-block">
+                    <select name="sign_id" lay-filter="aihao">
+                        <option value=" ">请选择</option>
+                        <option value="1">中心办公室</option>
+                        <option value="2">地质环境所</option>
+                        <option value="3">地质遥感所</option>
+                        <option value="4">水文地质所</option>
+                        <option value="5">胶东事业部</option>
+                    </select>
+                </div>
             </div>
-        </div>
-        <!--  -->
-        <div class="layui-form-item layui-col-md3">
-            <label class="layui-form-label">签订人：</label>
-            <div class="layui-input-block">
-                <input type="text" name="sign_agent" lay-verify="title" autocomplete="off" placeholder="请输入签订人" class="layui-input">
+            <!--  -->
+            <div class=" layui-col-md5">
+                <label class="layui-form-label">签订人：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="sign_agent" lay-verify="title" autocomplete="off" placeholder="请输入签订人" class="layui-input">
+                </div>
             </div>
         </div>
         <!--  -->
