@@ -68,7 +68,7 @@ class Project extends Base{
 
         $res = db('project')->insert($data);
         if ($res) {
-            $this->success("添加成功");
+            $this->success("添加成功",'index/project/add');
         } else {
             $this->error('添加失asdas败');
             die(mysql_error());

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\add.html";i:1563068658;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\add.html";i:1563073272;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -118,16 +118,20 @@
             </div>
         </div>
         <!--  -->
-        <div class="layui-form-item">
+        <div class="layui-form-item layui-col-md6">
+            <label class="layui-form-label">工期：</label>
             <div class="layui-inline">
-                <label class="layui-form-label">工期：</label>
-                <div class="layui-input-inline" style="width: 100px;">
+                <!--                 <div class="layui-input-inline" style="width: 100px;">
                     <input type="date" name="start_time" placeholder="请输入开始时间" autocomplete="off" class="layui-input">
                 </div>
                 <div class="layui-form-mid">-</div>
                 <div class="layui-input-inline" style="width: 100px;">
                     <input type="date" name="end_time" placeholder="请输入结束时间" autocomplete="off" class="layui-input">
                 </div>
+ -->
+                <input type="text" class="layui-input" placeholder="工期" name="construction_period" id="construction_period">
+                <input type="hidden" name="start_time">
+                <input type="hidden" name="end_time">
             </div>
         </div>
         <!--  -->
@@ -160,15 +164,16 @@
         </div>
         <!--  -->
         <div class="layui-form-item layui-col-md6">
+            <label class="layui-form-label">决算时间：</label>
+            <div class="layui-input-inline">
+                <input type="text" class="layui-input" id="test1" name="final_time" placeholder="yyyy-MM-dd">
+            </div>
+        </div>
+        <!--  -->
+        <div class="layui-form-item layui-col-md6">
             <label class="layui-form-label">决算额：</label>
             <div class="layui-input-block">
                 <input type="text" name="final_amount" lay-verify="title" autocomplete="off" placeholder="请输入决算额" class="layui-input">
-            </div>
-        </div>
-        <div class="layui-form-item layui-col-md6">
-            <label class="layui-form-label">决算日期：</label>
-            <div class="layui-input-block">
-                <input type="date" name="final_time" lay-verify="title" autocomplete="off" placeholder="请输入决算日期" class="layui-input">
             </div>
         </div>
         <!--  -->
@@ -189,8 +194,24 @@
         var form = layui.form;
         var element = layui.element;
         var laydate = layui.laydate;
+        var $ = layui.jquery;
         laydate.render({
             elem: '#test1'
+        });
+        laydate.render({
+            elem: "#construction_period",
+            range: "/",
+            done: function(value) {
+                var time_array = value.split('/');
+                // console.log(time_array);
+                // console.log(value);
+                // console.log(new Date(time_array[0]));
+
+                var start_time = new Date(time_array[0]).getTime() / 1000;
+                var end_time = new Date(time_array[1]).getTime() / 1000;
+                $("input[name=start_time]").val(start_time);
+                $("input[name=end_time ]").val(end_time);
+            },
         });
     });
     </script>

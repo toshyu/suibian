@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:77:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_cut\add.html";i:1563068996;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -16,7 +17,7 @@
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
         <legend>项目内容添加</legend>
     </fieldset>
-    <form class="layui-form" action="{:url('index/projectCut/AddDo')}" enctype="multipart/form-data" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
+    <form class="layui-form" action="<?php echo url('index/projectCut/AddDo'); ?>" enctype="multipart/form-data" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
         <div class="panel-head"><strong><span class="icon-pencil-square-o"></span> 成本切块</strong></div>
         <div class="body-content">
             <div class="layui-form-item layui-col-md6">

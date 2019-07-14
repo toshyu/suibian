@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\index\index.html";i:1562989434;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\header.html";i:1562996960;s:73:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\left.html";i:1563068682;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\footer.html";i:1562989434;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\index\index.html";i:1562989434;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\header.html";i:1562996960;s:73:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\left.html";i:1563074663;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\footer.html";i:1562989434;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -129,7 +129,7 @@
                 <dl class="layui-nav-child">
                     <dd class="">
                         <a lay-href="<?php echo url('projectCut/index'); ?>">切块列表</a>
-                        <a lay-href="<?php echo url('projectCut/projectAdd'); ?>">切块添加</a>
+                        <a lay-href="<?php echo url('projectCut/add'); ?>">切块添加</a>
                     </dd>
                 </dl>
             </li>
