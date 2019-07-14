@@ -1,23 +1,30 @@
 <?php
 namespace app\index\controller;
-use think\Request;
+
 class Projectcut extends Base{
     
-    public function add()
+    public function index()
     {
         return $this->fetch();
     }
-        public function AddDo(Request $request) {
-        $data = $request->post();
-         var_dump($data);
-         exit;
-        $res = db('project')->insert($data);
-        if ($res) {
-            $this->success("添加成功");
-        } else {
-            // $this->error('添加失asdas败');
-            die(mysql_error());
-                exit;        
-        }
+    
+    public function projectadd(){
+        $project_list = db("project")
+            -> where(['status' => 1])
+            -> field("id, project_name")
+            -> select();
+        $sign_list = getSign();
+        $this -> assign("project_list", $project_list);
+        $this -> assign("sign_list", $sign_list);
+        return $this->fetch();
+    }
+
+    public function getProjectdetail(){
+        $project_id = trim(input("project_id"));
+        $result = db("project")
+            -> where(['id' => $project_id])
+            // -> field("")
+            -> find();
+        return json($result);
     }
 }
