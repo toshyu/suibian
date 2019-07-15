@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"E:\PhpStudy\PHPTutorial\WWW\num06/application/index\view\project\index.html";i:1563008161;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"E:\PhpStudy\PHPTutorial\WWW\num06/application/index\view\project\index.html";i:1563075477;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -120,8 +120,9 @@
                         </div>
                     </div>
                 </div>
+                <hr>
+                <table class="layui-hide" id="project_list" lay-filter="project_list"></table>
             </div>
-            <table class="layui-hide" id="project_list" lay-filter="project_list"></table>
         </div>
     </div>
     </div>
@@ -200,7 +201,7 @@
             })
         
             form.on("submit(search)", function(obj){
-                console.log(obj.field);
+                obj.field.page = 1
                 table.reload("project_list", {
                     where: obj.field
                 })

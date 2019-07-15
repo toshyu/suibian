@@ -16,6 +16,7 @@ class Projectcut extends Base{
         $sign_list = getSign();
         $this -> assign("project_list", $project_list);
         $this -> assign("sign_list", $sign_list);
+        $this -> assign("project_id", 6);
         return $this->fetch();
     }
 
