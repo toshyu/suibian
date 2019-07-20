@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_cut\projectadd.html";i:1563605674;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_cut\projectadd.html";i:1563606422;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -22,7 +22,7 @@
                     <div class="layui-form-item">
                         <div class="layui-form-label">请选择项目</div>
                         <div class="layui-input-inline">
-                            <select name="project" lay-filter="project">
+                            <select name="project" lay-filter="project" lay-search>
                                 <option value="">请选择</option>
                                 <?php if(is_array($project_list) || $project_list instanceof \think\Collection || $project_list instanceof \think\Paginator): $i = 0; $__LIST__ = $project_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                                 <option value="<?php echo $vo['id']; ?>"><?php echo $vo['project_name']; ?></option>
