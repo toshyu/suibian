@@ -10,14 +10,24 @@ class Projectcut extends Base{
     }
     
     public function projectadd(){
-        $project_list = db("project")
-            -> where(['status' => 1])
-            -> field("id, project_name")
-            -> select();
+        $project_cut_id = trim(input("id"));
+        $project_list = db("project") -> where(['status' => 1]) -> field("id, project_name") -> select();
         $sign_list = getSign();
+        if(!empty($project_cut_id)){
+            $result = db("project_cut pc")
+                -> join("project p", "p.id = pc.project_id", "left")
+                -> where(['pc.id' => $project_cut_id, 'pc.status' => 1])
+                -> find();
+            $result['production_str'] = json_decode($result['production_str'], true);
+            $result['management_str'] = json_decode($result['management_str'], true);
+            $result['administration_str'] = json_decode($result['administration_str'], true);
+            // var_dump($result);
+            $this -> assign("cut_info", $result);
+        }else{
+            $this -> assign("cut_info", false);
+        }
         $this -> assign("project_list", $project_list);
         $this -> assign("sign_list", $sign_list);
-        $this -> assign("project_id", 6);
         return $this->fetch();
     }
 
@@ -51,7 +61,6 @@ class Projectcut extends Base{
         $management_str = trim(input("management_str"));
         $administration_str = trim(input("administration_str"));
         $project_id = trim(input("project_id"));
-
         $unqie_project = db("project_cut") -> where(['project_id' => $project_id]) -> find();
         $data = array(
             'production_str' => $production_str,
