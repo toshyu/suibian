@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\add.html";i:1563588959;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\add.html";i:1563613802;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +17,7 @@
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
         <legend>项目内容添加</legend>
     </fieldset>
-    <form class="layui-form" action="<?php echo url('index/project/AddDo'); ?>" method="post" enctype="multipart/form-data" accept-charset="utf-8" onsubmit="document.charset='utf-8';">
+    <div class="layui-form">
         <div class="layui-row layui-form-item">
             <div class="  layui-col-md5">
                 <label class="layui-form-label">合同编号</label>
@@ -92,6 +92,17 @@
                     <input type="text" name="unit_name" lay-verify="title" autocomplete="off" placeholder="请输入委托单位名称" class="layui-input">
                 </div>
             </div>
+            <div class="  layui-col-md5">
+                <label class="layui-form-label">工期：</label>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" placeholder="工期" name="construction_period" id="construction_period">
+                    <input name="start_time" type="hidden">
+                    <input name="end_time" type="hidden">
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <div class="layui-row layui-form-item ">
             <div class=" layui-col-md5">
                 <label class="layui-form-label">单位类型</label>
                 <div class="layui-input-block">
@@ -111,9 +122,6 @@
                     </select>
                 </div>
             </div>
-        </div>
-        <!--  -->
-        <div class="layui-row layui-form-item ">
             <div class="  layui-col-md5">
                 <label class="layui-form-label">签订时间：</label>
                 <div class="layui-input-inline">
@@ -121,14 +129,6 @@
                 </div>
             </div>
             <!--  -->
-            <div class="  layui-col-md5">
-                <label class="layui-form-label">工期：</label>
-                <div class="layui-inline">
-                    <input type="text" class="layui-input" placeholder="工期" name="construction_period" id="construction_period">
-                    <input name="start_time" type="hidden">
-                    <input name="end_time" type="hidden">
-                </div>
-            </div>
         </div>
         <!--  -->
         <div class="layui-row layui-form-item ">
@@ -181,7 +181,7 @@
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
-    </form>
+    </div>
     <script src="/num06/public/layui/layui.js"></script>
     <script>
     layui.config({
@@ -204,15 +204,31 @@
         });
         laydate.render({
             elem: "#construction_period",
-            range: "-",
+            range: "/",
             done: function(value) {
                 var time_arr = value.split("/");
+
                 var start_time = new Date(time_arr[0]).getTime() / 1000;
                 var end_time = new Date(time_arr[1]).getTime() / 1000;
                 $("input[name=start_time]").val(start_time);
                 $("input[name=end_time]").val(end_time);
+                console.log(start_time);
             }
         })
+        form.on('submit(demo1)', function(data) {
+            delete data.field.construction_period;
+            // console.log(data.field);
+            $.ajax({
+                url: 'addDo',
+                data: data.field,
+                success: function(data) {
+                    layer.msg("提交成功", function() {
+                        window.location.reload();
+                    });
+                }
+
+            });
+        });
 
     });
     </script>
