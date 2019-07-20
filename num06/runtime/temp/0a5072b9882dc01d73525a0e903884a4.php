@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:73:"E:\PhpStudy\PHPTutorial\WWW\num06/application/index\view\index\index.html";i:1562989432;s:75:"E:\PhpStudy\PHPTutorial\WWW\num06\application\index\view\public\header.html";i:1562996959;s:73:"E:\PhpStudy\PHPTutorial\WWW\num06\application\index\view\public\left.html";i:1563007239;s:75:"E:\PhpStudy\PHPTutorial\WWW\num06\application\index\view\public\footer.html";i:1562989432;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:73:"E:\PhpStudy\PHPTutorial\WWW\num06/application/index\view\index\index.html";i:1562989432;s:75:"E:\PhpStudy\PHPTutorial\WWW\num06\application\index\view\public\header.html";i:1562996959;s:73:"E:\PhpStudy\PHPTutorial\WWW\num06\application\index\view\public\left.html";i:1563090029;s:75:"E:\PhpStudy\PHPTutorial\WWW\num06\application\index\view\public\footer.html";i:1562989432;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -108,8 +108,7 @@
         <div class="layui-logo">
             <span>畅想谷</span>
         </div>
-        <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu"
-            lay-filter="layadmin-system-side-menu">
+        <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
             <li class="layui-nav-item">
                 <a href="javascript:;" lay-href="home" lay-tips="主页" lay-direction="2" class="layui-this">
                     <i class="layui-icon layui-icon-auz"></i>
@@ -121,6 +120,52 @@
                 <dl class="layui-nav-child">
                     <dd class="">
                         <a lay-href="<?php echo url('project/index'); ?>">项目列表</a>
+                        <a lay-href="<?php echo url('project/add'); ?>">项目添加</a>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a class="javascript:;" href="javascript:;">项目切块<span class="layui-nav-more"></span></a>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                        <a lay-href="<?php echo url('projectCut/index'); ?>">切块列表</a>
+                        <a lay-href="<?php echo url('projectCut/projectadd'); ?>">切块添加</a>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a class="javascript:;" href="javascript:;">任务相关<span class="layui-nav-more"></span></a>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                        <a lay-href="<?php echo url('projectTask/index'); ?>">任务列表</a>
+                        <a lay-href="<?php echo url('projectTask/projectAdd'); ?>">任务添加</a>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a class="javascript:;" href="javascript:;">费用回收<span class="layui-nav-more"></span></a>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                        <a lay-href="<?php echo url('projectRecycle/index'); ?>"> 回收列表</a>
+                        <a lay-href="<?php echo url('projectRecycle/projectAdd'); ?>">发票添加</a>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a class="javascript:;" href="javascript:;">费用支出<span class="layui-nav-more"></span></a>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                        <a lay-href="<?php echo url('projectReimburse/index'); ?>"> 支出列表</a>
+                        <a lay-href="<?php echo url('projectReimburse/projectAdd'); ?>">报销添加</a>
+                    </dd>
+                </dl>
+            </li>
+            <li class="layui-nav-item">
+                <a class="javascript:;" href="javascript:;">项目外协<span class="layui-nav-more"></span></a>
+                <dl class="layui-nav-child">
+                    <dd class="">
+                        <a lay-href="<?php echo url('projectOutsce/index'); ?>"> 外协列表</a>
+                        <a lay-href="<?php echo url('projectOutsce/projectAdd'); ?>">外协添加</a>
                     </dd>
                 </dl>
             </li>
