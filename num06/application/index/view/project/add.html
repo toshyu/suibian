@@ -124,8 +124,8 @@
                 <label class="layui-form-label">工期：</label>
                 <div class="layui-inline">
                     <input type="text" class="layui-input" placeholder="工期" name="construction_period" id="construction_period">
-                    <input type="hidden" name="start_time">
-                    <input type="hidden" name="end_time">
+                    <input name="start_time" type="hidden">
+                    <input name="end_time" type="hidden">
                 </div>
             </div>
         </div>
@@ -192,24 +192,27 @@
         var element = layui.element;
         var laydate = layui.laydate;
         var $ = layui.jquery;
-        laydate.render({
-            elem: '#test1'
+
+        lay('#test1').each(function() {
+            laydate.render({
+                elem: this,
+                format: 'yyyy-MM-dd HH:mm:ss',
+                type: 'datetime',
+                trigger: 'click'
+            });
         });
         laydate.render({
             elem: "#construction_period",
-            range: "/",
+            range: "-",
             done: function(value) {
-                var time_array = value.split('/');
-                // console.log(time_array);
-                // console.log(value);
-                // console.log(new Date(time_array[0]));
-
-                var start_time = new Date(time_array[0]).getTime() / 1000;
-                var end_time = new Date(time_array[1]).getTime() / 1000;
+                var time_arr = value.split("/");
+                var start_time = new Date(time_arr[0]).getTime() / 1000;
+                var end_time = new Date(time_arr[1]).getTime() / 1000;
                 $("input[name=start_time]").val(start_time);
-                $("input[name=end_time ]").val(end_time);
-            },
-        });
+                $("input[name=end_time]").val(end_time);
+            }
+        })
+
     });
     </script>
 </body>

@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:79:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_cut\index.html";i:1563604338;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -35,7 +36,7 @@
     </div>
     </div>
     <script type="text/html" id="operationTpl">
-        <a lay-href="{:url('proEdit')}?id={{d.id}}" class="layui-btn layui-btn-xs">编辑</a>
+        <a lay-href="<?php echo url('proEdit'); ?>?id={{d.id}}" class="layui-btn layui-btn-xs">编辑</a>
        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
 
     </script>
@@ -53,7 +54,7 @@
 
         table.render({
             elem: "#project_cut",
-            url: '{:url("cutBlockList")}',
+            url: '<?php echo url("cutBlockList"); ?>',
             loading: true,
             cols: [
                 [
@@ -92,7 +93,7 @@
                                 //删除对应行（tr）的DOM结构，并更新缓存
                             },
                             error: function(obx) {
-                              layer.msg('删除失败');
+                                layer.msg('删除失败');
                                 layer.close(loading);
                             }
 

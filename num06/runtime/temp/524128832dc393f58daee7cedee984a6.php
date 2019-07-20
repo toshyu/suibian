@@ -1,3 +1,4 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:84:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_cut\projectadd.html";i:1563605674;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,9 +24,9 @@
                         <div class="layui-input-inline">
                             <select name="project" lay-filter="project">
                                 <option value="">请选择</option>
-                                {volist name="project_list" id="vo"}
-                                <option value="{$vo.id}">{$vo.project_name}</option>
-                                {/volist}
+                                <?php if(is_array($project_list) || $project_list instanceof \think\Collection || $project_list instanceof \think\Paginator): $i = 0; $__LIST__ = $project_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                                <option value="<?php echo $vo['id']; ?>"><?php echo $vo['project_name']; ?></option>
+                                <?php endforeach; endif; else: echo "" ;endif; ?>
                             </select>
                         </div>
                     </div>
@@ -55,9 +56,9 @@
                                 <div class="layui-input-inline">
                                     <select name="department" id="">
                                         <option value="">请选择</option>
-                                        {volist name="sign_list" id="vo"}
-                                        <option value="{$vo.id}">{$vo.title}</option>
-                                        {/volist}
+                                        <?php if(is_array($sign_list) || $sign_list instanceof \think\Collection || $sign_list instanceof \think\Paginator): $i = 0; $__LIST__ = $sign_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                                        <option value="<?php echo $vo['id']; ?>"><?php echo $vo['title']; ?></option>
+                                        <?php endforeach; endif; else: echo "" ;endif; ?>
                                     </select>
                                 </div>
                             </div>
@@ -86,9 +87,9 @@
                                 <div class="layui-input-inline">
                                     <select name="department" id="">
                                         <option value="">请选择</option>
-                                        {volist name="sign_list" id="vo"}
-                                        <option value="{$vo.id}">{$vo.title}</option>
-                                        {/volist}
+                                        <?php if(is_array($sign_list) || $sign_list instanceof \think\Collection || $sign_list instanceof \think\Paginator): $i = 0; $__LIST__ = $sign_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                                        <option value="<?php echo $vo['id']; ?>"><?php echo $vo['title']; ?></option>
+                                        <?php endforeach; endif; else: echo "" ;endif; ?>
                                     </select>
                                 </div>
                             </div>
@@ -116,9 +117,9 @@
                                 <div class="layui-input-inline">
                                     <select name="department" id="">
                                         <option value="">请选择</option>
-                                        {volist name="sign_list" id="vo"}
-                                        <option value="{$vo.id}">{$vo.title}</option>
-                                        {/volist}
+                                        <?php if(is_array($sign_list) || $sign_list instanceof \think\Collection || $sign_list instanceof \think\Paginator): $i = 0; $__LIST__ = $sign_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                                        <option value="<?php echo $vo['id']; ?>"><?php echo $vo['title']; ?></option>
+                                        <?php endforeach; endif; else: echo "" ;endif; ?>
                                     </select>
                                 </div>
                             </div>
@@ -152,9 +153,9 @@
                 <div class="layui-input-inline">
                     <select name="department" id="">
                         <option value="">请选择</option>
-                        {volist name="sign_list" id="vo"}
-                        <option value="{$vo.id}">{$vo.title}</option>
-                        {/volist}
+                        <?php if(is_array($sign_list) || $sign_list instanceof \think\Collection || $sign_list instanceof \think\Paginator): $i = 0; $__LIST__ = $sign_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                        <option value="<?php echo $vo['id']; ?>"><?php echo $vo['title']; ?></option>
+                        <?php endforeach; endif; else: echo "" ;endif; ?>
                     </select>
                 </div>
             </div>
@@ -201,7 +202,7 @@
 
         form.on("select(project)", function(obj) {
             var load = layer.load(1, { shade: [0.1, "#fff"] });
-            $.get("{:url('getProjectdetail')}", { project_id: obj.value }, function(res) {
+            $.get("<?php echo url('getProjectdetail'); ?>", { project_id: obj.value }, function(res) {
                 layer.close(load);
                 form.val("project_form", {
                     final_amount: res.final_amount,
@@ -265,7 +266,7 @@
             }
             var load = layer.load(1, { shade: [0.1, "#fff"] });
 
-            $.post("{:url('edit')}", data, function(res) {
+            $.post("<?php echo url('edit'); ?>", data, function(res) {
                 layer.close(load);
                 console.log(res);
                 layer.msg(res.msg);

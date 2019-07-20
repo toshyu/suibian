@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\index.html";i:1563075901;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\index.html";i:1563588622;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -116,7 +116,7 @@
                     <div class="layui-input-inline">
                         <div class="layui-form-item">
                             <a href="javascript:;" class="layui-btn" lay-submit lay-filter="search">搜索</a>
-                            <button class="layui-btn layui-btn-sm" lay-event="delete">删除</button>
+                            <!-- <button class="layui-btn layui-btn-sm" lay-event="delete">添加</button> -->
                         </div>
                     </div>
                 </div>
@@ -127,7 +127,10 @@
     </div>
     </div>
     <script type="text/html" id="operationTpl">
-        <a href="javascript:;" class="layui-btn layui-btn-xs">编辑</a>
+        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a href="<?php echo url('index/project/prodelete'); ?>?id={{d.id}}"  class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"> 删除</a>
+ 
     </script>
     <script src="/num06/public/layui/layui.js"></script>
     <script>
@@ -173,9 +176,11 @@
             page: true,
             loding: true,
             url: "<?php echo url('project/getProjectList'); ?>",
+            toolbar: 'default',
             cols: [
                 [
-                    { field: 'order', title: '合同编号', minWidth: 100 },
+                    // { field: 'id', title '项目id', minWidth: 130 },
+                    { field: 'order', sort: true, title: '合同编号', minWidth: 100 },
                     { field: 'project_name', title: '项目名称', minWidth: 150 },
                     { field: 'source', title: '项目来源', minWidth: 130 },
                     { field: 'nature', title: '项目性质', minWidth: 130 },
@@ -188,7 +193,8 @@
                     { field: 'sign_agent', title: '经办人', minWidth: 130 },
                     { field: 'contract_amount', title: '合同额', minWidth: 130 },
                     { field: 'final_amount', title: '决算额', minWidth: 130 },
-                    { fixed: 'right', title: '操作', align: 'center', templet: '#operationTpl' }
+                    { fixed: 'right', width: 165, title: '操作', align: 'center', toolbar: '#operationTpl' }
+
                 ]
             ],
             parseData: function(res) {
@@ -206,7 +212,10 @@
             table.reload("project_list", {
                 where: obj.field
             })
-        })
+        });
+
+
+
     });
     </script>
 </body>
