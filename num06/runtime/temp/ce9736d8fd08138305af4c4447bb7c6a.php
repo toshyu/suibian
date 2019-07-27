@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\update.html";i:1564196114;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\update.html";i:1564209879;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -151,7 +151,7 @@
         <div class="layui-form-item layui-col-md6">
             <label class="layui-form-label">决算时间：</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input test1" id="test1" name="final_time" value="<?php echo date('Y-m-d H:m:s',$vvo['final_time']); ?>" placeholder="yyyy-MM-dd" required lay-verify="required">
+                <input type="text" class="layui-input" id="date2" name="final_time" value="<?php echo date('Y-m-d',$vvo['final_time']); ?>" placeholder="yyyy-MM-dd" required lay-verify="required">
             </div>
         </div>
         <!--  -->
@@ -184,6 +184,7 @@ layui.config({
     var laydate = layui.laydate;
     var $ = layui.jquery;
 
+
     lay('.test1').each(function() {
         laydate.render({
             elem: this,
@@ -192,6 +193,7 @@ layui.config({
             trigger: 'click'
         });
     });
+
     laydate.render({
         elem: "#construction_period",
         range: "/",

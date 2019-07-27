@@ -88,29 +88,28 @@ class Project extends Base {
         return $this->fetch();
     }
     public function AddDo() {
-        $data = input();
-        var_dump($data);
-        exit;
-        // var_dump($data);
-        // exit;
-        $rule = ['order' => 'required', 'project_namw' => 'required', 'source' => 'required', 'nature' => 'required', 'type_id' => 'required', 'unit_name' => 'required', 'start_time' => 'required', 'end_time' => 'required', 'unit_id' => 'required', 'sign_time' => 'required', 'sign_id' => 'required', 'sign_agent' => 'required', 'contract_amount' => 'required', 'final_time' => 'required', 'fanal_amount' => 'required'];
-        $msg = ['order' => '项目名称不能为空！', 'project_namw' => '项目编号不能为空！', 'source' => '项目来源不能为空！', 'nature' => '项目性质不能为空！', 'type_id' => '项目类型不能为空！', 'unit_name' => '项目委托单位不能为空！', 'start_time' => '项目工期开始时间不能为空！', 'end_time' => '项目工期结束时间不能为空！', 'unit_id' => ' 项目委托单位行业不能为空！', 'sign_time' => '项目签订时间不能为空！', 'sign_id' => '项目签订部门不能为空！', 'sign_agent' => '项目签订人不能为空！', 'contract_amount' => ' 项目合同额不能为空！', 'final_time' => ' 项目决算时间不能为空！', 'fanal_amount' => ' 项目决算额不能为空！'];
-        $validate = new Validate($rule, $msg);
-        $resd = $validate->check($data);
-        if (!$resd) {
-            return json(array(
-                'msg' => $validate->getError()
-            ));
-        }
-        $data['sign_time'] = dump(strtotime($data['sign_time']));
+        $data = input('post.');
+   
+        // $rule = ['order' => 'required', 'project_name' => 'required', 'source' => 'required', 'nature' => 'required', 'type_id' => 'required', 'unit_name' => 'required', 'start_time' => 'required', 'end_time' => 'required', 'unit_id' => 'required', 'sign_time' => 'required', 'sign_id' => 'required', 'sign_agent' => 'required', 'contract_amount' => 'required', 'final_time' => 'required', 'fanal_amount' => 'required'];
+        // $msg = ['order' => '项目编号不能为空！', 'project_name' => '项目名称不能为空！', 'source' => '项目来源不能为空！', 'nature' => '项目性质不能为空！', 'type_id' => '项目类型不能为空！', 'unit_name' => '项目委托单位不能为空！', 'start_time' => '项目工期开始时间不能为空！', 'end_time' => '项目工期结束时间不能为空！', 'unit_id' => ' 项目委托单位行业不能为空！', 'sign_time' => '项目签订时间不能为空！', 'sign_id' => '项目签订部门不能为空！', 'sign_agent' => '项目签订人不能为空！', 'contract_amount' => ' 项目合同额不能为空！', 'final_time' => ' 项目决算时间不能为空！', 'fanal_amount' => ' 项目决算额不能为空！'];
+        // $validate = new Validate($rule, $msg);
+        // $resd = $validate->check($data);
+        // if (!$resd) {
+        //     return json(array(
+        //         'success' =>0,
+        //         'msg' => $validate->getError()
+        //     ));
+        // }
+        // $data['sign_time'] = dump(strtotime($data['sign_time']));
         $res = db('project')->insert($data);
         if ($res) {
-            $this->success("添加成功");
-        } else {
-            $this->error('添加失asdas败');
-            die(mysql_error());
-            exit;
-        }
+                $msg['success'] = 1;
+                $msg['msg'] = "添加成功";
+                return json($msg);
+            }
+            $msg['success'] = 0;
+            $msg['msg'] = "添加失败";
+            return json($msg);
     }
     public function prodelete() {
         $id = input('param.id');
@@ -135,7 +134,11 @@ class Project extends Base {
                 // echo date("Y-m-d H:i:s",$v['start_time']),'<br>';
                 $v['start_time'] = date("Y-m-d", $v['start_time']);
                 $v['end_time'] = date("Y-m-d", $v['end_time']);
+ 
                 $v['construction_period'] = $v['start_time'] . ' ' . '/' . ' ' . $v['end_time'];
+ 
+                $v['construction_period'] = $v['start_time'] . ' / ' . $v['end_time'];
+ 
                 // echo $v['construction_period'];
                 unset($v['start_time'], $v['end_time']);
             }

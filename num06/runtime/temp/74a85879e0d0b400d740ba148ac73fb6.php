@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\add.html";i:1564195262;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\add.html";i:1564209220;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -106,7 +106,8 @@
             <div class="  layui-col-md5">
                 <label class="layui-form-label">签订时间：</label>
                 <div class="layui-input-inline">
-                    <input type="text" class="layui-input" id="test1" name="sign_time" placeholder="yyyy-MM-dd" required lay-verify="required">
+                    <input type="text" class="layui-input" id="sign_time" placeholder="yyyy-MM-dd" required lay-verify="required">
+                    <input type="hidden" name="sign_time">
                 </div>
             </div>
             <!--  -->
@@ -143,7 +144,8 @@
         <div class="layui-form-item layui-col-md6">
             <label class="layui-form-label">决算时间：</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" id="test1" name="final_time" placeholder="yyyy-MM-dd" required lay-verify="required">
+                <input type="text" class="layui-input" id="final_time" placeholder="yyyy-MM-dd" required lay-verify="required">
+                <input type="hidden" name="final_time">
             </div>
         </div>
         <!--  -->
@@ -174,19 +176,34 @@ layui.config({
     var laydate = layui.laydate;
     var $ = layui.$;
 
-    lay('#test1').each(function() {
-        laydate.render({
-            elem: this,
-            format: 'yyyy-MM-dd HH:mm:ss',
-            type: 'datetime',
-            trigger: 'click'
-        });
-    });
+    // lay('#test1').each(function() {
+    // laydate.render({
+    // elem: this,
+    // format: 'yyyy-MM-dd HH:mm:ss',
+    // type: 'datetime',
+    // trigger: 'click'
+    // });
+    // });
+    laydate.render({
+        elem: '#sign_time',
+        done: function(value) {
+            var newtime1 = new Date(value).getTime() / 1000;
+            $('input[ name=sign_time ]').val(newtime1);
+        }
+    })
+    laydate.render({
+        elem: '#final_time',
+        done: function(value) {
+            var newtime2 = new Date(value).getTime() / 1000;
+            $('input[name="final_time"]').val(newtime2);
+        }
+    })
     laydate.render({
         elem: "#construction_period",
         range: "/",
         done: function(value) {
             var time_arr = value.split("/");
+            console.log(time_arr);
             var start_time = new Date(time_arr[0]).getTime() / 1000;
             var end_time = new Date(time_arr[1]).getTime() / 1000;
             $("input[name=start_time]").val(start_time);
@@ -200,11 +217,19 @@ layui.config({
         $.ajax({
             url: 'addDo',
             data: data.field,
+            method: 'POST',
             success: function(data) {
-                layer.msg("提交成功", function() {
-                    window.location.reload();
-                });
+                // console.log(data);
+                if (data.success) {
+                    layer.msg(data.msg, function() {
+                        window.location.reload();
+                    });
+                } else {
+                    layer.msg(data.msg);
+                }
+
             }
+
 
         });
     });

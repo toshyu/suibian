@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\index\index.html";i:1562989434;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\header.html";i:1563946305;s:73:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\left.html";i:1563947167;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\footer.html";i:1562989434;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\index\index.html";i:1562989434;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\header.html";i:1563946305;s:73:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\left.html";i:1564196391;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\footer.html";i:1562989434;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -106,7 +106,7 @@
 <div class="layui-side layui-side-menu">
     <div class="layui-side-scroll">
         <div class="layui-logo">
-            <span>畅想谷</span>
+            <span>项目管理</span>
         </div>
         <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
             <li class="layui-nav-item">
@@ -120,6 +120,8 @@
                 <dl class="layui-nav-child">
                     <dd class="">
                         <a lay-href="<?php echo url('project/index'); ?>">项目列表</a>
+                    </dd>
+                    <dd class="">
                         <a lay-href="<?php echo url('project/add'); ?>">项目添加</a>
                     </dd>
                 </dl>
@@ -129,6 +131,8 @@
                 <dl class="layui-nav-child">
                     <dd class="">
                         <a lay-href="<?php echo url('projectCut/index'); ?>">切块列表</a>
+                    </dd>
+                    <dd class="">
                         <a lay-href="<?php echo url('projectCut/add'); ?>">切块添加</a>
                     </dd>
                 </dl>

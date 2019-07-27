@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\index.html";i:1564194557;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\index.html";i:1564211789;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -206,39 +206,7 @@
                 }
             }
         });
-        table.on('toolbar(project_list)', function(obj) {
-            var checkStatus = table.checkStatus(obj.config.id),
-                data = checkStatus.data; //获取选中的数据
-            switch (obj.event) {
-                case 'delete':
-                    if (data.length === 0) {
-                        layer.msg('请选择一行');
-                    } else {
-                        layer.confirm('真的删除行么', function(index) {
-                            layer.close(index);
-                            //向服务端发送删除指令
-                            $.ajax({
-                                url: 'prodelete',
-                                data: { id: checkStatus },
-                                success: function(obx) {
-                                    obj.del();
-                                    layer.msg('删除成功');
-                                    layer.close(loading);
-                                    //删除对应行（tr）的DOM结构，并更新缓存
-                                },
-                                error: function(obx) {
-                                    layer.msg('删除失败');
-                                    layer.close(loading);
-                                }
-                            })
-                        }, function() {
-                            layer.close(loading);
-                        });
 
-                    }
-                    break;
-            };
-        });
 
         form.on("submit(search)", function(obj) {
             obj.field.page = 1
@@ -251,7 +219,7 @@
             var id = obj.data.id;
             var layEvent = obj.event;
             //获取选中的数据
-            var loading = layer.load(2);
+            var loading = layer.load(6);
             if (layEvent === 'delete') { //删除
                 layer.confirm('真的删除行么', function(index) {
                     layer.close(index);

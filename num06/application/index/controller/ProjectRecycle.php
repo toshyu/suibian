@@ -22,6 +22,16 @@ class ProjectRecycle extends Base{
     } 
     public function add()
     {
+         $project_list = db("project")->where(['status' => 1])->field("id, project_name")->select();
+        $this->assign('list',$project_list);
         return $this->fetch();
     }
+    public function addDo()
+    {
+        $data=(input('post.'));
+
+        $res=db('project_recycle')->insert($data);
+         
+    }
+   
 }
