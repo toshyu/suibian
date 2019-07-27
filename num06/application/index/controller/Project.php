@@ -135,7 +135,7 @@ class Project extends Base {
                 // echo date("Y-m-d H:i:s",$v['start_time']),'<br>';
                 $v['start_time'] = date("Y-m-d", $v['start_time']);
                 $v['end_time'] = date("Y-m-d", $v['end_time']);
-                $v['construction_period'] = $v['start_time'] . ' ' . '' . ' ' . $v['end_time'];
+                $v['construction_period'] = $v['start_time'] . ' / ' . $v['end_time'];
                 // echo $v['construction_period'];
                 unset($v['start_time'], $v['end_time']);
             }
