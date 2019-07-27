@@ -35,7 +35,7 @@
     </div>
     </div>
     <script type="text/html" id="operationTpl">
-        <a lay-href="{:url('projectadd')}?id={{d.id}}" class="layui-btn layui-btn-xs">编辑</a>
+        <a lay-href="{:url('add')}?id={{d.id}}" class="layui-btn layui-btn-xs">编辑</a>
        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
 
     </script>
@@ -92,7 +92,7 @@
                                 //删除对应行（tr）的DOM结构，并更新缓存
                             },
                             error: function(obx) {
-                              layer.msg('删除失败');
+                                layer.msg('删除失败');
                                 layer.close(loading);
                             }
 

@@ -1,13 +1,24 @@
 /** layuiAdmin.std-v1.0.0 LPPL License By http://www.layui.com/admin/ */
-#LAY_app, body, html {
-    height: 100%
+
+
+#LAY_app,
+body,
+html {
+    height: 100%;
+    height: auto;
+    background: url('/num06/public/layui/src/style/login-background.jpg') no-repeat center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 .layui-layout-body {
     overflow: auto
 }
 
-#LAY-user-login, .layadmin-user-display-show {
+#LAY-user-login,
+.layadmin-user-display-show {
     display: block !important
 }
 
@@ -78,7 +89,7 @@
     padding-top: 20px
 }
 
-.layadmin-user-login-other > * {
+.layadmin-user-login-other>* {
     display: inline-block;
     vertical-align: middle;
     margin-right: 10px;

@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\login\index.html";i:1563027502;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\login\index.html";i:1563930441;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -43,23 +43,23 @@
                         <div class="layui-col-xs5">
                             <div style="margin-left: 10px;">
                                 <!-- LAY-user-get-vercode -->
-                                <img class="layadmin-user-login-codeimg" id="my-LAY-user-get-vercode" src="<?php echo captcha_src(); ?>" onclick="changeCode()">
+                                <img class="layadmin-user-login-codeimg" id="my-LAY-user-get-vercode" src="<?php echo captcha_src(); ?>">
                             </div>
                         </div>
                     </div>
                 </div>
                 <!-- <div class="layui-form-item" style="margin-bottom: 20px;">
-						<input type="checkbox" name="remember" lay-skin="primary" title="记住密码">
-						<a href="forget.html" class="layadmin-user-jump-change layadmin-link" style="margin-top: 7px;">忘记密码？</a>
-					</div> -->
+                        <input type="checkbox" name="remember" lay-skin="primary" title="记住密码">
+                        <a href="forget.html" class="layadmin-user-jump-change layadmin-link" style="margin-top: 7px;">忘记密码？</a>
+                    </div> -->
                 <div class="layui-form-item">
                     <button class="layui-btn layui-btn-fluid" id="button_login" lay-submit="" lay-filter="LAY-user-login-submit">登 入</button>
                 </div>
                 <!-- <div class="layui-trans layui-form-item layadmin-user-login-other">
-					<label>社交账号登入</label>
-					<a href="javascript:;"><i class="layui-icon layui-icon-login-qq"></i></a>
-					<a href="javascript:;"><i class="layui-icon layui-icon-login-wechat"></i></a>
-					<a href="javascript:;"><i class="layui-icon layui-icon-login-weibo"></i></a> -->
+                    <label>社交账号登入</label>
+                    <a href="javascript:;"><i class="layui-icon layui-icon-login-qq"></i></a>
+                    <a href="javascript:;"><i class="layui-icon layui-icon-login-wechat"></i></a>
+                    <a href="javascript:;"><i class="layui-icon layui-icon-login-weibo"></i></a> -->
                 <!-- <a href="reg.html" class="layadmin-user-jump-change layadmin-link">注册帐号</a> -->
             </div>
         </div>
@@ -69,7 +69,8 @@
 <!-- <script src="/num06/public/static/js/jquery.min.js"></script> -->
 <!-- <script src="/num06/public/static/js/ulock/unlock.js"></script> -->
 <script src="/num06/public/layui/layui.js"></script>
-<script>
+<script src="/num06/public/layui/jquery.js"></script>
+<script type="text/javascript">
 // $(function() {
 //     /*滑动验证*/
 //     var check = $('.J_check');
@@ -97,8 +98,13 @@
 //     check.slideToUnlock(_options);
 //     /*END*/
 // });
+$(document).ready(function() {
+    $('#my-LAY-user-get-vercode').click(function() {
+        $("#my-LAY-user-get-vercode").attr('src', "<?php echo captcha_src(); ?>?" + Math.random());
+    });
+});
 
-
+;
 
 layui.config({
     base: '/num06/public/layui/src/' //静态资源所在路径
@@ -115,11 +121,15 @@ layui.config({
 
     form.render();
 
+
+
     $(document).keydown(function(event) {
         if (event.keyCode == 13) {
             document.getElementById("button_login").click();
         }
     });
+
+
 
     // 提交
     form.on('submit(LAY-user-login-submit)', function(obj) {
@@ -135,11 +145,9 @@ layui.config({
             }
         });
     });
-});
 
-function changeCode() {
-    $("#my-LAY-user-get-vercode").attr('src', "<?php echo captcha_src(); ?>?" + Math.random());
-}
+
+});
 </script>
 
 </html>

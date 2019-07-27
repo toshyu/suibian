@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:79:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_cut\index.html";i:1563604338;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:79:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_cut\index.html";i:1564033431;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -36,7 +36,7 @@
     </div>
     </div>
     <script type="text/html" id="operationTpl">
-        <a lay-href="<?php echo url('proEdit'); ?>?id={{d.id}}" class="layui-btn layui-btn-xs">编辑</a>
+        <a lay-href="<?php echo url('add'); ?>?id={{d.id}}" class="layui-btn layui-btn-xs">编辑</a>
        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
 
     </script>

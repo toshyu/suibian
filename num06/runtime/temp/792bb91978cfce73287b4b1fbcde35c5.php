@@ -1,0 +1,125 @@
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_task\index.html";i:1564032101;}*/ ?>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>项目任务</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/num06/public/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/num06/public/layui/css/admin.css" media="all">
+    <link rel="stylesheet" href="/num06/public/layui/css/template.css" media="all">
+</head>
+
+<body>
+    <div class="layui-fluid">
+        <div class="layui-card">
+            <div class="layui-card-header">任务列表</div>
+            <div class="layui-card-body">
+                <div class="layui-form">
+                    <div class="layui-input-inline">
+                        <div class="layui-form-item">
+                            <input type="text" class="layui-input" name="project_name" placeholder="项目名称">
+                        </div>
+                    </div>
+                    <div class="layui-input-inline">
+                        <div class="layui-form-item">
+                            <input type="text" class="layui-input" name="task_table" placeholder="内部切块表">
+                        </div>
+                    </div>
+                    <div class="layui-input-inline">
+                        <div class="layui-form-item">
+                            <input type="text" class="layui-input" name="task_book" placeholder="下达任务书">
+                        </div>
+                    </div>
+                    <div class="layui-input-inline">
+                        <div class="layui-form-item">
+                            <input type="text" class="layui-input" name="task_group" placeholder="兴趣小组">
+                        </div>
+                    </div>
+                    <div class="layui-input-inline">
+                        <div class="layui-form-item">
+                            <input type="text" class="layui-input" name="task_gr_leader" placeholder="小组组长">
+                        </div>
+                    </div>
+                    <div class="layui-input-inline">
+                        <div class="layui-form-item">
+                            <input type="text" class="layui-input" name="task_gr_pm" placeholder="项目经理">
+                        </div>
+                    </div>
+                    <div class="layui-input-inline">
+                        <div class="layui-form-item">
+                            <a href="javascript:;" class="layui-btn" lay-submit lay-filter="search">搜索</a>
+                            <!-- <button class="layui-btn layui-btn-sm" lay-event="delete">添加</button> -->
+                        </div>
+                    </div>
+                </div>
+                <hr>
+                <div class="layui-card-body">
+                    <table class="layui-hide" id="project_task" lay-filter="project_task"></table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/html" id="operationTpl">
+        <a lay-href="<?php echo url('projectadd'); ?>?id={{d.id}}" class="layui-btn layui-btn-xs">编辑</a>
+       <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
+
+    </script>
+    <script src="/num06/public/layui/layui.js"></script>
+    <script>
+    layui.config({
+        base: '/num06/public/layui/src/' //静态资源所在路径
+    }).extend({
+        index: 'index' //主入口模块
+    }).use(['index', 'element', 'table', 'form', 'util', 'laydate'], function() {
+        var $ = layui.$,
+            table = layui.table,
+            element = layui.element,
+            form = layui.form,
+            util = layui.util,
+            laydate = layui.laydate;
+
+        table.render({
+            elem: "#project_task",
+            page: true,
+            loding: true,
+            url: "<?php echo url('taskList'); ?>",
+            toolbar: 'default',
+            cols: [
+                [
+                    { field: 'pro_name', title: '所属项目名称', minWidth: 100 },
+                    { field: 'new_table', title: '中心内部切块表', minWidth: 100 },
+                    { field: 'new_book', title: '中心下达任务书', minWidth: 100 },
+                    { field: 'task_group', title: '兴趣小组', minWidth: 100 },
+                    { field: 'task_gr_leader', title: '小组组长', minWidth: 100 },
+                    { field: 'task_gr_pm', title: '项目经理', minWidth: 100 },
+                    { field: 'new_plan', title: '项目部实施计划', minWidth: 100 },
+                    { fixed: 'right', width: 165, title: '操作', align: 'center', toolbar: '#operationTpl' }
+                ]
+            ],
+            parseData: function(res) {
+                return {
+                    code: res.code,
+                    count: res.last_page,
+                    data: res.data,
+                    msg: res.msg
+                }
+            }
+        })
+        form.on("submit(search)", function(obj) {
+            obj.field.page = 1
+            table.reload("project_task", {
+                where: obj.field
+            })
+        });
+
+
+
+    });
+    </script>
+</body>
+
+</html>

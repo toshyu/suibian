@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\index.html";i:1563588622;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\index.html";i:1564043266;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -127,10 +127,10 @@
     </div>
     </div>
     <script type="text/html" id="operationTpl">
-        <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
-  <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
-  <a href="<?php echo url('index/project/prodelete'); ?>?id={{d.id}}"  class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"> 删除</a>
- 
+        <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="sel"> 查看</a>
+        <a href="<?php echo url('index/project/update'); ?>?id={{d.id}}" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+  <a  class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete"> 删除</a>
+
     </script>
     <script src="/num06/public/layui/layui.js"></script>
     <script>
@@ -179,7 +179,7 @@
             toolbar: 'default',
             cols: [
                 [
-                    // { field: 'id', title '项目id', minWidth: 130 },
+                    { type: 'checkbox', fixed: 'left' }, { field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left', totalRowText: '合计：' },
                     { field: 'order', sort: true, title: '合同编号', minWidth: 100 },
                     { field: 'project_name', title: '项目名称', minWidth: 150 },
                     { field: 'source', title: '项目来源', minWidth: 130 },
@@ -188,7 +188,7 @@
                     { field: 'unit_name', title: '委托单位', minWidth: 130 },
                     { field: 'unit_id', title: '委托单位行业', minWidth: 130 },
                     { field: 'sign_time', title: '签订时间', minWidth: 130, templet: function(d) { return d.sign_time ? util.toDateString(d.sign_time * 1000, 'yyyy-MM-dd') : '' } },
-                    { field: 'end_time', title: '工期', minWidth: 130 },
+                    { field: 'construction_period', title: '工期', minWidth: 130 },
                     { field: 'sign_id', title: '签订部门', minWidth: 130 },
                     { field: 'sign_agent', title: '经办人', minWidth: 130 },
                     { field: 'contract_amount', title: '合同额', minWidth: 130 },
@@ -205,7 +205,40 @@
                     msg: res.msg
                 }
             }
-        })
+        });
+        table.on('toolbar(project_list)', function(obj) {
+            var checkStatus = table.checkStatus(obj.config.id),
+                data = checkStatus.data; //获取选中的数据
+            switch (obj.event) {
+                case 'delete':
+                    if (data.length === 0) {
+                        layer.msg('请选择一行');
+                    } else {
+                        layer.confirm('真的删除行么', function(index) {
+                            layer.close(index);
+                            //向服务端发送删除指令
+                            $.ajax({
+                                url: 'prodelete',
+                                data: { id: checkStatus },
+                                success: function(obx) {
+                                    obj.del();
+                                    layer.msg('删除成功');
+                                    layer.close(loading);
+                                    //删除对应行（tr）的DOM结构，并更新缓存
+                                },
+                                error: function(obx) {
+                                    layer.msg('删除失败');
+                                    layer.close(loading);
+                                }
+                            })
+                        }, function() {
+                            layer.close(loading);
+                        });
+
+                    }
+                    break;
+            };
+        });
 
         form.on("submit(search)", function(obj) {
             obj.field.page = 1
@@ -214,7 +247,34 @@
             })
         });
 
-
+        table.on('tool(project_list)', function(obj) {
+            var id = obj.data.id;
+            var layEvent = obj.event;
+            //获取选中的数据
+            var loading = layer.load(2);
+            if (layEvent === 'delete') { //删除
+                layer.confirm('真的删除行么', function(index) {
+                    layer.close(index);
+                    //向服务端发送删除指令
+                    $.ajax({
+                        url: 'prodelete',
+                        data: { id: id },
+                        success: function(obx) {
+                            obj.del();
+                            layer.msg('删除成功');
+                            layer.close(loading);
+                            //删除对应行（tr）的DOM结构，并更新缓存
+                        },
+                        error: function(obx) {
+                            layer.msg('删除失败');
+                            layer.close(loading);
+                        }
+                    })
+                }, function() {
+                    layer.close(loading);
+                });
+            }
+        });
 
     });
     </script>

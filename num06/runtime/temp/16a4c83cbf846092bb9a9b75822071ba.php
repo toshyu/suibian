@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\index\index.html";i:1562989434;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\header.html";i:1562996960;s:73:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\left.html";i:1563090328;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\footer.html";i:1562989434;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\index\index.html";i:1562989434;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\header.html";i:1563946305;s:73:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\left.html";i:1563947167;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\footer.html";i:1562989434;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -33,12 +33,12 @@
                 </ul>
                 <ul class="layui-nav layui-layout-right" lay-filter="layadmin-layout-right">
                     <!-- <li class="layui-nav-item" lay-unselect="">
-						<a lay-href="javascript:;" layadmin-event="message" lay-text="消息中心">
-							<i class="layui-icon layui-icon-notice"></i> -->
+                        <a lay-href="javascript:;" layadmin-event="message" lay-text="消息中心">
+                            <i class="layui-icon layui-icon-notice"></i> -->
                     <!-- 如果有新消息，则显示小圆点 -->
                     <!-- <span class="layui-badge-dot"></span>
-						</a>
-					</li> -->
+                        </a>
+                    </li> -->
                     <li class="layui-nav-item layui-hide-xs" lay-unselect="">
                         <a href="javascript:;" layadmin-event="theme">
                             <i class="layui-icon layui-icon-theme"></i>
@@ -56,12 +56,12 @@
                         </a>
                         <dl class="layui-nav-child">
                             <!-- <dd>
-								<a lay-href="javascript:;">消息中心</a>
-							</dd>
-							<dd>
-								<a lay-href="javascript:;">修改密码</a>
-							</dd>
-							<hr> -->
+                                <a lay-href="javascript:;">消息中心</a>
+                            </dd>
+                            <dd>
+                                <a lay-href="javascript:;">修改密码</a>
+                            </dd>
+                            <hr> -->
                             <dd style="text-align: center;">
                                 <a href="javascript:logout()">退出</a>
                                 <script src="/num06/public/static/js/jquery.min.js"></script>
@@ -98,8 +98,8 @@
                         <i class="layui-icon layui-icon-more-vertical"></i>
                     </li>
                     <!-- <li class="layui-nav-item layui-show-xs-inline-block layui-hide-sm" lay-unselect="">
-							<a href="javascript:;" layadmin-event="more"><i class="layui-icon layui-icon-more-vertical"></i></a>
-						</li> -->
+                            <a href="javascript:;" layadmin-event="more"><i class="layui-icon layui-icon-more-vertical"></i></a>
+                        </li> -->
                 </ul>
             </div>
             <!--侧边菜单-->
@@ -129,7 +129,7 @@
                 <dl class="layui-nav-child">
                     <dd class="">
                         <a lay-href="<?php echo url('projectCut/index'); ?>">切块列表</a>
-                        <a lay-href="<?php echo url('projectCut/projectadd'); ?>">切块添加</a>
+                        <a lay-href="<?php echo url('projectCut/add'); ?>">切块添加</a>
                     </dd>
                 </dl>
             </li>
@@ -138,7 +138,7 @@
                 <dl class="layui-nav-child">
                     <dd class="">
                         <a lay-href="<?php echo url('projectTask/index'); ?>">任务列表</a>
-                        <a lay-href="<?php echo url('projectTask/projectAdd'); ?>">任务添加</a>
+                        <a lay-href="<?php echo url('projectTask/add'); ?>">任务添加</a>
                     </dd>
                 </dl>
             </li>
@@ -147,7 +147,7 @@
                 <dl class="layui-nav-child">
                     <dd class="">
                         <a lay-href="<?php echo url('projectRecycle/index'); ?>"> 回收列表</a>
-                        <a lay-href="<?php echo url('projectRecycle/projectAdd'); ?>">发票添加</a>
+                        <a lay-href="<?php echo url('projectRecycle/add'); ?>">发票添加</a>
                     </dd>
                 </dl>
             </li>
@@ -156,7 +156,7 @@
                 <dl class="layui-nav-child">
                     <dd class="">
                         <a lay-href="<?php echo url('projectReimburse/index'); ?>"> 支出列表</a>
-                        <a lay-href="<?php echo url('projectReimburse/projectAdd'); ?>">报销添加</a>
+                        <a lay-href="<?php echo url('projectReimburse/add'); ?>">报销添加</a>
                     </dd>
                 </dl>
             </li>
@@ -165,7 +165,7 @@
                 <dl class="layui-nav-child">
                     <dd class="">
                         <a lay-href="<?php echo url('projectOutsce/index'); ?>"> 外协列表</a>
-                        <a lay-href="<?php echo url('projectOutsce/projectAdd'); ?>">外协添加</a>
+                        <a lay-href="<?php echo url('projectOutsce/add'); ?>">外协添加</a>
                     </dd>
                 </dl>
             </li>
