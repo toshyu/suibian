@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_task\index.html";i:1564032101;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_task\index.html";i:1564194950;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -80,6 +80,7 @@
             element = layui.element,
             form = layui.form,
             util = layui.util,
+
             laydate = layui.laydate;
 
         table.render({
@@ -114,6 +115,34 @@
             table.reload("project_task", {
                 where: obj.field
             })
+        });
+        table.on('tool(project_task)', function(obj) {
+            var id = obj.data.id;
+            var layEvent = obj.event;
+            //获取选中的数据
+            var loading = layer.load(2);
+            if (layEvent === 'delete') { //删除
+                layer.confirm('真的删除行么', function(index) {
+                    layer.close(index);
+                    //向服务端发送删除指令
+                    $.ajax({
+                        url: 'prodelete',
+                        data: { id: id },
+                        success: function(obx) {
+                            obj.del();
+                            layer.msg('删除成功');
+                            layer.close(loading);
+                            //删除对应行（tr）的DOM结构，并更新缓存
+                        },
+                        error: function(obx) {
+                            layer.msg('删除失败');
+                            layer.close(loading);
+                        }
+                    })
+                }, function() {
+                    layer.close(loading);
+                });
+            }
         });
 
 

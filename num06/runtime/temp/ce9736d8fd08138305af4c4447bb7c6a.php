@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\update.html";i:1564034547;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\update.html";i:1564196114;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -114,7 +114,7 @@
             <div class="  layui-col-md5">
                 <label class="layui-form-label">签订时间：</label>
                 <div class="layui-input-inline">
-                    <input type="text" class="layui-input" id="test1" name="sign_time" value="<?php echo date('Y-m-d H:m:s',$vvo['sign_time']); ?>" placeholder="yyyy-MM-dd" required lay-verify="required">
+                    <input type="text" class="layui-input test1" id="test1" name="sign_time" value="<?php echo date('Y-m-d H:m:s',$vvo['sign_time']); ?>" placeholder="yyyy-MM-dd" required lay-verify="required">
                 </div>
             </div>
             <!--  -->
@@ -151,7 +151,7 @@
         <div class="layui-form-item layui-col-md6">
             <label class="layui-form-label">决算时间：</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" id="test1" name="final_time" value="<?php echo date('Y-m-d H:m:s',$vvo['final_time']); ?>" placeholder="yyyy-MM-dd" required lay-verify="required">
+                <input type="text" class="layui-input test1" id="test1" name="final_time" value="<?php echo date('Y-m-d H:m:s',$vvo['final_time']); ?>" placeholder="yyyy-MM-dd" required lay-verify="required">
             </div>
         </div>
         <!--  -->
@@ -184,7 +184,7 @@ layui.config({
     var laydate = layui.laydate;
     var $ = layui.jquery;
 
-    lay('#test1').each(function() {
+    lay('.test1').each(function() {
         laydate.render({
             elem: this,
             format: 'yyyy-MM-dd HH:mm:ss',

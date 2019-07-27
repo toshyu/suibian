@@ -33,7 +33,7 @@ class ProjectTask extends Base {
         $task_table = trim(input("task_table"));  
         $task_book = trim(input("task_book"));  
         $task_group = trim(input("task_group")); 
-        $task_gr_leader = trim(input("task_gr_ledaer")); 
+        $task_gr_leader = trim(input("task_gr_leader")); 
         $task_gr_pm = trim(input("task_gr_pm"));  
         $task_plan = trim(input("task_plan"));  
          $where = [];
@@ -68,6 +68,21 @@ class ProjectTask extends Base {
             $this->error('添加失asdas败');
             die(mysql_error());
             exit;
+        }
+    }
+    public function prodelete() {
+        $id = input('param.id');
+        if (is_numeric($id) && $id > 0) {
+            $suc = db('project_task')->where('id', 'eq', $id)->update(['status' => 0]);
+            if ($suc) {
+                $this->success("删除成功");
+            } else {
+                $this->error("删除失败");
+                die(mysql_error());
+                exit;
+            }
+        } else {
+            $this->error("参数非法");
         }
     }
 }

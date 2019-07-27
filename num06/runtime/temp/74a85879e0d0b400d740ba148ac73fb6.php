@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\add.html";i:1563959607;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\add.html";i:1564195262;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -168,11 +168,11 @@ layui.config({
     base: '/num06/public/layui/src/' //静态资源所在路径
 }).extend({
     index: 'index' //主入口模块
-}).use(['index', 'form', 'element', 'laydate'], function() {
+}).use(['index', 'element', 'form', 'element', 'laydate'], function() {
     var form = layui.form;
     var element = layui.element;
     var laydate = layui.laydate;
-    var $ = layui.jquery;
+    var $ = layui.$;
 
     lay('#test1').each(function() {
         laydate.render({
@@ -183,17 +183,17 @@ layui.config({
         });
     });
     laydate.render({
-elem: "#construction_period",
-range: "/",
-done: function(value) {
-var time_arr = value.split("/");
-var start_time = new Date(time_arr[0]).getTime() / 1000;
-var end_time = new Date(time_arr[1]).getTime() / 1000;
-$("input[name=start_time]").val(start_time);
-$("input[name=end_time]").val(end_time);
-// console.log(start_time);
-}
-})
+        elem: "#construction_period",
+        range: "/",
+        done: function(value) {
+            var time_arr = value.split("/");
+            var start_time = new Date(time_arr[0]).getTime() / 1000;
+            var end_time = new Date(time_arr[1]).getTime() / 1000;
+            $("input[name=start_time]").val(start_time);
+            $("input[name=end_time]").val(end_time);
+            // console.log(start_time);
+        }
+    })
     form.on('submit(demo1)', function(data) {
         delete data.field.construction_period;
         // console.log(data.field);
