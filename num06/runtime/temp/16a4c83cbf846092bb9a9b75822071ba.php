@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\index\index.html";i:1562989434;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\header.html";i:1563946305;s:73:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\left.html";i:1564196391;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\footer.html";i:1562989434;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:4:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\index\index.html";i:1562989434;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\header.html";i:1563946305;s:73:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\left.html";i:1564216896;s:75:"D:\phpstudy\PHPTutorial\WWW\num06\application\index\view\public\footer.html";i:1562989434;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -108,7 +108,8 @@
         <div class="layui-logo">
             <span>项目管理</span>
         </div>
-        <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu" lay-filter="layadmin-system-side-menu">
+        <ul class="layui-nav layui-nav-tree" lay-shrink="all" id="LAY-system-side-menu"
+            lay-filter="layadmin-system-side-menu">
             <li class="layui-nav-item">
                 <a href="javascript:;" lay-href="home" lay-tips="主页" lay-direction="2" class="layui-this">
                     <i class="layui-icon layui-icon-auz"></i>
@@ -142,6 +143,8 @@
                 <dl class="layui-nav-child">
                     <dd class="">
                         <a lay-href="<?php echo url('projectTask/index'); ?>">任务列表</a>
+                    </dd>
+                    <dd class="">
                         <a lay-href="<?php echo url('projectTask/add'); ?>">任务添加</a>
                     </dd>
                 </dl>
@@ -151,6 +154,8 @@
                 <dl class="layui-nav-child">
                     <dd class="">
                         <a lay-href="<?php echo url('projectRecycle/index'); ?>"> 回收列表</a>
+                    </dd>
+                    <dd class="">
                         <a lay-href="<?php echo url('projectRecycle/add'); ?>">发票添加</a>
                     </dd>
                 </dl>
@@ -160,6 +165,8 @@
                 <dl class="layui-nav-child">
                     <dd class="">
                         <a lay-href="<?php echo url('projectReimburse/index'); ?>"> 支出列表</a>
+                    </dd>
+                    <dd class="">
                         <a lay-href="<?php echo url('projectReimburse/add'); ?>">报销添加</a>
                     </dd>
                 </dl>
@@ -169,6 +176,8 @@
                 <dl class="layui-nav-child">
                     <dd class="">
                         <a lay-href="<?php echo url('projectOutsce/index'); ?>"> 外协列表</a>
+                    </dd>
+                    <dd class="">
                         <a lay-href="<?php echo url('projectOutsce/add'); ?>">外协添加</a>
                     </dd>
                 </dl>
