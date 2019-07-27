@@ -8,6 +8,29 @@ class ProjectOutsce extends Base{
     return $this->fetch();
  }
 
+ // 外协列表
+ public function getOutsceList(){
+     $limit = trim(input("limit", 10));
+     $outsce_name = trim(input("outsce_name"));
+     $outsce_unit = trim(input("outsce_unit"));
+     $cantact = trim(input("cantact"));
+     $where = [];
+
+     !empty($outsce_name) && $where['po.outsce_name'] = [ "like", "%$outsce_name%" ];
+     !empty($outsce_unit) && $where['po.outsce_unit'] = [ "like", "%$outsce_unit%" ];
+     !empty($cantact) && $where['po.cantact'] = [ "like", "%$cantact%" ];
+     $list = db("project_outsce po")
+        -> where(['po.status' => 1])
+        -> where($where)
+        -> field("po.outsce_sn, po.outsce_name, po.sign_time, po.cantact")
+        -> paginate($limit)
+        -> toArray();
+    
+    $list['code'] = 0;
+    $list['msg'] = "查询成功";
+    return json($list);
+ }
+
  public function outsceList()
     {  
         $data=db('project_task') 
