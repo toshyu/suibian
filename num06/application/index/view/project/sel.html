@@ -22,49 +22,29 @@
         <div class="layui-row layui-form-item">
             <div class="  layui-col-md3">
                 <label class="layui-form-label">合同编号</label>
-                <h2> {$vvo.order}</h2>
+                <div class="layui-form-mid layui-word-aux">{$vvo.order}</div>
             </div>
             <!--  -->
             <div class=" layui-col-md3">
                 <label class="layui-form-label">项目名称</label>
-                <div class="layui-input-block">
-                    {$vvo.project_name}
-                </div>
+                <div class="layui-form-mid layui-word-aux">{$vvo.project_name}</div>
             </div>
         </div>
         <!--  -->
         <div class="layui-row layui-form-item ">
             <div class=" layui-col-md3">
                 <label class="layui-form-label">来源</label>
-                <div class="layui-input-block">
-                    <select name="source" lay-filter="aihao" required lay-verify="required">
-                        <option value="{$vvo.source}">{if condition="$vvo.source eq 1"}合同
-                            {elseif condition="$vvo.source eq 2"}备案
-                            {elseif condition="$vvo.source eq 3"}上级下达
-                            {else /}其他{/if}
-                        </option>
-                        <option value="1">合同</option>
-                        <option value="2">备案</option>
-                        <option value="3">上级下达</option>
-                        <option value="4">其他</option>
-                    </select>
+                <div class="layui-form-mid layui-word-aux">
+                    {if condition="$vvo.source eq 1"}合同
+                    {elseif condition="$vvo.source eq 2"}备案
+                    {elseif condition="$vvo.source eq 3"}上级下达
+                    {else /}其他{/if}
                 </div>
             </div>
             <!--  -->
             <div class=" layui-col-md3">
                 <label class="layui-form-label">性质</label>
-                <div class="layui-input-block">
-                    <select name="nature" lay-filter="aihao" required lay-verify="required">
-                        <option value="{$vvo.nature}">{if condition="$vvo.nature eq 1"}市场招标
-                            {elseif condition="$vvo.nature eq 2"}财政招标
-                            {elseif condition="$vvo.nature eq 3"}合作挂靠
-                            {else /}其他{/if}</option>
-                        <option value="1">市场招标</option>
-                        <option value="2">财政招标</option>
-                        <option value="3">合作挂靠</option>
-                        <option value="4">其他</option>
-                    </select>
-                </div>
+                <div class="layui-form-mid layui-word-aux">{$vvo.project_name}</div>
             </div>
             <div class=" layui-col-md3">
                 <label class="layui-form-label">类型</label>
