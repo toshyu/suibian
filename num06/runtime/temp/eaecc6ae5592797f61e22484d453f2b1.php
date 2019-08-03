@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\index.html";i:1564211789;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:75:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\index.html";i:1564555857;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -127,7 +127,7 @@
     </div>
     </div>
     <script type="text/html" id="operationTpl">
-        <a class="layui-btn layui-btn-warm layui-btn-xs" lay-event="sel"> 查看</a>
+        <a href="<?php echo url('index/project/sel'); ?>?id={{d.id}}" class="layui-btn layui-btn-warm layui-btn-xs" lay-event="sel"> 查看</a>
         <a href="<?php echo url('index/project/update'); ?>?id={{d.id}}" class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
   <a  class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete"> 删除</a>
 
@@ -176,7 +176,7 @@
             page: true,
             loding: true,
             url: "<?php echo url('project/getProjectList'); ?>",
-            toolbar: 'default',
+            toolbar: 'true',
             cols: [
                 [
                     { type: 'checkbox', fixed: 'left' }, { field: 'id', title: 'ID', width: 80, sort: true, fixed: 'left', totalRowText: '合计：' },

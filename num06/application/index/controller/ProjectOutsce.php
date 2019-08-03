@@ -22,7 +22,7 @@ class ProjectOutsce extends Base{
      $list = db("project_outsce po")
         -> where(['po.status' => 1])
         -> where($where)
-        -> field("po.outsce_sn, po.outsce_name, po.sign_time, po.cantact")
+        -> field("po.id,po.outsce_sn, po.outsce_name, po.sign_time, po.cantact")
         -> paginate($limit)
         -> toArray();
     
@@ -30,23 +30,38 @@ class ProjectOutsce extends Base{
     $list['msg'] = "查询成功";
     return json($list);
  }
-
- public function outsceList()
-    {  
-        $data=db('project_task') 
-        ->field('id,task_table,task_book,task_group,task_gr_leader,task_gr_pm,task_plan')
-        ->where('status=1')
-        ->select();
-        $msg['code'] = 0;
-        $msg['msg'] = "查询成功";
-        $msg['data'] = $data;
-        return json($msg);
-         
-    } 
+ 
     public function add()
     {
             $project_list = db("project") -> where(['status' => 1]) -> field("id, project_name") -> select();
             $this->assign('list',$project_list);
         return $this->fetch();
+    }
+    public function proDelete() {
+        $id = trim(input("id"));
+        if ($id) {
+            $data = db('project_outsce')->where('id', 'eq', $id)->update(['status' => 0]);
+            if ($data) {
+                $this->success('删除成功');
+            } else {
+                $this->error('删除失败');
+                die(mysql_error());
+                exit;
+            }
+        } else {
+            $this->error('参数不对');
+        }
+    }
+    public function update()
+    {
+          $id = input('param.id');
+        if (is_numeric($id) && $id > 0) {
+              $list = db("project_outsce po")
+              ->join("project p","p.id=po.pro_id")
+        -> where(['po.status' => 1,'p.status'=>1])
+        -> field("p.projectname,po.id,po.unit_name,po.cantact,po.phone,po.outsce_sn, po.outsce_name,po.sign_name,po.start_time,po.end_time,po.contract_amount,po.final_amount,po.final_time,po.earnest_amount,po.earnest_time,po.reserve_start_time,po.reserve_end_time,po.reserce_amount")
+        -> paginate($limit)
+        -> toArray();
+        }
     }
 }

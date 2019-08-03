@@ -29,7 +29,7 @@ class ProjectTask extends Base {
     public function taskList() {
 
        $limit = trim(input("limit")) ? trim(input("limit")) : 10;
-        $project_name=trim(input("proejct_name"));
+        $project_name=trim(input("project_name"));
         $task_table = trim(input("task_table"));  
         $task_book = trim(input("task_book"));  
         $task_group = trim(input("task_group")); 
@@ -48,6 +48,7 @@ class ProjectTask extends Base {
 
         $result= db('project_task pt')->join('project p', 'p.id=pt.pro_id')->where(['p.status' => 1, 'pt.status' => 1])
         ->where($where)->field("p.project_name as pro_name,pt.id,case pt.task_table when 1 then '有' when 2 then '否' end as new_table,case pt.task_book when 1 then'已下达' when 2 then '未下达' end as new_book,pt.task_group,pt.task_gr_leader,pt.task_gr_pm,case pt.task_plan when 1 then '已提交' when 2 then '未提交' end as new_plan")->paginate($limit)->toArray();
+        
           $result['code'] = 0;
         $result['msg'] = "查询成功";
         return json($result);
@@ -84,6 +85,29 @@ class ProjectTask extends Base {
         } else {
             $this->error("参数非法");
         }
+    }
+    public function update(){
+        $id=input('param.id');
+        $list=db('project_task pt')->join("project p","p.id=pt.pro_id")->where('pt.id','eq',$id)->field("p.project_name,pt.id,pt.task_group,pt.task_gr_leader,pt.task_gr_pm, pt.task_table,task_book ,task_plan")->find();
+
+        $this->assign('list',$list);
+        return $this->fetch();
+    }
+    public function updateDo()
+    {
+        $data=input('post.');
+
+        $id = $data['id'];
+   
+        $res = db('project_task')->where('id', $id)->update($data);
+        if ($res) {
+            $msg['success'] = 1;
+            $msg['msg'] = "更新成功";
+            return json($msg);
+        }
+        $msg['success'] = 0;
+        $msg['msg'] = "更新失败";
+        return json($msg);
     }
 }
 

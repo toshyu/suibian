@@ -64,6 +64,7 @@ class Project extends Base {
         !empty($end_time) && $where['p.end_time'] = $end_time;
         $result = db("project p")->join("unit_industy ui", "ui.id = p.unit_id")->join("type t", "t.id = p.type_id")->join("sign s", "s.id = p.sign_id")->where(['p.status' => 1, 'ui.status' => 1, 't.status' => 1])->where($where)->order("p.id")->field("p.id, p.order, p.project_name, case p.source when 1 then '合同' when 2 then '内部备案' when 3 then '上级下达' when 4 then '其他' end as source,  case p.nature when 1 then '市场招标' when 2 then '财政招标' when 3 then '合作挂靠' when 4 then '其他' end as nature, t.title as type_id, p.unit_name, ui.title as unit_id, s.title as sign_id, p.sign_time, p.start_time,p.end_time,s.title as sign_agent, p.sign_agent, p.contract_amount, p.final_amount")->paginate($limit)->toArray();
         // var_dump($result['data'][0]['start_time']);
+         
         foreach ($result['data'] as $k => & $v) {
             // echo date("Y-m-d H:i:s",$v['start_time']),'<br>';
             $v['start_time'] = date("Y-m-d", $v['start_time']);
@@ -89,7 +90,6 @@ class Project extends Base {
     }
     public function AddDo() {
         $data = input('post.');
-   
         // $rule = ['order' => 'required', 'project_name' => 'required', 'source' => 'required', 'nature' => 'required', 'type_id' => 'required', 'unit_name' => 'required', 'start_time' => 'required', 'end_time' => 'required', 'unit_id' => 'required', 'sign_time' => 'required', 'sign_id' => 'required', 'sign_agent' => 'required', 'contract_amount' => 'required', 'final_time' => 'required', 'fanal_amount' => 'required'];
         // $msg = ['order' => '项目编号不能为空！', 'project_name' => '项目名称不能为空！', 'source' => '项目来源不能为空！', 'nature' => '项目性质不能为空！', 'type_id' => '项目类型不能为空！', 'unit_name' => '项目委托单位不能为空！', 'start_time' => '项目工期开始时间不能为空！', 'end_time' => '项目工期结束时间不能为空！', 'unit_id' => ' 项目委托单位行业不能为空！', 'sign_time' => '项目签订时间不能为空！', 'sign_id' => '项目签订部门不能为空！', 'sign_agent' => '项目签订人不能为空！', 'contract_amount' => ' 项目合同额不能为空！', 'final_time' => ' 项目决算时间不能为空！', 'fanal_amount' => ' 项目决算额不能为空！'];
         // $validate = new Validate($rule, $msg);
@@ -103,15 +103,15 @@ class Project extends Base {
         // $data['sign_time'] = dump(strtotime($data['sign_time']));
         $res = db('project')->insert($data);
         if ($res) {
-                $msg['success'] = 1;
-                $msg['msg'] = "添加成功";
-                return json($msg);
-            }
-            $msg['success'] = 0;
-            $msg['msg'] = "添加失败";
+            $msg['success'] = 1;
+            $msg['msg'] = "添加成功";
             return json($msg);
+        }
+        $msg['success'] = 0;
+        $msg['msg'] = "添加失败";
+        return json($msg);
     }
-    public function prodelete() {
+    public function proDelete() {
         $id = input('param.id');
         if (is_numeric($id) && $id > 0) {
             $suc = db('project')->where('id', 'eq', $id)->update(['status' => 0]);
@@ -134,11 +134,8 @@ class Project extends Base {
                 // echo date("Y-m-d H:i:s",$v['start_time']),'<br>';
                 $v['start_time'] = date("Y-m-d", $v['start_time']);
                 $v['end_time'] = date("Y-m-d", $v['end_time']);
- 
                 $v['construction_period'] = $v['start_time'] . ' ' . '/' . ' ' . $v['end_time'];
- 
                 $v['construction_period'] = $v['start_time'] . ' / ' . $v['end_time'];
- 
                 // echo $v['construction_period'];
                 unset($v['start_time'], $v['end_time']);
             }
@@ -155,19 +152,46 @@ class Project extends Base {
             $this->error('参数不对  lese');
         }
     }
-    public function proUpdateDo(Request $request) {
-        $data = $request->post();
-        // var_dump($data['id']);
-        // exit;
+    public function updateDo() {
+        $data = input('post.');
         $id = $data['id'];
-        $res = db('project')->where('id', 'eq', $id)->update($data);
+        unset($data['construction_period']);
+        $res = db('project')->where('id', $id)->update($data);
         if ($res) {
-            $this->success("更新成功");
-        } else {
-            $this->error("更新失败");
-            die(mysql_error());
-            exit;
+            $msg['success'] = 1;
+            $msg['msg'] = "更新成功";
+            return json($msg);
         }
+        $msg['success'] = 0;
+        $msg['msg'] = "更新失败";
+        return json($msg);
+    }
+    public function sel() {
+       $id = input('param.id');
+        if (is_numeric($id) && $id > 0) {
+            $list = db('project p')->join("type t", "t.id=p.type_id")->join("unit_industy ui", "ui.id=p.unit_id")->join("sign s", "s.id=p.sign_id")->where(['p.status' => 1, 'ui.status' => 1, 't.status' => 1, 'p.id' => $id])->field("t.title as type_title,ui.title as unit_title,s.title as sign_title,p.id,p.order,p.project_name,p.source,p.nature,p.unit_name,p.sign_time,p.sign_agent,p.contract_amount,p.final_amount,p.final_time,p.start_time,p.end_time,p.type_id,p.unit_id,p.sign_id")->select();
+            foreach ($list as $k => & $v) {
+                // echo date("Y-m-d H:i:s",$v['start_time']),'<br>';
+                $v['start_time'] = date("Y-m-d", $v['start_time']);
+                $v['end_time'] = date("Y-m-d", $v['end_time']);
+                $v['construction_period'] = $v['start_time'] . ' ' . '/' . ' ' . $v['end_time'];
+                $v['construction_period'] = $v['start_time'] . ' / ' . $v['end_time'];
+                // echo $v['construction_period'];
+                unset($v['start_time'], $v['end_time']);
+            }
+            // $list=$this->getProjectList();
+            $type_list = getProjectType();
+            $unit_industy_list = getUnitIndusty();
+            $sign_id = getSign();
+            $this->assign("type_list", $type_list);
+            $this->assign("unit_industy_list", $unit_industy_list);
+            $this->assign("sign_id", $sign_id);
+            $this->assign('list', $list);
+            return $this->fetch();
+        } else {
+            $this->error('参数不对  lese');
+        }
+
     }
 }
 

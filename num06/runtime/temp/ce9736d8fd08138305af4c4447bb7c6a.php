@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\update.html";i:1564209879;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\update.html";i:1564554119;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,6 +18,7 @@
         <legend>项目内容添加</legend>
     </fieldset>
     <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vvo): $mod = ($i % 2 );++$i;?>
+    <!--startprint1-->
     <div class="layui-form">
         <div class="layui-row layui-form-item">
             <div class="  layui-col-md5">
@@ -114,7 +115,8 @@
             <div class="  layui-col-md5">
                 <label class="layui-form-label">签订时间：</label>
                 <div class="layui-input-inline">
-                    <input type="text" class="layui-input test1" id="test1" name="sign_time" value="<?php echo date('Y-m-d H:m:s',$vvo['sign_time']); ?>" placeholder="yyyy-MM-dd" required lay-verify="required">
+                    <input type="text" class="layui-input" id="sign_time" value="<?php echo date('Y-m-d',$vvo['sign_time']); ?>" placeholder="yyyy-MM-dd" required lay-verify="required">
+                    <input type="hidden" name="sign_time" value="">
                 </div>
             </div>
             <!--  -->
@@ -151,7 +153,8 @@
         <div class="layui-form-item layui-col-md6">
             <label class="layui-form-label">决算时间：</label>
             <div class="layui-input-inline">
-                <input type="text" class="layui-input" id="date2" name="final_time" value="<?php echo date('Y-m-d',$vvo['final_time']); ?>" placeholder="yyyy-MM-dd" required lay-verify="required">
+                <input type="text" class="layui-input" id="final_time" value="<?php echo date('Y-m-d',$vvo['final_time']); ?>" placeholder="yyyy-MM-dd" required lay-verify="required">
+                <input type="hidden" name="final_time" value="">
             </div>
         </div>
         <!--  -->
@@ -162,17 +165,35 @@
             </div>
         </div>
         <!--  -->
+        <input type="hidden" name="id" value="<?php echo $vvo['id']; ?>">
         <?php endforeach; endif; else: echo "" ;endif; ?>
+        <!--endprint1-->
         <div class="layui-form-item">
             <div class="layui-input-block">
                 <button class="layui-btn" lay-submit="" lay-filter="demo1">立即修改</button>
-                <button type="reset" class="layui-btn layui-btn-primary">重置</button>
                 <a type="reset" href="javascript:history.go(-1);" class="layui-btn layui-btn-danger">返回</a>
+                <input type=button class="btn btn-info" title='打印' onclick=preview(1) value=打印>
             </div>
         </div>
     </div>
 </body>
 <script src="/num06/public/layui/layui.js"></script>
+<script language="javascript">
+function preview(oper) {
+    if (oper < 10) {
+        bdhtml = window.document.body.innerHTML; //获取当前页的html代码 
+        sprnstr = "<!--startprint" + oper + "-->"; //设置打印开始区域
+        eprnstr = "<!--endprint" + oper + "-->"; //设置打印结束区域
+        prnhtml = bdhtml.substring(bdhtml.indexOf(sprnstr) + 18); //从开始代码向后取html
+        prnhtml = prnhtml.substring(0, prnhtml.indexOf(eprnstr)); //从结束代码向前取html
+        window.document.body.innerHTML = prnhtml;
+        window.print();
+        window.document.body.innerHTML = bdhtml;
+    } else {
+        window.print();
+    }
+}
+</script>
 <script>
 layui.config({
     base: '/num06/public/layui/src/' //静态资源所在路径
@@ -185,15 +206,29 @@ layui.config({
     var $ = layui.jquery;
 
 
-    lay('.test1').each(function() {
-        laydate.render({
-            elem: this,
-            format: 'yyyy-MM-dd HH:mm:ss',
-            type: 'datetime',
-            trigger: 'click'
-        });
-    });
+    // lay('#final_time').each(function() {
+    //     laydate.render({
+    //         elem: this,
+    //         format: 'yyyy-MM-dd',
+    //         type: 'date',
+    //         trigger: 'click'
+    //     });
+    // });
 
+    laydate.render({
+        elem: '#sign_time',
+        done: function(value) {
+            var newtime1 = new Date(value).getTime() / 1000;
+            $('input[ name=sign_time ]').val(newtime1);
+        }
+    })
+    laydate.render({
+        elem: '#final_time',
+        done: function(value) {
+            var newtime2 = new Date(value).getTime() / 1000;
+            $('input[name="final_time"]').val(newtime2);
+        }
+    })
     laydate.render({
         elem: "#construction_period",
         range: "/",
@@ -208,16 +243,22 @@ layui.config({
         }
     })
     form.on('submit(demo1)', function(data) {
-        delete data.field.construction_period;
-        // console.log(data.field);
         $.ajax({
-            url: 'addDo',
+            url: 'updateDo',
             data: data.field,
+            method: 'POST',
             success: function(data) {
-                layer.msg("修改成功", function() {
-                    window.location.reload();
-                });
+                // console.log(data);
+                if (data.success) {
+                    layer.msg(data.msg, function() {
+                        window.location.reload();
+                    });
+                } else {
+                    layer.msg(data.msg);
+                }
+
             }
+
 
         });
     });

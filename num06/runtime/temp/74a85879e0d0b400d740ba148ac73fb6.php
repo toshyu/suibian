@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\add.html";i:1564209220;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\add.html";i:1564555191;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +17,7 @@
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
         <legend>项目内容添加</legend>
     </fieldset>
-    <div class="layui-form">
+    <form class="layui-form">
         <div class="layui-row layui-form-item">
             <div class="  layui-col-md5">
                 <label class="layui-form-label">合同编号</label>
@@ -64,8 +64,8 @@
                 <label class="layui-form-label">类型</label>
                 <div class="layui-input-block">
                     <select name="type_id" lay-filter="aihao" required lay-varify="required">
-                        <?php if(is_array($type_list) || $type_list instanceof \think\Collection || $type_list instanceof \think\Paginator): $i = 0; $__LIST__ = $type_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                         <option value="">请选择</option>
+                        <?php if(is_array($type_list) || $type_list instanceof \think\Collection || $type_list instanceof \think\Paginator): $i = 0; $__LIST__ = $type_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                         <option value="<?php echo $vo['id']; ?>"><?php echo $vo['title']; ?></option>
                         <?php endforeach; endif; else: echo "" ;endif; ?>
                     </select>
@@ -162,7 +162,7 @@
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
-    </div>
+    </form>
 </body>
 <script src="/num06/public/layui/layui.js"></script>
 <script>

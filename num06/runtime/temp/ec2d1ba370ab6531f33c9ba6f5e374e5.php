@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:79:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_cut\index.html";i:1564033431;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:79:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_cut\index.html";i:1564555892;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,6 +56,7 @@
             elem: "#project_cut",
             url: '<?php echo url("cutBlockList"); ?>',
             loading: true,
+            toolbar: true,
             cols: [
                 [
                     { field: 'project_name', title: '项目名称', minWidth: 200 },

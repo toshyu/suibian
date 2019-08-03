@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_task\index.html";i:1564194950;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:80:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_task\index.html";i:1564555954;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -64,7 +64,7 @@
         </div>
     </div>
     <script type="text/html" id="operationTpl">
-        <a lay-href="<?php echo url('projectadd'); ?>?id={{d.id}}" class="layui-btn layui-btn-xs">编辑</a>
+        <a lay-href="<?php echo url('update'); ?>?id={{d.id}}" class="layui-btn layui-btn-xs">编辑</a>
        <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="delete">删除</a>
 
     </script>
@@ -88,7 +88,7 @@
             page: true,
             loding: true,
             url: "<?php echo url('taskList'); ?>",
-            toolbar: 'default',
+            toolbar: 'true',
             cols: [
                 [
                     { field: 'pro_name', title: '所属项目名称', minWidth: 100 },

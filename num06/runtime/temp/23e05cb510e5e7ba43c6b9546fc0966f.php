@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_reimburse\add.html";i:1563954352;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:83:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_reimburse\add.html";i:1564555265;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +17,7 @@
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
         <legend>项目报销内容添加</legend>
     </fieldset>
-    <div class="layui-form">
+    <form class="layui-form">
         <div class="layui-row layui-form-item">
             <div class="  layui-col-md5">
                 <div class="layui-form-label">请选择项目</div>
@@ -29,7 +29,7 @@
                     </select> </div>
             </div>
             <div class=" layui-col-md5">
-                <label class="layui-form-label">签订部门</label>
+                <label class="layui-form-label">报账部门</label>
                 <div class="layui-input-block" style="width:200px;">
                     <select name="sign_id" lay-filter="aihao" required>
                         <option value=" ">请选择</option>
@@ -66,7 +66,8 @@
             <div class="  layui-col-md5">
                 <label class="layui-form-label">报账时间</label>
                 <div class="layui-input-inline">
-                    <input type="text" class="layui-input" id="test1" name="sign_time" placeholder="yyyy-MM-dd" required lay-verify="required">
+                    <input type="text" class="layui-input" id="test1" placeholder="yyyy-MM-dd" required lay-verify="required">
+                    <input type="hidden" name="retime">
                 </div>
             </div>
         </div>
@@ -302,7 +303,7 @@
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
-    </div>
+    </form>
 </body>
 <script src="/num06/public/layui/layui.js"></script>
 <script>
@@ -334,7 +335,30 @@ layui.config({
             trigger: 'click'
         });
     });
-
+    laydate.render({
+        elem: '#test1',
+        done: function(value) {
+            var newtime = new Date(value).getTime() / 1000;
+            $('input[ name=retime ]').val(newtime);
+        }
+    })
+    form.on('submit(demo1)',
+        function(data) {
+            $.ajax({
+                url: 'addDo',
+                data: data.field,
+                method: 'POST',
+                success: function(data) {
+                    if (data.success) {
+                        layer.msg(data.msg, function() {
+                            window.location.reload();
+                        });
+                    } else {
+                        layer.msg(data.msg);
+                    }
+                }
+            })
+        })
 
 
 });

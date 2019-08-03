@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:81:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_recycle\add.html";i:1564215993;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:81:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project_recycle\add.html";i:1564555298;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,13 +15,13 @@
 
 <body>
     <fieldset class="layui-elem-field layui-field-title" style="margin-top: 20px;">
-        <legend>项目报销内容添加</legend>
+        <legend>项目发票内容添加</legend>
     </fieldset>
-    <div class="layui-form">
+    <form class="layui-form">
         <div class="layui-row layui-form-item  layui-col-md6">
             <div class="layui-form-label">请选择项目</div>
             <div class="layui-input-block">
-                <select name="pro_id" lay-filter="project" lay-search>
+                <select name="pro_id" lay-filter="project" lay-search lay-verify="required">
                     <option value="">请选择</option>
                     <?php if(is_array($list) || $list instanceof \think\Collection || $list instanceof \think\Paginator): $i = 0; $__LIST__ = $list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
                     <option value="<?php echo $vo['id']; ?>"><?php echo $vo['project_name']; ?> </option> <?php endforeach; endif; else: echo "" ;endif; ?>
@@ -38,20 +38,25 @@
         <div class="layui-row layui-form-item  layui-col-md6">
             <label class="layui-form-label">开票部门：</label>
             <div class="layui-input-block">
-                <input type="text" name="makedepart" lay-verify="title" autocomplete="off" placeholder="请输入部门名称" class="layui-input" required>
+                <select name="makedepart" lay-filter="project" lay_search lay-verify="required">
+                    <option value="">请选择</option>
+                    <?php if(is_array($sign_id) || $sign_id instanceof \think\Collection || $sign_id instanceof \think\Paginator): $i = 0; $__LIST__ = $sign_id;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
+                    <option value="<?php echo $vo['id']; ?>"><?php echo $vo['title']; ?></option>
+                    <?php endforeach; endif; else: echo "" ;endif; ?>
+                </select>
             </div>
         </div>
         <div class="layui-row layui-form-item  layui-col-md6">
             <label class="layui-form-label">开票人：</label>
             <div class="layui-input-block">
-                <input type="text" name="makedepart" lay-verify="title" autocomplete="off" placeholder="请输入部门名称" class="layui-input" required>
+                <input type="text" name="makeperson" lay-verify="title" autocomplete="off" placeholder="请输入" class="layui-input" required lay-verify="required">
             </div>
         </div>
         <!--  -->
         <div class="layui-row layui-form-item  layui-col-md6">
             <label class="layui-form-label">开票类型：</label>
             <div class="layui-input-block">
-                <select name="maketype" lay-filter="project" lay-search>
+                <select name="maketype" lay-filter="project" lay-search lay-verify="required">
                     <option value="">请选择</option>
                     <option value="开票收款">开票收款</option>
                     <option value="开票挂账">开票挂账</option>
@@ -62,13 +67,13 @@
         <div class="layui-form-item layui-col-md6">
             <label class="layui-form-label">开票额：</label>
             <div class="layui-input-block">
-                <input type="text" name="makemoney" lay-verify="number" autocomplete="off" placeholder="请输入合同额" class="layui-input" required>
+                <input type="text" name="makemoney" lay-verify="number" autocomplete="off" placeholder="请输入合同额" class="layui-input" required lay-verify="required">
             </div>
         </div>
         <div class="layui-form-item layui-col-md6">
             <label class="layui-form-label">到账额：</label>
             <div class="layui-input-block">
-                <input type="text" name="tomoney" lay-verify="number" autocomplete="off" placeholder="请输入合同额" class="layui-input" required>
+                <input type="text" name="tomoney" lay-verify="number" autocomplete="off" placeholder="请输入合同额" class="layui-input" required lay-verify="required">
             </div>
         </div>
         <div class="layui-row layui-form-item  layui-col-md5">
@@ -85,7 +90,7 @@
                 <button type="reset" class="layui-btn layui-btn-primary">重置</button>
             </div>
         </div>
-    </div>
+    </form>
 </body>
 <script src="/num06/public/layui/layui.js"></script>
 <script>
@@ -123,6 +128,23 @@ layui.config({
             $('input[name="totime"]').val(newtime2);
         }
     })
+    form.on('submit(demo1)',
+        function(data) {
+            $.ajax({
+                url: 'addDo',
+                data: data.field,
+                method: 'POST',
+                success: function(data) {
+                    if (data.success) {
+                        layer.msg(data.msg, function() {
+                            window.location.reload();
+                        });
+                    } else {
+                        layer.msg(data.msg);
+                    }
+                }
+            })
+        })
 
 
 });
