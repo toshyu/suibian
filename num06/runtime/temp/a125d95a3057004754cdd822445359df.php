@@ -1,10 +1,10 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:76:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\update.html";i:1564801276;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\sel.html";i:1564797820;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <title>消息中心首页</title>
+    <title>项目情况一览</title>
     <meta name="renderer" content="webkit">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
@@ -21,17 +21,15 @@
     <!--startprint1-->
     <div class="layui-form">
         <div class="layui-row layui-form-item">
-            <div class="  layui-col-md5">
+            <div class="  layui-col-md3">
                 <label class="layui-form-label">合同编号</label>
-                <div class="layui-input-block">
-                    <input type="text" name="order" lay-verify="required" autocomplete="off" placeholder="请输入合同编号" value="<?php echo $vvo['order']; ?>" class="layui-input" required>
-                </div>
+                <h2> <?php echo $vvo['order']; ?></h2>
             </div>
             <!--  -->
-            <div class=" layui-col-md5">
+            <div class=" layui-col-md3">
                 <label class="layui-form-label">项目名称</label>
                 <div class="layui-input-block">
-                    <input type="text" name="project_name" lay-verify="required" autocomplete="off" placeholder="请输入项目名称" value="<?php echo $vvo['project_name']; ?>" class="layui-input" required>
+                    <?php echo $vvo['project_name']; ?>
                 </div>
             </div>
         </div>
@@ -84,24 +82,13 @@
         <p></p>
         <!--  -->
         <div class="layui-row">
-            <div class="layui-form-item layui-col-md5">
+            <div class="layui-form-item layui-col-md3">
                 <label class="layui-form-label">委托单位：</label>
                 <div class="layui-input-block">
                     <input type="text" name="unit_name" lay-verify="title" autocomplete="off" placeholder="请输入委托单位名称" value="<?php echo $vvo['unit_name']; ?>" class="layui-input" required>
                 </div>
             </div>
-            <div class="  layui-col-md5">
-                <label class="layui-form-label">工期：</label>
-                <div class="layui-inline">
-                    <input type="text" class="layui-input" placeholder="工期" name="construction_period" value="<?php echo $vvo['construction_period']; ?>" id="construction_period" required lay-verify="required">
-                    <input name="start_time" type="hidden">
-                    <input name="end_time" type="hidden">
-                </div>
-            </div>
-        </div>
-        <!--  -->
-        <div class="layui-row layui-form-item ">
-            <div class=" layui-col-md5">
+            <div class=" layui-col-md3">
                 <label class="layui-form-label">委托单位行业</label>
                 <div class="layui-input-block">
                     <select name="unit_id" lay-filter="aihao" required>
@@ -112,18 +99,28 @@
                     </select>
                 </div>
             </div>
-            <div class="  layui-col-md5">
-                <label class="layui-form-label">签订时间：</label>
-                <div class="layui-input-inline">
-                    <input type="text" class="layui-input" id="sign_time" value=" <?php echo date('Y-m-d',$vvo['sign_time']); ?>  " placeholder="yyyy-MM-dd" required lay-verify="required">
-                    <input type="hidden" name="sign_time" value="">
-                </div>
-            </div>
-            <!--  -->
         </div>
         <!--  -->
         <div class="layui-row layui-form-item ">
-            <div class=" layui-col-md5">
+            <div class=" layui-col-md3">
+                <label class="layui-form-label">工期：</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" placeholder="工期" name="construction_period" value="<?php echo $vvo['construction_period']; ?>" id="construction_period" required lay-verify="required">
+                    <input name="start_time" type="hidden">
+                    <input name="end_time" type="hidden">
+                </div>
+            </div>
+            <div class="  layui-col-md3">
+                <label class="layui-form-label">签订时间：</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="sign_time" value="<?php echo date('Y-m-d',$vvo['sign_time']); ?>" placeholder="yyyy-MM-dd" required lay-verify="required">
+                    <input type="hidden" name="sign_time" value="">
+                </div>
+            </div>
+        </div>
+        <!--  -->
+        <div class="layui-row layui-form-item ">
+            <div class=" layui-col-md3">
                 <label class="layui-form-label">签订部门</label>
                 <div class="layui-input-block">
                     <select name="sign_id" lay-filter="aihao" required>
@@ -135,7 +132,7 @@
                 </div>
             </div>
             <!--  -->
-            <div class=" layui-col-md5">
+            <div class=" layui-col-md3">
                 <label class="layui-form-label">签订人：</label>
                 <div class="layui-input-block">
                     <input type="text" name="sign_agent" value="<?php echo $vvo['sign_agent']; ?>" lay-verify="title" autocomplete="off" placeholder="请输入签订人" class="layui-input" required>
@@ -143,25 +140,27 @@
             </div>
         </div>
         <!--  -->
-        <div class="layui-form-item layui-col-md6">
-            <label class="layui-form-label">合同额：</label>
-            <div class="layui-input-block">
-                <input type="text" name="contract_amount" value="<?php echo $vvo['contract_amount']; ?>" lay-verify="number" autocomplete="off" placeholder="请输入合同额" class="layui-input" required>
+        <div class="layui-row layui-form-item ">
+            <div class=" layui-col-md3">
+                <label class="layui-form-label">合同额：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="contract_amount" value="<?php echo $vvo['contract_amount']; ?>" lay-verify="number" autocomplete="off" placeholder="请输入合同额" class="layui-input" required>
+                </div>
             </div>
-        </div>
-        <!--  -->
-        <div class="layui-form-item layui-col-md6">
-            <label class="layui-form-label">决算时间：</label>
-            <div class="layui-input-inline">
-                <input type="text" class="layui-input" id="final_time" value="<?php echo date('Y-m-d',$vvo['final_time']); ?>" placeholder="yyyy-MM-dd" required lay-verify="required">
-                <input type="hidden" name="final_time" value="">
+            <!--  -->
+            <div class=" layui-col-md3">
+                <label class="layui-form-label">决算时间：</label>
+                <div class="layui-input-block">
+                    <input type="text" class="layui-input" id="final_time" value="<?php echo date('Y-m-d',$vvo['final_time']); ?>" placeholder="yyyy-MM-dd" required lay-verify="required">
+                    <input type="hidden" name="final_time" value="">
+                </div>
             </div>
-        </div>
-        <!--  -->
-        <div class="layui-form-item layui-col-md6">
-            <label class="layui-form-label">决算额：</label>
-            <div class="layui-input-block">
-                <input type="text" name="final_amount" value="<?php echo $vvo['final_amount']; ?>" lay-verify="number" autocomplete="off" placeholder="请输入决算额" class="layui-input" required>
+            <!--  -->
+            <div class=" layui-col-md3">
+                <label class="layui-form-label">决算额：</label>
+                <div class="layui-input-block">
+                    <input type="text" name="final_amount" value="<?php echo $vvo['final_amount']; ?>" lay-verify="number" autocomplete="off" placeholder="请输入决算额" class="layui-input" required>
+                </div>
             </div>
         </div>
         <!--  -->
@@ -170,9 +169,8 @@
         <!--endprint1-->
         <div class="layui-form-item">
             <div class="layui-input-block">
-                <button class="layui-btn" lay-submit="" lay-filter="demo1">立即修改</button>
                 <a type="reset" href="javascript:history.go(-1);" class="layui-btn layui-btn-danger">返回</a>
-                <input type=button class="btn btn-info" title='打印' onclick=preview(1) value=打印>
+                <input type=button class="btn btn-info" name='button_export' title='打印' onclick=preview(1) value=打印>
             </div>
         </div>
     </div>
@@ -242,26 +240,7 @@ layui.config({
             console.log(start_time);
         }
     })
-    form.on('submit(demo1)', function(data) {
-        $.ajax({
-            url: 'updateDo',
-            data: data.field,
-            method: 'POST',
-            success: function(data) {
-                // console.log(data);
-                if (data.success) {
-                    layer.msg(data.msg, function() {
-                        window.location.reload();
-                    });
-                } else {
-                    layer.msg(data.msg);
-                }
 
-            }
-
-
-        });
-    });
 
 });
 </script>

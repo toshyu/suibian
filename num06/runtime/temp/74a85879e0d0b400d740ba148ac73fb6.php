@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\add.html";i:1564555191;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\add.html";i:1564707060;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -153,6 +153,59 @@
             <label class="layui-form-label">决算额：</label>
             <div class="layui-input-block">
                 <input type="text" name="final_amount" lay-verify="number" autocomplete="off" placeholder="请输入决算额" class="layui-input" required>
+            </div>
+        </div>
+        <!--  -->
+        <div class="layui-col-md12">
+            <div class="layui-form-item">
+                <div class="layui-form-label">付款方式</div>
+                <div class="layui-input-block">
+                    <a href="javascript:;" class="layui-btn" id="addPayment">添加</a>
+                </div>
+            </div>
+            <div id="payment">
+                <div class="layui-form-item">
+                    <div class="layui-form-label">&nbsp;</div>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input start_time" placeholder="开始日期">
+                    </div>
+                    <div class="layui-form-mid">-</div>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input end_time" placeholder="结束日期">
+                    </div>
+                    <div class="layui-input-inline">
+                        <input type="text" class="layui-input" placeholder="金额">
+                    </div>
+                    <div class="layui-input-inline">
+                        <a href="javascript:;" class="layui-btn layui-btn-danger delPayment">删除</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md12">
+            <div class="layui-form-item">
+                <div class="layui-form-label">预留质量保证金</div>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input start_time" placeholder="开始日期">
+                </div>
+                <div class="layui-form-mid">-</div>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input end_time" placeholder="结束日期">
+                </div>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" placeholder="金额">
+                </div>
+            </div>
+        </div>
+        <div class="layui-col-md12">
+            <div class="layui-form-item">
+                <div class="layui-form-label">退保证金</div>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input return_time" placeholder="日期">
+                </div>
+                <div class="layui-input-inline">
+                    <input type="text" class="layui-input" placeholder="金额">
+                </div>
             </div>
         </div>
         <!--  -->
