@@ -20,19 +20,19 @@
     <!--startprint1-->
     <div class="layui-form">
         <div class="layui-row layui-form-item">
-            <div class="  layui-col-md3">
+            <div class="  layui-col-md6">
                 <label class="layui-form-label">合同编号</label>
                 <div class="layui-form-mid layui-word-aux">{$vvo.order}</div>
             </div>
             <!--  -->
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">项目名称</label>
                 <div class="layui-form-mid layui-word-aux">{$vvo.project_name}</div>
             </div>
         </div>
         <!--  -->
         <div class="layui-row layui-form-item ">
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">来源</label>
                 <div class="layui-form-mid layui-word-aux">
                     {if condition="$vvo.source eq 1"}合同
@@ -42,103 +42,87 @@
                 </div>
             </div>
             <!--  -->
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">性质</label>
-                <div class="layui-form-mid layui-word-aux">{$vvo.project_name}</div>
+                <div class="layui-form-mid layui-word-aux">{if condition="$vvo.nature eq 1"}市场招标
+                    {elseif condition="$vvo.nature eq 2"}财政招标
+                    {elseif condition="$vvo.nature eq 3"}合作挂靠
+                    {else /}其他{/if}</div>
             </div>
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">类型</label>
                 <div class="layui-input-block">
-                    <select name="type_id" lay-filter="aihao" required lay-varify="required">
-                        <option value="{$vvo.type_id}">{$vvo.type_title}</option>
-                        {volist name="type_list" id="vo"}
-                        <option value="{$vo.id}">{$vo.title}</option>
-                        {/volist}
-                    </select>
+                    <div class="layui-form-mid layui-word-aux">{$vvo.type_title}</div>
                 </div>
             </div>
         </div>
         <p></p>
         <!--  -->
         <div class="layui-row">
-            <div class="layui-form-item layui-col-md3">
+            <div class="layui-form-item layui-col-md6">
                 <label class="layui-form-label">委托单位：</label>
                 <div class="layui-input-block">
-                    <input type="text" name="unit_name" lay-verify="title" autocomplete="off" placeholder="请输入委托单位名称" value="{$vvo.unit_name}" class="layui-input" required>
+                    <div class="layui-form-mid layui-word-aux">{$vvo.unit_name}</div>
                 </div>
             </div>
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">委托单位行业</label>
                 <div class="layui-input-block">
-                    <select name="unit_id" lay-filter="aihao" required>
-                        <option value="{$vvo.unit_id}">{$vvo.unit_title} </option>
-                        {volist name="unit_industy_list" id="vo"}
-                        <option value="{$vo.id}">{$vo.title}</option>
-                        {/volist}
-                    </select>
+                    <div class="layui-form-mid layui-word-aux">{$vvo.unit_title}</div>
                 </div>
             </div>
         </div>
         <!--  -->
         <div class="layui-row layui-form-item ">
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">工期：</label>
                 <div class="layui-input-block">
-                    <input type="text" class="layui-input" placeholder="工期" name="construction_period" value="{$vvo.construction_period}" id="construction_period" required lay-verify="required">
-                    <input name="start_time" type="hidden">
-                    <input name="end_time" type="hidden">
+                    <div class="layui-form-mid layui-word-aux">{$vvo.construction_period}</div>
                 </div>
             </div>
-            <div class="  layui-col-md3">
+            <div class="  layui-col-md6">
                 <label class="layui-form-label">签订时间：</label>
                 <div class="layui-input-block">
-                    <input type="text" class="layui-input" id="sign_time" value="{$vvo.sign_time|date='Y-m-d',###}" placeholder="yyyy-MM-dd" required lay-verify="required">
-                    <input type="hidden" name="sign_time" value="">
+                    <div class="layui-form-mid layui-word-aux">{$vvo.sign_time|date='Y-m-d',###}</div>
                 </div>
             </div>
         </div>
         <!--  -->
         <div class="layui-row layui-form-item ">
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">签订部门</label>
                 <div class="layui-input-block">
-                    <select name="sign_id" lay-filter="aihao" required>
-                        <option value="{$vvo.sign_id}">{$vvo.sign_title} </option>
-                        {volist name="sign_id" id="vo"}
-                        <option value="{$vo.id}">{$vo.title}</option>
-                        {/volist}
-                    </select>
+                    <div class="layui-form-mid layui-word-aux">{$vvo.sign_title}</div>
                 </div>
             </div>
             <!--  -->
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">签订人：</label>
                 <div class="layui-input-block">
-                    <input type="text" name="sign_agent" value="{$vvo.sign_agent}" lay-verify="title" autocomplete="off" placeholder="请输入签订人" class="layui-input" required>
+                    <div class="layui-form-mid layui-word-aux">{$vvo.sign_agent}</div>
                 </div>
             </div>
         </div>
         <!--  -->
         <div class="layui-row layui-form-item ">
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">合同额：</label>
                 <div class="layui-input-block">
-                    <input type="text" name="contract_amount" value="{$vvo.contract_amount}" lay-verify="number" autocomplete="off" placeholder="请输入合同额" class="layui-input" required>
+                    <div class="layui-form-mid layui-word-aux">{$vvo.contract_amount}</div>
                 </div>
             </div>
             <!--  -->
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">决算时间：</label>
                 <div class="layui-input-block">
-                    <input type="text" class="layui-input" id="final_time" value="{$vvo.final_time|date='Y-m-d',###}" placeholder="yyyy-MM-dd" required lay-verify="required">
-                    <input type="hidden" name="final_time" value="">
+                    <div class="layui-form-mid layui-word-aux">{$vvo.final_time|date='Y-m-d',###}</div>
                 </div>
             </div>
             <!--  -->
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">决算额：</label>
                 <div class="layui-input-block">
-                    <input type="text" name="final_amount" value="{$vvo.final_amount}" lay-verify="number" autocomplete="off" placeholder="请输入决算额" class="layui-input" required>
+                    <div class="layui-form-mid layui-word-aux">{$vvo.final_amount}</div>
                 </div>
             </div>
         </div>

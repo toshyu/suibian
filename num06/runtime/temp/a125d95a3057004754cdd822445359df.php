@@ -1,4 +1,4 @@
-<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\sel.html";i:1564797820;}*/ ?>
+<?php if (!defined('THINK_PATH')) exit(); /*a:1:{s:73:"D:\phpstudy\PHPTutorial\WWW\num06/application/index\view\project\sel.html";i:1564881511;}*/ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -21,145 +21,109 @@
     <!--startprint1-->
     <div class="layui-form">
         <div class="layui-row layui-form-item">
-            <div class="  layui-col-md3">
+            <div class="  layui-col-md6">
                 <label class="layui-form-label">合同编号</label>
-                <h2> <?php echo $vvo['order']; ?></h2>
+                <div class="layui-form-mid layui-word-aux"><?php echo $vvo['order']; ?></div>
             </div>
             <!--  -->
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">项目名称</label>
-                <div class="layui-input-block">
-                    <?php echo $vvo['project_name']; ?>
-                </div>
+                <div class="layui-form-mid layui-word-aux"><?php echo $vvo['project_name']; ?></div>
             </div>
         </div>
         <!--  -->
         <div class="layui-row layui-form-item ">
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">来源</label>
-                <div class="layui-input-block">
-                    <select name="source" lay-filter="aihao" required lay-verify="required">
-                        <option value="<?php echo $vvo['source']; ?>"><?php if($vvo['source'] == 1): ?>合同
-                            <?php elseif($vvo['source'] == 2): ?>备案
-                            <?php elseif($vvo['source'] == 3): ?>上级下达
-                            <?php else: ?>其他<?php endif; ?>
-                        </option>
-                        <option value="1">合同</option>
-                        <option value="2">备案</option>
-                        <option value="3">上级下达</option>
-                        <option value="4">其他</option>
-                    </select>
+                <div class="layui-form-mid layui-word-aux">
+                    <?php if($vvo['source'] == 1): ?>合同
+                    <?php elseif($vvo['source'] == 2): ?>备案
+                    <?php elseif($vvo['source'] == 3): ?>上级下达
+                    <?php else: ?>其他<?php endif; ?>
                 </div>
             </div>
             <!--  -->
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">性质</label>
-                <div class="layui-input-block">
-                    <select name="nature" lay-filter="aihao" required lay-verify="required">
-                        <option value="<?php echo $vvo['nature']; ?>"><?php if($vvo['nature'] == 1): ?>市场招标
-                            <?php elseif($vvo['nature'] == 2): ?>财政招标
-                            <?php elseif($vvo['nature'] == 3): ?>合作挂靠
-                            <?php else: ?>其他<?php endif; ?></option>
-                        <option value="1">市场招标</option>
-                        <option value="2">财政招标</option>
-                        <option value="3">合作挂靠</option>
-                        <option value="4">其他</option>
-                    </select>
-                </div>
+                <div class="layui-form-mid layui-word-aux"><?php if($vvo['nature'] == 1): ?>市场招标
+                    <?php elseif($vvo['nature'] == 2): ?>财政招标
+                    <?php elseif($vvo['nature'] == 3): ?>合作挂靠
+                    <?php else: ?>其他<?php endif; ?></div>
             </div>
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">类型</label>
                 <div class="layui-input-block">
-                    <select name="type_id" lay-filter="aihao" required lay-varify="required">
-                        <option value="<?php echo $vvo['type_id']; ?>"><?php echo $vvo['type_title']; ?></option>
-                        <?php if(is_array($type_list) || $type_list instanceof \think\Collection || $type_list instanceof \think\Paginator): $i = 0; $__LIST__ = $type_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                        <option value="<?php echo $vo['id']; ?>"><?php echo $vo['title']; ?></option>
-                        <?php endforeach; endif; else: echo "" ;endif; ?>
-                    </select>
+                    <div class="layui-form-mid layui-word-aux"><?php echo $vvo['type_title']; ?></div>
                 </div>
             </div>
         </div>
         <p></p>
         <!--  -->
         <div class="layui-row">
-            <div class="layui-form-item layui-col-md3">
+            <div class="layui-form-item layui-col-md6">
                 <label class="layui-form-label">委托单位：</label>
                 <div class="layui-input-block">
-                    <input type="text" name="unit_name" lay-verify="title" autocomplete="off" placeholder="请输入委托单位名称" value="<?php echo $vvo['unit_name']; ?>" class="layui-input" required>
+                    <div class="layui-form-mid layui-word-aux"><?php echo $vvo['unit_name']; ?></div>
                 </div>
             </div>
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">委托单位行业</label>
                 <div class="layui-input-block">
-                    <select name="unit_id" lay-filter="aihao" required>
-                        <option value="<?php echo $vvo['unit_id']; ?>"><?php echo $vvo['unit_title']; ?> </option>
-                        <?php if(is_array($unit_industy_list) || $unit_industy_list instanceof \think\Collection || $unit_industy_list instanceof \think\Paginator): $i = 0; $__LIST__ = $unit_industy_list;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                        <option value="<?php echo $vo['id']; ?>"><?php echo $vo['title']; ?></option>
-                        <?php endforeach; endif; else: echo "" ;endif; ?>
-                    </select>
+                    <div class="layui-form-mid layui-word-aux"><?php echo $vvo['unit_title']; ?></div>
                 </div>
             </div>
         </div>
         <!--  -->
         <div class="layui-row layui-form-item ">
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">工期：</label>
                 <div class="layui-input-block">
-                    <input type="text" class="layui-input" placeholder="工期" name="construction_period" value="<?php echo $vvo['construction_period']; ?>" id="construction_period" required lay-verify="required">
-                    <input name="start_time" type="hidden">
-                    <input name="end_time" type="hidden">
+                    <div class="layui-form-mid layui-word-aux"><?php echo $vvo['construction_period']; ?></div>
                 </div>
             </div>
-            <div class="  layui-col-md3">
+            <div class="  layui-col-md6">
                 <label class="layui-form-label">签订时间：</label>
                 <div class="layui-input-block">
-                    <input type="text" class="layui-input" id="sign_time" value="<?php echo date('Y-m-d',$vvo['sign_time']); ?>" placeholder="yyyy-MM-dd" required lay-verify="required">
-                    <input type="hidden" name="sign_time" value="">
+                    <div class="layui-form-mid layui-word-aux"><?php echo date('Y-m-d',$vvo['sign_time']); ?></div>
                 </div>
             </div>
         </div>
         <!--  -->
         <div class="layui-row layui-form-item ">
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">签订部门</label>
                 <div class="layui-input-block">
-                    <select name="sign_id" lay-filter="aihao" required>
-                        <option value="<?php echo $vvo['sign_id']; ?>"><?php echo $vvo['sign_title']; ?> </option>
-                        <?php if(is_array($sign_id) || $sign_id instanceof \think\Collection || $sign_id instanceof \think\Paginator): $i = 0; $__LIST__ = $sign_id;if( count($__LIST__)==0 ) : echo "" ;else: foreach($__LIST__ as $key=>$vo): $mod = ($i % 2 );++$i;?>
-                        <option value="<?php echo $vo['id']; ?>"><?php echo $vo['title']; ?></option>
-                        <?php endforeach; endif; else: echo "" ;endif; ?>
-                    </select>
+                    <div class="layui-form-mid layui-word-aux"><?php echo $vvo['sign_title']; ?></div>
                 </div>
             </div>
             <!--  -->
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">签订人：</label>
                 <div class="layui-input-block">
-                    <input type="text" name="sign_agent" value="<?php echo $vvo['sign_agent']; ?>" lay-verify="title" autocomplete="off" placeholder="请输入签订人" class="layui-input" required>
+                    <div class="layui-form-mid layui-word-aux"><?php echo $vvo['sign_agent']; ?></div>
                 </div>
             </div>
         </div>
         <!--  -->
         <div class="layui-row layui-form-item ">
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">合同额：</label>
                 <div class="layui-input-block">
-                    <input type="text" name="contract_amount" value="<?php echo $vvo['contract_amount']; ?>" lay-verify="number" autocomplete="off" placeholder="请输入合同额" class="layui-input" required>
+                    <div class="layui-form-mid layui-word-aux"><?php echo $vvo['contract_amount']; ?></div>
                 </div>
             </div>
             <!--  -->
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">决算时间：</label>
                 <div class="layui-input-block">
-                    <input type="text" class="layui-input" id="final_time" value="<?php echo date('Y-m-d',$vvo['final_time']); ?>" placeholder="yyyy-MM-dd" required lay-verify="required">
-                    <input type="hidden" name="final_time" value="">
+                    <div class="layui-form-mid layui-word-aux"><?php echo date('Y-m-d',$vvo['final_time']); ?></div>
                 </div>
             </div>
             <!--  -->
-            <div class=" layui-col-md3">
+            <div class=" layui-col-md6">
                 <label class="layui-form-label">决算额：</label>
                 <div class="layui-input-block">
-                    <input type="text" name="final_amount" value="<?php echo $vvo['final_amount']; ?>" lay-verify="number" autocomplete="off" placeholder="请输入决算额" class="layui-input" required>
+                    <div class="layui-form-mid layui-word-aux"><?php echo $vvo['final_amount']; ?></div>
                 </div>
             </div>
         </div>
