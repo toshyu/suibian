@@ -54,7 +54,25 @@ class ProjectTask extends Base {
         return json($result);
     }
     public function add() {
-        $project_list = db("project")->where(['status' => 1])->field("id,project_name")->select();
+        $project_list = db("project")
+        ->where(['status' => 1])
+        ->field("id,project_name")
+        ->select();
+
+
+        $task_id=db('project_task')
+        ->where(['status'=>1])
+        ->field("pro_id")
+        ->select();
+ 
+        foreach ($project_list as $k => $v) {
+            foreach ($task_id as $kk => $vv) {
+                if ($v['id']==$vv['pro_id']) {
+                    unset($project_list[$k]);
+                }
+            }
+        }
+
         $this->assign("list", $project_list);
         return $this->fetch();
     }
@@ -62,6 +80,8 @@ class ProjectTask extends Base {
          $data = input();
         // var_dump($data);
         // exit;
+        $id=input('param.id');
+
         $res = db('project_task')->insert($data);
         if ($res) {
             $this->success("添加成功");
